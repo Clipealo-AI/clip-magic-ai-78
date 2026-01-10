@@ -12,15 +12,15 @@ const Footer = () => {
   return (
     <footer className="border-t border-border py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Logo */}
-        <motion.img
-          src={Logo}
-          alt="Clipealo"
-          className="h-10 mx-auto mb-5 logo-glow"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        />
+      {/* Logo */}
+      <motion.img
+        src={Logo}
+        alt="Clipealo"
+        className="h-20 md:h-24 mx-auto mb-6 logo-glow"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      />
 
         {/* Tagline */}
         <p className="text-muted-foreground italic text-base mb-10">
