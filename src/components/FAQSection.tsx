@@ -90,7 +90,7 @@ Tú decides si publicas directo o le das tu toque final.`,
   },
   {
     question: '¿Cuándo lanza el MVP?',
-    answer: `1 de febrero de 2025. Los miembros de la waitlist recibirán acceso prioritario y todos los detalles de activación por correo antes del lanzamiento público.`,
+    answer: `1 de febrero de 2026. Los miembros de la waitlist recibirán acceso prioritario y todos los detalles de activación por correo antes del lanzamiento público.`,
   },
 ];
 
