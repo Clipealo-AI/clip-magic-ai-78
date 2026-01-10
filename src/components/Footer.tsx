@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Instagram, Youtube, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import Logo from '@/assets/clipealo-logo.svg';
 
 // TikTok icon component (not available in lucide-react)
@@ -13,7 +13,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/clipealo.pe/', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/clipealo.pe', label: 'Facebook' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
   ];
 
   return (
@@ -48,10 +47,16 @@ const Footer = () => {
               <social.icon className="w-5 h-5" />
             </a>
           ))}
-          {/* TikTok - sin link por ahora */}
-          <span className="social-icon cursor-default opacity-60" aria-label="TikTok (próximamente)">
+          {/* TikTok */}
+          <a
+            href="https://www.tiktok.com/@clipealo.ai?lang=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+            className="social-icon"
+          >
             <TikTokIcon className="w-5 h-5" />
-          </span>
+          </a>
         </div>
 
         {/* Divider */}
