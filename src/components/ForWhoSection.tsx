@@ -7,7 +7,7 @@ const creators = [
     title: 'GAMERS',
     subtitle: 'Captura jugadas épicas automáticamente',
     description: 'Kills consecutivos, clutches imposibles, reacciones épicas. Clipealo detecta tus mejores momentos y los convierte en clips perfectos para TikTok.',
-    platforms: ['Valorant', 'LoL', 'CS2', 'Fortnite', 'Apex', 'Left 4 Dead', 'Minecraft'],
+    platforms: ['Valorant', 'Dota 2', 'Minecraft', 'Left 4 Dead', 'y más'],
     glowColor: 'hsla(290, 78%, 52%, 0.5)',
   },
   {
