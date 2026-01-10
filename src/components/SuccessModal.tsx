@@ -53,7 +53,7 @@ const SuccessModal = ({ position, email, onClose }: SuccessModalProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
         style={{ background: 'rgba(0, 0, 0, 0.92)', backdropFilter: 'blur(10px)' }}
         onClick={onClose}
       >
@@ -62,7 +62,7 @@ const SuccessModal = ({ position, email, onClose }: SuccessModalProps) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 60, scale: 0.95 }}
           transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-          className="relative bg-card border-2 border-border rounded-[32px] p-10 md:p-14 max-w-xl w-full text-center"
+          className="relative bg-card border-2 border-border rounded-[24px] p-6 md:p-10 max-w-md w-full text-center my-4 max-h-[90vh] overflow-y-auto"
           style={{ boxShadow: '0 0 80px hsla(290, 78%, 52%, 0.4)' }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -79,48 +79,45 @@ const SuccessModal = ({ position, email, onClose }: SuccessModalProps) => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="text-8xl mb-8"
-            style={{ filter: 'drop-shadow(0 0 25px hsl(160, 84%, 39%))' }}
+            className="text-5xl md:text-6xl mb-4"
+            style={{ filter: 'drop-shadow(0 0 20px hsl(160, 84%, 39%))' }}
           >
             ✅
           </motion.div>
 
           {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-extrabold gradient-text mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold gradient-text mb-4">
             ¡Bienvenido a Clipealo!
           </h2>
 
           {/* Position */}
-          <p className="text-muted-foreground mb-2">Eres el</p>
+          <p className="text-muted-foreground text-sm mb-1">Eres el</p>
           <motion.p
-            className="text-5xl md:text-6xl font-extrabold gradient-text mb-8"
+            className="text-4xl md:text-5xl font-extrabold gradient-text mb-1"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             #{displayPosition}
           </motion.p>
-          <p className="text-muted-foreground mb-8">en la lista</p>
-
-          {/* Divider */}
-          <div className="w-full h-px bg-border mb-8" />
+          <p className="text-muted-foreground text-sm mb-5">en la lista</p>
 
           {/* Benefits */}
-          <div className="text-left bg-bg-secondary rounded-2xl p-6 mb-8">
-            <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-              <Gift className="w-5 h-5 text-cyan" />
+          <div className="text-left bg-bg-secondary rounded-xl p-4 mb-5">
+            <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
+              <Gift className="w-4 h-4 text-cyan" />
               Beneficios de la Waitlist:
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {benefits.map((benefit, index) => (
                 <motion.li
                   key={benefit}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex items-start gap-3 text-muted-foreground"
+                  className="flex items-start gap-2 text-muted-foreground text-sm"
                 >
-                  <Check className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
                   <span>{benefit}</span>
                 </motion.li>
               ))}
@@ -128,27 +125,27 @@ const SuccessModal = ({ position, email, onClose }: SuccessModalProps) => {
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-border mb-8" />
+          <div className="w-full h-px bg-border mb-5" />
 
           {/* Email confirmation */}
-          <p className="text-muted-foreground text-sm mb-6">
-            Te enviaremos todas las actualizaciones al correo:{' '}
+          <p className="text-muted-foreground text-xs mb-4">
+            Te enviaremos actualizaciones a:{' '}
             <span className="text-foreground font-medium">{email}</span>
           </p>
 
           {/* WhatsApp Section */}
-          <div className="mb-6">
-            <p className="text-muted-foreground text-sm mb-4">
-              Mientras tanto, únete a nuestro grupo de WhatsApp para:
+          <div className="mb-4">
+            <p className="text-muted-foreground text-xs mb-3">
+              Únete a nuestro grupo de WhatsApp para:
             </p>
-            <ul className="text-left max-w-xs mx-auto text-sm text-muted-foreground space-y-2 mb-6">
-              <li className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-cyan before:font-bold">
+            <ul className="text-left max-w-xs mx-auto text-xs text-muted-foreground space-y-1 mb-4">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0 before:text-cyan before:font-bold">
                 Sneak peeks exclusivos del MVP
               </li>
-              <li className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-cyan before:font-bold">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0 before:text-cyan before:font-bold">
                 Feedback directo con el equipo
               </li>
-              <li className="pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-cyan before:font-bold">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0 before:text-cyan before:font-bold">
                 Acceso anticipado a beta testing
               </li>
             </ul>
@@ -159,9 +156,9 @@ const SuccessModal = ({ position, email, onClose }: SuccessModalProps) => {
             onClick={handleWhatsAppClick}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="btn-whatsapp mb-4"
+            className="btn-whatsapp mb-3 text-sm py-3"
           >
-            <MessageCircle className="w-6 h-6" />
+            <MessageCircle className="w-5 h-5" />
             Unirme al Grupo de WhatsApp
           </motion.button>
 
