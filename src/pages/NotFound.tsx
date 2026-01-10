@@ -1,5 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
+import Logo from "@/assets/clipealo-logo.svg";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,14 +11,45 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 text-center">
+      <motion.img
+        src={Logo}
+        alt="Clipealo"
+        className="h-12 mb-8 logo-glow"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+      />
+      
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="text-6xl font-bold gradient-text mb-4"
+      >
+        404
+      </motion.h1>
+      
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="text-xl text-muted-foreground mb-8"
+      >
+        ¡Oops! Página no encontrada
+      </motion.p>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
+        <Link 
+          to="/" 
+          className="gradient-text-pink-purple font-semibold hover:underline"
+        >
+          Volver al inicio
+        </Link>
+      </motion.div>
     </div>
   );
 };
