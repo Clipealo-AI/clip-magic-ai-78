@@ -64,7 +64,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="text-sm text-muted-foreground mb-4">
-          © 2025 Clipealo. Todos los derechos reservados.
+          © 2026 Clipealo. Todos los derechos reservados.
         </p>
 
         {/* Links */}
