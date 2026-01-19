@@ -39,7 +39,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex-shrink-0">
-            <img src={Logo} alt="Clipealo" className="h-8 md:h-10" />
+            <img src={Logo} alt="Clipealo" className="h-10 md:h-14" />
           </a>
 
           {/* Desktop Navigation */}
