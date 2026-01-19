@@ -21,7 +21,7 @@ const HeroSection = () => {
         <motion.img
           src={Logo}
           alt="Clipealo"
-          className="w-40 md:w-52 mx-auto mb-12 logo-glow"
+          className="w-40 md:w-52 mx-auto mb-8 mt-4 logo-glow"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -35,7 +35,7 @@ const HeroSection = () => {
           className="mb-10"
         >
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">
-            Lanzamiento MVP
+            Lanzamiento Beta
           </p>
           <CountdownTimer />
         </motion.div>
