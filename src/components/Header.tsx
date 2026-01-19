@@ -35,10 +35,10 @@ const Header = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="#" className="flex-shrink-0">
+          {/* Logo - positioned to the left */}
+          <a href="#" className="flex-shrink-0 -ml-2">
             <img src={Logo} alt="Clipealo" className="h-10 md:h-14" />
           </a>
 
