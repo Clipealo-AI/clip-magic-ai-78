@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Bell, CheckCircle } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const NotifySection = () => {
   const { toast } = useToast();
@@ -42,16 +43,45 @@ const NotifySection = () => {
 
     setIsLoading(true);
     
-    // Simulate form submission (replace with actual backend call)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsLoading(false);
-    setIsSubmitted(true);
-    
-    toast({
-      title: "¡Listo!",
-      description: "Te avisaremos cuando haya novedades.",
-    });
+    try {
+      const { error } = await supabase
+        .from('beta_subscribers')
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          discord: formData.discord.trim() || null,
+        });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast({
+            title: "Ya estás registrado",
+            description: "Este correo ya está en nuestra lista de espera.",
+            variant: "destructive",
+          });
+        } else {
+          throw error;
+        }
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(false);
+      setIsSubmitted(true);
+      
+      toast({
+        title: "¡Listo!",
+        description: "Te avisaremos cuando haya novedades.",
+      });
+    } catch (error) {
+      console.error('Error saving subscriber:', error);
+      setIsLoading(false);
+      toast({
+        title: "Error",
+        description: "Hubo un problema. Intenta de nuevo.",
+        variant: "destructive",
+      });
+    }
   };
 
   if (isSubmitted) {
