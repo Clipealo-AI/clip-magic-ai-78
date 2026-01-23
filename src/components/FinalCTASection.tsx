@@ -36,7 +36,7 @@ const FinalCTASection = () => {
 
         {/* CTA Button */}
         <motion.a
-          href="https://discord.gg/clipealo"
+          href="https://discord.gg/Sd3SPNxP"
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 20 }}
