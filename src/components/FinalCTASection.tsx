@@ -3,7 +3,7 @@ import CountdownTimer from './CountdownTimer';
 
 const FinalCTASection = () => {
   return (
-    <section id="aplicar-beta" className="py-24 px-4 relative">
+    <section id="aplicar-beta" className="py-16 sm:py-20 md:py-24 px-4 relative">
       {/* Background Glow */}
       <div className="absolute inset-0 gradient-glow-bg pointer-events-none" />
 
@@ -13,13 +13,13 @@ const FinalCTASection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
-          <span className="text-4xl mb-4 block">🔥</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+          <span className="text-3xl sm:text-4xl mb-3 sm:mb-4 block">🔥</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-3 sm:mb-4 px-2">
             La beta abre el 9 de febrero
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
             Cupos limitados para streamers LATAM.
           </p>
         </motion.div>
@@ -29,7 +29,7 @@ const FinalCTASection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10"
+          className="mb-8 sm:mb-10"
         >
           <CountdownTimer />
         </motion.div>
@@ -54,7 +54,7 @@ const FinalCTASection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-muted-foreground text-sm"
+          className="text-muted-foreground text-xs sm:text-sm"
         >
           El acceso se entrega por Discord.
         </motion.p>

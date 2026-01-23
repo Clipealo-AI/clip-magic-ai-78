@@ -56,17 +56,17 @@ const NotifySection = () => {
 
   if (isSubmitted) {
     return (
-      <section className="py-20 px-4 bg-bg-secondary">
+      <section className="py-12 sm:py-16 md:py-20 px-4 bg-bg-secondary">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md mx-auto bg-card border border-border rounded-2xl p-8 text-center"
+          className="max-w-md mx-auto bg-card border border-border rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center"
         >
-          <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-foreground mb-2">
+          <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-400 mx-auto mb-3 sm:mb-4" />
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
             ¡Te tenemos en cuenta!
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             Te avisaremos cuando el beta esté listo o cuando abramos nuevos cupos.
           </p>
         </motion.div>
@@ -75,19 +75,19 @@ const NotifySection = () => {
   }
 
   return (
-    <section className="py-20 px-4 bg-bg-secondary">
-      <div className="max-w-md mx-auto">
+    <section className="py-12 sm:py-16 md:py-20 px-4 bg-bg-secondary">
+      <div className="max-w-md mx-auto w-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-3 sm:mb-4">
             ¿Quieres que te avisemos?
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground px-2">
             Si no te uniste al Discord ahora, déjanos tus datos y te avisamos cuando el beta esté listo o cuando abramos nuevos cupos.
           </p>
         </motion.div>
@@ -98,12 +98,12 @@ const NotifySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onSubmit={handleSubmit}
-          className="bg-card border border-border rounded-2xl p-8"
+          className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8"
         >
-          <div className="grid gap-5">
+          <div className="grid gap-4 sm:gap-5">
             {/* Name */}
-            <div className="space-y-2">
-              <Label htmlFor="notify-name" className="text-foreground">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="notify-name" className="text-foreground text-sm sm:text-base">
                 Nombre
               </Label>
               <Input
@@ -111,14 +111,14 @@ const NotifySection = () => {
                 placeholder="Tu nombre"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-background border-border"
+                className="bg-background border-border text-sm sm:text-base py-2.5 sm:py-3"
                 maxLength={100}
               />
             </div>
 
             {/* Email */}
-            <div className="space-y-2">
-              <Label htmlFor="notify-email" className="text-foreground">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="notify-email" className="text-foreground text-sm sm:text-base">
                 Correo electrónico
               </Label>
               <Input
@@ -127,14 +127,14 @@ const NotifySection = () => {
                 placeholder="Tu correo"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-background border-border"
+                className="bg-background border-border text-sm sm:text-base py-2.5 sm:py-3"
                 maxLength={255}
               />
             </div>
 
             {/* Discord (optional) */}
-            <div className="space-y-2">
-              <Label htmlFor="notify-discord" className="text-muted-foreground">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="notify-discord" className="text-muted-foreground text-sm sm:text-base">
                 Usuario de Discord <span className="text-muted-foreground/60">(opcional)</span>
               </Label>
               <Input
@@ -142,7 +142,7 @@ const NotifySection = () => {
                 placeholder="@usuario (si ya lo tienes)"
                 value={formData.discord}
                 onChange={(e) => setFormData({ ...formData, discord: e.target.value })}
-                className="bg-background border-border"
+                className="bg-background border-border text-sm sm:text-base py-2.5 sm:py-3"
                 maxLength={100}
               />
             </div>
@@ -151,20 +151,20 @@ const NotifySection = () => {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-pink-500 to-secondary hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 text-lg mt-2"
+              className="w-full bg-gradient-to-r from-pink-500 to-secondary hover:from-pink-600 hover:to-purple-600 text-white font-bold py-5 sm:py-6 text-base sm:text-lg mt-2"
             >
               {isLoading ? (
                 'Enviando...'
               ) : (
                 <>
-                  <Bell className="w-5 h-5 mr-2" />
+                  <Bell className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Quiero que me avisen
                 </>
               )}
             </Button>
 
             {/* Microcopy */}
-            <p className="text-center text-muted-foreground text-sm">
+            <p className="text-center text-muted-foreground text-xs sm:text-sm">
               Usamos tu correo solo para avisarte sobre Clipealo.
             </p>
           </div>

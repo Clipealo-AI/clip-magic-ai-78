@@ -8,19 +8,19 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-12 sm:pb-16 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 gradient-glow-bg pointer-events-none" />
       
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
         {/* Logo */}
         <motion.img
           src={Logo}
           alt="Clipealo"
-          className="w-40 md:w-52 mx-auto mb-8 mt-4 logo-glow"
+          className="w-28 sm:w-36 md:w-40 lg:w-52 mx-auto mb-6 sm:mb-8 mt-4 logo-glow"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -31,9 +31,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="mb-10"
+          className="mb-6 sm:mb-8 md:mb-10"
         >
-          <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">
+          <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4">
             Lanzamiento Beta en:
           </p>
           <CountdownTimer />
@@ -44,7 +44,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-4 sm:mb-6 px-2"
         >
           <span className="gradient-text">No pierdas tus mejores</span>
           <br />
@@ -56,7 +56,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed px-2"
         >
           Clipealo detecta los momentos más importantes de tus streams
           para que no tengas que quedarte horas editando
@@ -68,9 +68,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8 px-2"
         >
-          <span className="benefit-badge">
+          <span className="benefit-badge text-xs sm:text-sm md:text-base">
             Beta gratuita · Streamers LATAM · Acceso limitado
           </span>
         </motion.div>
@@ -93,7 +93,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-muted-foreground text-sm"
+          className="text-muted-foreground text-xs sm:text-sm"
         >
           El acceso al beta se maneja por nuestro Discord.
         </motion.p>
