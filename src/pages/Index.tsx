@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
 import SolutionSection from '@/components/SolutionSection';
+import FeaturesSection from '@/components/FeaturesSection';
 import WhatIsNotSection from '@/components/WhatIsNotSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import ForWhoSection from '@/components/ForWhoSection';
@@ -22,6 +23,7 @@ const Index = () => {
       <HeroSection />
       <ProblemSection />
       <SolutionSection />
+      <FeaturesSection />
       <WhatIsNotSection />
       <HowItWorksSection />
       <ForWhoSection />
