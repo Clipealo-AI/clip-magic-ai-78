@@ -9,11 +9,11 @@ interface TimeLeft {
 }
 
 const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 22, hours: 14, minutes: 32, seconds: 15 });
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    // Set a future launch date for demo purposes
-    const launchDate = new Date('2026-02-01T00:00:00-05:00').getTime();
+    // Launch date: February 9, 2026 at midnight (local time)
+    const launchDate = new Date('2026-02-09T00:00:00').getTime();
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
@@ -27,7 +27,6 @@ const CountdownTimer = () => {
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       } else {
-        // If launch date passed, show zeros or a message
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
