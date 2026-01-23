@@ -1,8 +1,17 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import WhatIsSection from '@/components/WhatIsSection';
+import ProblemSection from '@/components/ProblemSection';
+import SolutionSection from '@/components/SolutionSection';
+import WhatIsNotSection from '@/components/WhatIsNotSection';
+import HowItWorksSection from '@/components/HowItWorksSection';
 import ForWhoSection from '@/components/ForWhoSection';
-import WaitlistSection from '@/components/WaitlistSection';
+import BetaInfoSection from '@/components/BetaInfoSection';
+import BetaAccessSection from '@/components/BetaAccessSection';
+import BetaBenefitsSection from '@/components/BetaBenefitsSection';
+import WhatWeNeedSection from '@/components/WhatWeNeedSection';
+import FinalCTASection from '@/components/FinalCTASection';
+import TeamSection from '@/components/TeamSection';
+import RoadmapSection from '@/components/RoadmapSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 
@@ -11,9 +20,18 @@ const Index = () => {
     <main className="min-h-screen bg-background text-foreground">
       <Header />
       <HeroSection />
-      <WhatIsSection />
+      <ProblemSection />
+      <SolutionSection />
+      <WhatIsNotSection />
+      <HowItWorksSection />
       <ForWhoSection />
-      <WaitlistSection />
+      <BetaInfoSection />
+      <BetaAccessSection />
+      <BetaBenefitsSection />
+      <WhatWeNeedSection />
+      <FinalCTASection />
+      <TeamSection />
+      <RoadmapSection />
       <FAQSection />
       <Footer />
     </main>

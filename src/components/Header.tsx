@@ -7,9 +7,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: '¿Qué es?', href: '#que-es' },
+    { label: 'Problema', href: '#problema' },
+    { label: 'Solución', href: '#solucion' },
+    { label: 'Cómo funciona', href: '#como-funciona' },
     { label: '¿Para quién?', href: '#para-quien' },
-    { label: 'Preguntas', href: '#faq' },
+    { label: 'FAQ', href: '#faq' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -21,7 +23,7 @@ const Header = () => {
   };
 
   const scrollToWaitlist = () => {
-    const element = document.querySelector('#waitlist');
+    const element = document.querySelector('#aplicar-beta');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -43,12 +45,12 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
               >
                 {link.label}
               </button>
@@ -61,9 +63,9 @@ const Header = () => {
               onClick={scrollToWaitlist}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-6 py-2.5 bg-foreground text-background rounded-full font-semibold hover:bg-foreground/90 transition-colors"
+              className="px-6 py-2.5 bg-foreground text-background rounded-full font-semibold hover:bg-foreground/90 transition-colors text-sm"
             >
-              Únete a la lista de espera
+              Aplicar a la beta
             </motion.button>
           </div>
 
@@ -99,7 +101,7 @@ const Header = () => {
                 whileTap={{ scale: 0.98 }}
                 className="mt-2 px-6 py-3 bg-foreground text-background rounded-full font-semibold"
               >
-                Únete a la lista de espera
+                Aplicar a la beta
               </motion.button>
             </nav>
           </motion.div>

@@ -1,97 +1,76 @@
 import { motion } from 'framer-motion';
-import { Gamepad2, Video, Brush } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
-const creators = [
-  {
-    icon: Gamepad2,
-    title: 'GAMERS',
-    subtitle: 'Captura jugadas épicas automáticamente',
-    description: 'Kills consecutivos, clutches imposibles, reacciones épicas. Clipealo detecta tus mejores momentos y los convierte en clips perfectos para TikTok.',
-    platforms: ['Valorant', 'Dota 2', 'Minecraft', 'Left 4 Dead', 'y más'],
-    glowColor: 'hsla(290, 78%, 52%, 0.5)',
-  },
-  {
-    icon: Video,
-    title: 'VLOGGERS',
-    subtitle: 'Momentos destacados sin esfuerzo',
-    description: 'Historias, reacciones, consejos y momentos divertidos. Transforma tus largas charlas en clips cortos y compartibles que tu audiencia va a amar.',
-    platforms: ['Just Chatting', 'IRL', 'Reacciones', 'Podcasts', 'Entrevistas'],
-    glowColor: 'hsla(179, 91%, 58%, 0.5)',
-  },
-  {
-    icon: Brush,
-    title: 'CREATORS',
-    subtitle: 'Highlights creativos al instante',
-    description: 'Proceso creativo, antes/después, técnicas y resultados. Muestra tu trabajo sin perder horas editando. Más contenido = más oportunidades.',
-    platforms: ['Arte', 'Diseño', 'Música', 'Cocina', 'Fitness', 'DIY'],
-    glowColor: 'hsla(350, 95%, 62%, 0.5)',
-  },
+const forYou = [
+  'Streameas varias horas a la semana',
+  'Te cansas de editar después del stream',
+  'Quieres crecer sin perder tu estilo',
+];
+
+const notForYou = [
+  'Quieres que todo se publique solo',
+  'Buscas fama instantánea',
+  'No streameas casi nunca',
 ];
 
 const ForWhoSection = () => {
   return (
-    <section className="py-24 px-4 bg-bg-secondary">
-      <div className="max-w-6xl mx-auto">
+    <section id="para-quien" className="py-24 px-4 bg-bg-secondary">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-6">
-            ¿Para quién es Clipealo?
+          <span className="text-4xl mb-4 block">🎯</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+            ¿Para quién es?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Perfecto para cualquier creador que quiera multiplicar su contenido
-          </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {creators.map((creator, index) => (
-            <motion.div
-              key={creator.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-              className="creator-card group"
-            >
-              {/* Icon */}
-              <motion.div
-                className="text-7xl mb-8 inline-block"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                style={{ filter: `drop-shadow(0 0 25px ${creator.glowColor})` }}
-              >
-                <creator.icon className="w-20 h-20" style={{ color: creator.glowColor.replace('0.5', '1') }} />
-              </motion.div>
+        {/* Two columns */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* For you */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-card border border-cyan/30 rounded-2xl p-8"
+          >
+            <h3 className="text-xl font-bold text-cyan mb-6">
+              ✅ Esto es para ti si:
+            </h3>
+            <ul className="space-y-4">
+              {forYou.map((item, index) => (
+                <li key={index} className="flex items-start gap-3 text-foreground">
+                  <Check className="w-5 h-5 text-cyan flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
 
-              {/* Title */}
-              <h3 className="text-2xl font-bold text-foreground mb-3">
-                {creator.title}
-              </h3>
-
-              {/* Subtitle */}
-              <p className="text-lg font-medium text-foreground mb-4">
-                {creator.subtitle}
-              </p>
-
-              {/* Description */}
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {creator.description}
-              </p>
-
-              {/* Platforms */}
-              <div className="pt-4 border-t border-border">
-                <p className="text-sm text-muted-foreground mb-2">Ideal para:</p>
-                <p className="text-sm text-cyan font-medium">
-                  {creator.platforms.join(' • ')}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+          {/* Not for you */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-card border border-border rounded-2xl p-8"
+          >
+            <h3 className="text-xl font-bold text-pink mb-6">
+              ❌ No es para ti si:
+            </h3>
+            <ul className="space-y-4">
+              {notForYou.map((item, index) => (
+                <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                  <X className="w-5 h-5 text-pink flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </div>
     </section>
