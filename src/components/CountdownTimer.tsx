@@ -45,14 +45,14 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="flex justify-center gap-3 md:gap-5">
+    <div className="flex justify-center gap-2 sm:gap-3 md:gap-5">
       {timeUnits.map((unit, index) => (
         <motion.div
           key={unit.label}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1, duration: 0.5 }}
-          className="countdown-card glow-purple min-w-[70px] md:min-w-[100px]"
+          className="countdown-card glow-purple min-w-[60px] sm:min-w-[70px] md:min-w-[100px]"
         >
           <motion.span
             key={unit.value}
