@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Clock, MessageCircle, Bug } from 'lucide-react';
 
 const requirements = [
-  { icon: Clock, text: 'Que nos regales 30 minutos para conversar una vez' },
+  { icon: Clock, text: '15 minutos cada semana para contarnos qué te funcionó y qué no' },
   { icon: MessageCircle, text: 'Que nos digas la verdad, incluso si algo no te gustó' },
   { icon: Bug, text: 'Que nos avises si algo falla' },
 ];

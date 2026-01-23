@@ -5,7 +5,7 @@ const features = [
   {
     icon: Droplets,
     title: 'Marca de agua personalizada',
-    description: 'Guarda tu logo y el nombre de tu canal. Aparecerá automáticamente en todos tus clips generados.',
+    description: 'Guarda tu logo y el nombre de tu canal. Actívala cuando quieras y aparecerá en tus clips.',
     gradient: 'from-pink-500 to-purple-500',
   },
   {
