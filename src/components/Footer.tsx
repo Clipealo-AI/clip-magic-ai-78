@@ -17,28 +17,28 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-border py-16 px-4">
+    <footer className="border-t border-border py-10 sm:py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
         {/* Logo */}
         <motion.img
           src={Logo}
           alt="Clipealo"
-          className="h-20 md:h-24 mx-auto mb-6 logo-glow"
+          className="h-14 sm:h-20 md:h-24 mx-auto mb-4 sm:mb-6 logo-glow"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         />
 
         {/* Tagline */}
-        <p className="text-muted-foreground text-lg mb-2">
+        <p className="text-muted-foreground text-base sm:text-lg mb-1 sm:mb-2">
           Clipealo detecta el momento.
         </p>
-        <p className="text-foreground font-semibold text-lg mb-10">
+        <p className="text-foreground font-semibold text-base sm:text-lg mb-6 sm:mb-10">
           El creador hace el clip.
         </p>
 
         {/* Social Links */}
-        <div className="flex justify-center gap-4 mb-12">
+        <div className="flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -46,9 +46,9 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.label}
-              className="social-icon"
+              className="social-icon w-10 h-10 sm:w-12 sm:h-12"
             >
-              <social.icon className="w-5 h-5" />
+              <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           ))}
           {/* TikTok */}
@@ -57,22 +57,22 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"
-            className="social-icon"
+            className="social-icon w-10 h-10 sm:w-12 sm:h-12"
           >
-            <TikTokIcon className="w-5 h-5" />
+            <TikTokIcon className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-md mx-auto h-px bg-border mb-8" />
+        <div className="w-full max-w-xs sm:max-w-md mx-auto h-px bg-border mb-6 sm:mb-8" />
 
         {/* Copyright */}
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
           © 2026 Clipealo. Todos los derechos reservados.
         </p>
 
         {/* Links */}
-        <div className="flex justify-center gap-5 text-sm flex-wrap">
+        <div className="flex justify-center gap-3 sm:gap-5 text-xs sm:text-sm flex-wrap">
           <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
             Términos
           </a>
