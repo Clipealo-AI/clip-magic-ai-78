@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Logo from '@/assets/clipealo-logo.svg';
 import CountdownTimer from './CountdownTimer';
@@ -6,12 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Bell, CheckCircle } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-
 const HeroSection = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -67,12 +67,9 @@ const HeroSection = () => {
       }
 
       setIsLoading(false);
-      setIsSubmitted(true);
       
-      toast({
-        title: "¡Listo!",
-        description: "Te avisaremos cuando haya novedades.",
-      });
+      // Redirect to thank you page
+      navigate('/thankyoupage');
     } catch (error) {
       console.error('Error saving subscriber:', error);
       setIsLoading(false);
@@ -163,106 +160,94 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="order-1 lg:order-2"
           >
-            {isSubmitted ? (
-              <div className="bg-card/90 backdrop-blur-sm border border-border rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
-                <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-400 mx-auto mb-3 sm:mb-4" />
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-                  ¡Te tenemos en cuenta!
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  Te avisaremos cuando el beta esté listo o cuando abramos nuevos cupos.
+            <div className="bg-card/90 backdrop-blur-sm border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8">
+              {/* Form Header */}
+              <div className="text-center mb-5 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
+                  🔥 Únete a la Beta
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Déjanos tus datos y te avisamos cuando abra la beta
                 </p>
               </div>
-            ) : (
-              <div className="bg-card/90 backdrop-blur-sm border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8">
-                {/* Form Header */}
-                <div className="text-center mb-5 sm:mb-6">
-                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-                    🔥 Únete a la Beta
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    Déjanos tus datos y te avisamos cuando abra la beta
-                  </p>
-                </div>
 
-                {/* Countdown - Mobile only */}
-                <div className="lg:hidden mb-5">
-                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2 text-center">
-                    Lanzamiento en:
-                  </p>
-                  <CountdownTimer />
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Name */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="hero-name" className="text-foreground text-sm">
-                      Nombre
-                    </Label>
-                    <Input
-                      id="hero-name"
-                      placeholder="Tu nombre"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="bg-background border-border text-sm py-2.5"
-                      maxLength={100}
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="hero-email" className="text-foreground text-sm">
-                      Correo electrónico
-                    </Label>
-                    <Input
-                      id="hero-email"
-                      type="email"
-                      placeholder="Tu correo"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="bg-background border-border text-sm py-2.5"
-                      maxLength={255}
-                    />
-                  </div>
-
-                  {/* Discord (optional) */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="hero-discord" className="text-muted-foreground text-sm">
-                      Usuario de Discord <span className="text-muted-foreground/60">(opcional)</span>
-                    </Label>
-                    <Input
-                      id="hero-discord"
-                      placeholder="@usuario"
-                      value={formData.discord}
-                      onChange={(e) => setFormData({ ...formData, discord: e.target.value })}
-                      className="bg-background border-border text-sm py-2.5"
-                      maxLength={100}
-                    />
-                  </div>
-
-                  {/* Submit */}
-                  <Button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-pink-500 to-secondary hover:from-pink-600 hover:to-purple-600 text-white font-bold py-5 text-base mt-2"
-                  >
-                    {isLoading ? (
-                      'Enviando...'
-                    ) : (
-                      <>
-                        <Bell className="w-4 h-4 mr-2" />
-                        Quiero acceso a la beta
-                      </>
-                    )}
-                  </Button>
-
-                  {/* Microcopy */}
-                  <p className="text-center text-muted-foreground text-xs">
-                    Usamos tu correo solo para avisarte sobre Clipealo.
-                  </p>
-                </form>
+              {/* Countdown - Mobile only */}
+              <div className="lg:hidden mb-5">
+                <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2 text-center">
+                  Lanzamiento en:
+                </p>
+                <CountdownTimer />
               </div>
-            )}
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name */}
+                <div className="space-y-1.5">
+                  <Label htmlFor="hero-name" className="text-foreground text-sm">
+                    Nombre
+                  </Label>
+                  <Input
+                    id="hero-name"
+                    placeholder="Tu nombre"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="bg-background border-border text-sm py-2.5"
+                    maxLength={100}
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-1.5">
+                  <Label htmlFor="hero-email" className="text-foreground text-sm">
+                    Correo electrónico
+                  </Label>
+                  <Input
+                    id="hero-email"
+                    type="email"
+                    placeholder="Tu correo"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="bg-background border-border text-sm py-2.5"
+                    maxLength={255}
+                  />
+                </div>
+
+                {/* Discord (optional) */}
+                <div className="space-y-1.5">
+                  <Label htmlFor="hero-discord" className="text-muted-foreground text-sm">
+                    Usuario de Discord <span className="text-muted-foreground/60">(opcional)</span>
+                  </Label>
+                  <Input
+                    id="hero-discord"
+                    placeholder="@usuario"
+                    value={formData.discord}
+                    onChange={(e) => setFormData({ ...formData, discord: e.target.value })}
+                    className="bg-background border-border text-sm py-2.5"
+                    maxLength={100}
+                  />
+                </div>
+
+                {/* Submit */}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-pink-500 to-secondary hover:from-pink-600 hover:to-purple-600 text-white font-bold py-5 text-base mt-2"
+                >
+                  {isLoading ? (
+                    'Enviando...'
+                  ) : (
+                    <>
+                      <Bell className="w-4 h-4 mr-2" />
+                      Quiero acceso a la beta
+                    </>
+                  )}
+                </Button>
+
+                {/* Microcopy */}
+                <p className="text-center text-muted-foreground text-xs">
+                  Usamos tu correo solo para avisarte sobre Clipealo.
+                </p>
+              </form>
+            </div>
           </motion.div>
         </div>
       </div>
