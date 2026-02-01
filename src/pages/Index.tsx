@@ -14,7 +14,6 @@ import FinalCTASection from '@/components/FinalCTASection';
 import TeamSection from '@/components/TeamSection';
 import RoadmapSection from '@/components/RoadmapSection';
 import FAQSection from '@/components/FAQSection';
-import NotifySection from '@/components/NotifySection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -36,7 +35,6 @@ const Index = () => {
       <TeamSection />
       <RoadmapSection />
       <FAQSection />
-      <NotifySection />
       <Footer />
     </main>
   );
