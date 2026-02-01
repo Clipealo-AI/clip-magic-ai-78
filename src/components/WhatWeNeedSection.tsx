@@ -44,19 +44,6 @@ const WhatWeNeedSection = () => {
           </ul>
         </motion.div>
 
-        {/* Discord note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-center p-6 bg-[#5865F2]/10 border border-[#5865F2]/30 rounded-2xl"
-        >
-          <p className="text-foreground font-medium">
-            Necesitas tener Discord,<br />
-            porque ahí es donde funciona el beta.
-          </p>
-        </motion.div>
       </div>
     </section>
   );
