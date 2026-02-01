@@ -82,7 +82,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-12 sm:pb-16 overflow-hidden">
+    <section id="aplicar-beta" className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-12 sm:pb-16 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 gradient-glow-bg pointer-events-none" />
       
