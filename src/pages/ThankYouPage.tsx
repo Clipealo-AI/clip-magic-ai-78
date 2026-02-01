@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Calendar, Mail } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Logo from '@/assets/clipealo-logo.svg';
+import HeroImage from '@/assets/thankyou-hero.jpg';
 
 // Discord icon
 const DiscordIcon = ({ className }: { className?: string }) => (
@@ -13,115 +14,169 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 const ThankYouPage = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-4 py-16 overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute inset-0 gradient-glow-bg" />
-        
+      {/* Hero Section with Image */}
+      <section className="relative min-h-[70vh] md:min-h-[80vh] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={HeroImage} 
+            alt="Streamer setup" 
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        </div>
+
         {/* Content */}
-        <div className="relative z-10 max-w-2xl mx-auto text-center">
-          {/* Logo */}
-          <motion.img
-            src={Logo}
-            alt="Clipealo"
-            className="h-16 md:h-20 mx-auto mb-8 logo-glow"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          />
+        <div className="relative z-10 h-full min-h-[70vh] md:min-h-[80vh] flex items-center">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div className="max-w-xl">
+              {/* Logo */}
+              <motion.img
+                src={Logo}
+                alt="Clipealo"
+                className="h-12 md:h-16 mb-6 logo-glow"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              />
 
-          {/* Success Icon */}
+              {/* Success Badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 border border-green-500/50 mb-6"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                <span className="text-green-400 text-2xl">✓</span>
+                <span className="text-green-400 font-semibold text-sm uppercase tracking-wide">Registro exitoso</span>
+              </motion.div>
+
+              {/* Main Heading */}
+              <motion.h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                <span className="gradient-text">¡ESTÁS</span>
+                <br />
+                <span className="gradient-text">EN LA LISTA!</span>
+              </motion.h1>
+
+              {/* Date Info */}
+              <motion.div
+                className="flex items-center gap-3 mb-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <Calendar className="w-5 h-5 text-accent" />
+                <p className="text-lg md:text-xl text-foreground">
+                  <span className="font-bold">9 de febrero</span> recibirás acceso
+                </p>
+              </motion.div>
+
+              {/* Email reminder */}
+              <motion.div
+                className="flex items-center gap-3 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                <Mail className="w-5 h-5 text-muted-foreground" />
+                <p className="text-base text-muted-foreground">
+                  Revisa tu correo el día del lanzamiento
+                </p>
+              </motion.div>
+
+              {/* Divider */}
+              <motion.div
+                className="w-20 h-1 mb-8 rounded-full gradient-primary"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              />
+
+              {/* Meanwhile text */}
+              <motion.p
+                className="text-xl md:text-2xl text-muted-foreground mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+              >
+                Mientras tanto 👇
+              </motion.p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-12 md:py-16 px-4 bg-gradient-to-b from-background to-card/50">
+        <div className="max-w-4xl mx-auto">
           <motion.div
-            className="mb-6"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          >
-            <span className="text-6xl md:text-7xl">✅</span>
-          </motion.div>
-
-          {/* Main Heading */}
-          <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
+            className="grid md:grid-cols-2 gap-4 md:gap-6"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            <span className="gradient-text">¡ESTÁS EN LA LISTA!</span>
-          </motion.h1>
-
-          {/* Date Notification */}
-          <motion.div
-            className="mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground flex items-center justify-center gap-2 flex-wrap">
-              <span className="text-2xl">📅</span>
-              <span>El <span className="text-foreground font-semibold">9 de febrero</span> recibirás acceso por email</span>
-            </p>
-          </motion.div>
-
-          {/* Divider */}
-          <motion.div
-            className="w-24 h-1 mx-auto mb-8 rounded-full gradient-primary"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          />
-
-          {/* Meanwhile text */}
-          <motion.p
-            className="text-xl md:text-2xl text-muted-foreground mb-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            Mientras tanto 👇
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col gap-4 max-w-md mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
             {/* Discord Button - Primary */}
             <a
               href="https://discord.gg/XjhXBtaK6A"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative"
+              className="group"
             >
-              <div className="btn-cta w-full flex flex-col items-center py-5 px-8">
-                <div className="flex items-center gap-3 text-lg md:text-xl font-bold">
-                  <span>🚀</span>
-                  <span>ÚNETE AL DISCORD</span>
-                  <DiscordIcon className="w-6 h-6" />
+              <div className="relative overflow-hidden rounded-2xl border-2 border-transparent bg-gradient-to-r from-pink-500 to-secondary p-[2px] transition-all duration-300 hover:shadow-[0_0_40px_rgba(193,36,227,0.5)] hover:-translate-y-1">
+                <div className="bg-card rounded-[14px] p-6 md:p-8 h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-secondary flex items-center justify-center mb-4">
+                    <DiscordIcon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
+                    🚀 ÚNETE AL DISCORD
+                  </h3>
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Acceso anticipado + comunidad de streamers
+                  </p>
                 </div>
-                <span className="text-sm text-white/80 mt-1">Acceso anticipado + comunidad</span>
               </div>
             </a>
 
-            {/* YouTube Button - Secondary/Outline */}
+            {/* YouTube Button - Secondary */}
             <a
               href="https://www.youtube.com/watch?v=lluBnFuX_ro"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative"
+              className="group"
             >
-              <div className="w-full flex flex-col items-center py-5 px-8 rounded-xl sm:rounded-2xl border-2 border-border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-secondary hover:bg-card/80 hover:-translate-y-1">
-                <div className="flex items-center gap-3 text-lg md:text-xl font-semibold text-foreground">
-                  <span>▶️</span>
-                  <span>VER EVOLUCIÓN DEL PRODUCTO</span>
-                  <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-secondary transition-colors" />
+              <div className="relative overflow-hidden rounded-2xl border-2 border-border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(51,245,242,0.3)] hover:-translate-y-1 h-full">
+                <div className="p-6 md:p-8 flex flex-col items-center text-center h-full">
+                  <div className="w-16 h-16 rounded-full bg-card border-2 border-accent flex items-center justify-center mb-4">
+                    <span className="text-3xl">▶️</span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2 flex items-center gap-2">
+                    VER EVOLUCIÓN DEL PRODUCTO
+                    <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors" />
+                  </h3>
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Conoce cómo empezó Clipealo
+                  </p>
                 </div>
-                <span className="text-sm text-muted-foreground mt-1">Conoce cómo empezó Clipealo</span>
               </div>
             </a>
           </motion.div>
+
+          {/* Social proof or extra message */}
+          <motion.p
+            className="text-center text-muted-foreground text-sm mt-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+          >
+            Únete a la comunidad de streamers LATAM que ya están esperando Clipealo 🎮
+          </motion.p>
         </div>
       </section>
 
