@@ -86,13 +86,31 @@ const Header = () => {
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile CTA Buttons + Menu */}
+          <div className="flex md:hidden items-center gap-2">
+            <motion.a
+              href="https://discord.gg/clipealo"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center justify-center w-9 h-9 border border-border rounded-full text-muted-foreground"
+            >
+              <DiscordIcon />
+            </motion.a>
+            <motion.button
+              onClick={scrollToWaitlist}
+              whileTap={{ scale: 0.98 }}
+              className="px-4 py-2 bg-foreground text-background rounded-full font-semibold text-xs"
+            >
+              Aplicar
+            </motion.button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-foreground"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
