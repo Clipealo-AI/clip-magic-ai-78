@@ -13,7 +13,7 @@ const CountdownTimer = () => {
 
   useEffect(() => {
     // Launch date: February 9, 2026 at midnight (local time)
-    const launchDate = new Date('2026-02-09T12:00:00').getTime();
+    const launchDate = new Date('2026-02-10T12:00:00').getTime();
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
