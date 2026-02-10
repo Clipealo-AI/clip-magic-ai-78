@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Logo from '@/assets/clipealo-logo.svg';
-import CountdownTimer from './CountdownTimer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Bell } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+
 const HeroSection = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -67,8 +67,6 @@ const HeroSection = () => {
       }
 
       setIsLoading(false);
-      
-      // Redirect to thank you page
       navigate('/thankyoupage');
     } catch (error) {
       console.error('Error saving subscriber:', error);
@@ -103,6 +101,18 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
             />
 
+            {/* Beta ended badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.6 }}
+              className="mb-4"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 border border-secondary/50 text-secondary font-semibold text-xs sm:text-sm uppercase tracking-wide">
+                🎉 ¡La beta ya terminó!
+              </span>
+            </motion.div>
+
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -135,21 +145,8 @@ const HeroSection = () => {
               className="mb-6"
             >
               <span className="benefit-badge text-xs sm:text-sm">
-                Beta gratuita · Streamers LATAM · Acceso limitado
+                Lista de espera · Precios en 1 semana · Streamers LATAM
               </span>
-            </motion.div>
-
-            {/* Countdown - Desktop only */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="hidden lg:block"
-            >
-              <p className="text-muted-foreground text-xs uppercase tracking-widest mb-3">
-                Lanzamiento Beta en:
-              </p>
-              <CountdownTimer />
             </motion.div>
           </div>
 
@@ -164,19 +161,11 @@ const HeroSection = () => {
               {/* Form Header */}
               <div className="text-center mb-5 sm:mb-6">
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-                  🔥 Únete a la Beta
+                  📋 Únete a la lista de espera
                 </h2>
                 <p className="text-sm text-muted-foreground">
-                  Déjanos tus datos y te avisamos cuando abra la beta
+                  Sé de los primeros en enterarte cuando lancemos. Precios y novedades vienen pronto.
                 </p>
-              </div>
-
-              {/* Countdown - Mobile only */}
-              <div className="lg:hidden mb-5">
-                <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2 text-center">
-                  Lanzamiento en:
-                </p>
-                <CountdownTimer />
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -237,7 +226,7 @@ const HeroSection = () => {
                   ) : (
                     <>
                       <Bell className="w-4 h-4 mr-2" />
-                      Quiero acceso a la beta
+                      Quiero estar en la lista
                     </>
                   )}
                 </Button>

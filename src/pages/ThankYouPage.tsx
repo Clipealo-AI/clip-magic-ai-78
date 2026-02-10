@@ -1,8 +1,10 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Calendar, Mail } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Logo from '@/assets/clipealo-logo.svg';
 import HeroImage from '@/assets/thankyou-hero.jpg';
+import { supabase } from '@/integrations/supabase/client';
 
 // Discord icon
 const DiscordIcon = ({ className }: { className?: string }) => (
@@ -12,6 +14,21 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 );
 
 const ThankYouPage = () => {
+  const [position, setPosition] = useState(5);
+
+  useEffect(() => {
+    const fetchPosition = async () => {
+      const { count, error } = await supabase
+        .from('beta_subscribers')
+        .select('*', { count: 'exact', head: true });
+      
+      if (!error && count !== null) {
+        setPosition(count + 5);
+      }
+    };
+    fetchPosition();
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Hero Section with Image - Compact */}
@@ -23,7 +40,6 @@ const ThankYouPage = () => {
             alt="Streamer setup" 
             className="w-full h-full object-cover object-right sm:object-center"
           />
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 sm:via-background/80 to-background/60 sm:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 sm:via-background/50 to-transparent" />
         </div>
@@ -63,40 +79,35 @@ const ThankYouPage = () => {
                 <span className="gradient-text">¡ESTÁS EN LA LISTA!</span>
               </motion.h1>
 
-              {/* Date Info */}
+              {/* Position info */}
               <motion.div
-                className="flex items-center gap-2 mb-1 sm:mb-2"
+                className="flex items-center gap-2 mb-2 sm:mb-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                <Calendar className="w-4 h-4 text-accent flex-shrink-0" />
-                <p className="text-sm sm:text-base md:text-lg text-foreground">
-                  <span className="font-bold">9 de febrero</span> recibirás acceso
+                <p className="text-base sm:text-lg md:text-xl text-foreground">
+                  Estás en el puesto <span className="font-extrabold text-accent text-xl sm:text-2xl">#{position}</span> de la lista de espera
                 </p>
               </motion.div>
 
-              {/* Email reminder */}
-              <motion.div
-                className="flex items-center gap-2 mb-4 sm:mb-6"
+              {/* Info */}
+              <motion.p
+                className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <Mail className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  Revisa tu correo el día del lanzamiento
-                </p>
-              </motion.div>
+                Cuando tengamos novedades y precios, serás de los primeros en saberlo. 🚀
+              </motion.p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Compact and visible */}
+      {/* CTA Section */}
       <section className="relative py-4 sm:py-6 md:py-8 px-4 bg-gradient-to-b from-background to-card/50">
         <div className="max-w-3xl mx-auto">
-          {/* Meanwhile text */}
           <motion.p
             className="text-base sm:text-lg md:text-xl text-muted-foreground text-center mb-4 sm:mb-6"
             initial={{ opacity: 0 }}
@@ -112,37 +123,23 @@ const ThankYouPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
           >
-            {/* Discord Button - Primary */}
-            <a
-              href="https://discord.gg/XjhXBtaK6A"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group"
-            >
+            {/* Discord Button */}
+            <a href="https://discord.gg/XjhXBtaK6A" target="_blank" rel="noopener noreferrer" className="group">
               <div className="relative overflow-hidden rounded-xl border-2 border-transparent bg-gradient-to-r from-pink-500 to-secondary p-[2px] transition-all duration-300 hover:shadow-[0_0_40px_rgba(193,36,227,0.5)] hover:-translate-y-1">
                 <div className="bg-card rounded-[10px] p-4 sm:p-5 h-full flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-secondary flex items-center justify-center flex-shrink-0">
                     <DiscordIcon className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-base sm:text-lg font-bold text-foreground">
-                      🚀 ÚNETE AL DISCORD
-                    </h3>
-                    <p className="text-muted-foreground text-xs sm:text-sm">
-                      Acceso anticipado + comunidad
-                    </p>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground">🚀 ÚNETE AL DISCORD</h3>
+                    <p className="text-muted-foreground text-xs sm:text-sm">Entérate primero de todo</p>
                   </div>
                 </div>
               </div>
             </a>
 
-            {/* YouTube Button - Secondary */}
-            <a
-              href="https://www.youtube.com/watch?v=lluBnFuX_ro"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group"
-            >
+            {/* YouTube Button */}
+            <a href="https://www.youtube.com/watch?v=lluBnFuX_ro" target="_blank" rel="noopener noreferrer" className="group">
               <div className="relative overflow-hidden rounded-xl border-2 border-border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(51,245,242,0.3)] hover:-translate-y-1 h-full">
                 <div className="p-4 sm:p-5 flex items-center gap-4 h-full">
                   <div className="w-12 h-12 rounded-full bg-card border-2 border-accent flex items-center justify-center flex-shrink-0">
@@ -153,16 +150,13 @@ const ThankYouPage = () => {
                       <span>VER EVOLUCIÓN</span>
                       <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
                     </h3>
-                    <p className="text-muted-foreground text-xs sm:text-sm">
-                      Conoce cómo empezó Clipealo
-                    </p>
+                    <p className="text-muted-foreground text-xs sm:text-sm">Conoce cómo empezó Clipealo</p>
                   </div>
                 </div>
               </div>
             </a>
           </motion.div>
 
-          {/* Social proof */}
           <motion.p
             className="text-center text-muted-foreground text-xs mt-4 sm:mt-6"
             initial={{ opacity: 0 }}
@@ -174,7 +168,6 @@ const ThankYouPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </main>
   );

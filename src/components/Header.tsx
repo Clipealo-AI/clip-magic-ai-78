@@ -82,7 +82,7 @@ const Header = () => {
               whileTap={{ scale: 0.98 }}
               className="px-6 py-2.5 bg-foreground text-background rounded-full font-semibold hover:bg-foreground/90 transition-colors text-sm"
             >
-              Aplicar a la beta
+              Lista de espera
             </motion.button>
           </div>
 
@@ -102,7 +102,7 @@ const Header = () => {
               whileTap={{ scale: 0.98 }}
               className="px-4 py-2 bg-foreground text-background rounded-full font-semibold text-xs"
             >
-              Aplicar
+              Unirme
             </motion.button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -146,7 +146,7 @@ const Header = () => {
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 bg-foreground text-background rounded-full font-semibold"
               >
-                Aplicar a la beta
+                Lista de espera
               </motion.button>
             </nav>
           </motion.div>

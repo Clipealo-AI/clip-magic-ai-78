@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { Gift, Percent, MessageSquare, Handshake, Rocket } from 'lucide-react';
+import { Percent, MessageSquare, Handshake, Rocket } from 'lucide-react';
 
 const benefits = [
-  { icon: Gift, text: '1 mes de acceso gratis al beta', highlight: true },
-  { icon: Percent, text: '20% de descuento los primeros 3 meses cuando lancemos', highlight: false },
-  { icon: MessageSquare, text: 'Acceso al Discord privado del beta', highlight: false },
+  { icon: Rocket, text: 'Acceso antes que el público general', highlight: true },
+  { icon: Percent, text: 'Precios y novedades antes que nadie', highlight: false },
+  { icon: MessageSquare, text: 'Acceso al Discord privado', highlight: false },
   { icon: Handshake, text: 'Contacto directo con el equipo', highlight: false },
-  { icon: Rocket, text: 'Acceso antes que el público general', highlight: false },
 ];
 
 const BetaBenefitsSection = () => {
@@ -25,7 +24,7 @@ const BetaBenefitsSection = () => {
         >
           <span className="text-4xl mb-4 block">🎁</span>
           <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
-            ¿Qué ganas entrando a la beta?
+            ¿Qué ganas uniéndote a la lista?
           </h2>
         </motion.div>
 
