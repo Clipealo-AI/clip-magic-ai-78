@@ -4,20 +4,20 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: '¿Todo funciona perfecto?',
-    answer: 'No. Es beta. Algunas cosas fallan y se irán mejorando.',
+    question: '¿La beta ya terminó?',
+    answer: 'Sí. La beta cerrada terminó. Ahora estamos preparando el lanzamiento oficial con precios y nuevas funciones.',
   },
   {
-    question: '¿Cuánto cuesta?',
-    answer: 'La beta es gratis. Luego tendrás 20% de descuento los primeros 3 meses.',
+    question: '¿Cuánto va a costar?',
+    answer: 'Los precios se anunciarán en aproximadamente 1 semana. Si estás en la lista de espera, te avisaremos antes que a nadie.',
   },
   {
     question: '¿Tengo que usar el comando de voz?',
     answer: 'No. Es opcional. Puedes clipear sin decir nada, el sistema también detecta momentos automáticamente.',
   },
   {
-    question: '¿Y si no me gusta?',
-    answer: 'Sales cuando quieras. Igual nos gustaría saber por qué.',
+    question: '¿Cómo me entero de las novedades?',
+    answer: 'Únete a la lista de espera y al Discord. Ahí publicamos todo primero.',
   },
 ];
 
