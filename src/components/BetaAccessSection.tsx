@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { MessageCircle, Bell, HelpCircle, Users } from 'lucide-react';
 
 const discordFeatures = [
-  { icon: Users, text: 'Te damos acceso al beta' },
-  { icon: Bell, text: 'Avisamos novedades' },
+  { icon: Bell, text: 'Te avisamos novedades y precios' },
+  { icon: Users, text: 'Comunidad de streamers LATAM' },
   { icon: HelpCircle, text: 'Resolvemos dudas' },
   { icon: MessageCircle, text: 'Hablamos directo contigo' },
 ];
@@ -21,10 +21,10 @@ const BetaAccessSection = () => {
         >
           <span className="text-4xl mb-4 block">🔑</span>
           <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-6">
-            ¿Cómo funciona el acceso?
+            ¿Cómo te enterarás?
           </h2>
           <p className="text-lg text-muted-foreground">
-            Si quedas seleccionado para la beta, el acceso se hace directamente desde nuestro Discord.
+            Todo pasa en nuestro Discord. Únete para no perderte nada.
           </p>
         </motion.div>
 

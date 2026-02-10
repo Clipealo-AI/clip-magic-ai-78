@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { Clock, MessageCircle, Bug } from 'lucide-react';
+import { Share2, MessageCircle, Star } from 'lucide-react';
 
 const requirements = [
-  { icon: Clock, text: '15 minutos cada semana para contarnos qué te funcionó y qué no' },
-  { icon: MessageCircle, text: 'Que nos digas la verdad, incluso si algo no te gustó' },
-  { icon: Bug, text: 'Que nos avises si algo falla' },
+  { icon: Share2, text: 'Comparte Clipealo con otros streamers que lo necesiten' },
+  { icon: MessageCircle, text: 'Únete al Discord y cuéntanos qué te gustaría ver' },
+  { icon: Star, text: 'Danos tu feedback cuando lancemos — tu opinión importa' },
 ];
 
 const WhatWeNeedSection = () => {
@@ -43,7 +43,6 @@ const WhatWeNeedSection = () => {
             ))}
           </ul>
         </motion.div>
-
       </div>
     </section>
   );

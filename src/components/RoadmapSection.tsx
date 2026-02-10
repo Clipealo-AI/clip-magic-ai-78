@@ -3,8 +3,8 @@ import { TestTube, Users, Wrench, Rocket } from 'lucide-react';
 
 const milestones = [
   { icon: TestTube, month: 'Diciembre', description: 'Pruebas internas', status: 'completed' },
-  { icon: Users, month: 'Enero', description: 'Beta', status: 'current' },
-  { icon: Wrench, month: 'Febrero', description: 'Mejoras', status: 'upcoming' },
+  { icon: Users, month: 'Enero', description: 'Beta cerrada', status: 'completed' },
+  { icon: Wrench, month: 'Febrero', description: 'Mejoras + precios', status: 'current' },
   { icon: Rocket, month: 'Marzo', description: 'Lanzamiento', status: 'upcoming' },
 ];
 
