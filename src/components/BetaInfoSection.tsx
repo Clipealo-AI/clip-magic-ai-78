@@ -14,7 +14,7 @@ const BetaInfoSection = () => {
         >
           <span className="text-4xl mb-4 block">🧪</span>
           <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-6">
-            Sobre la Beta
+            ¿Qué sigue?
           </h2>
         </motion.div>
 
@@ -25,11 +25,11 @@ const BetaInfoSection = () => {
           className="bg-card border border-border rounded-2xl p-8 mb-8"
         >
           <h3 className="text-xl font-bold text-foreground mb-4">
-            ¿Qué es la beta?
+            La beta ya terminó 🎉
           </h3>
           <p className="text-muted-foreground leading-relaxed">
-            Es una versión temprana para ver si Clipealo realmente te ahorra tiempo
-            y te ayuda a no perder las ganas de seguir streameando.
+            Estamos trabajando en los precios y el lanzamiento oficial.
+            Si te uniste a la lista de espera, serás de los primeros en enterarte cuando todo esté listo.
           </p>
         </motion.div>
 
@@ -44,14 +44,13 @@ const BetaInfoSection = () => {
             <AlertTriangle className="w-8 h-8 text-secondary flex-shrink-0" />
             <div>
               <h3 className="text-xl font-bold text-foreground mb-4">
-                ¿Qué puede pasar?
+                ¿Cuándo salen los precios?
               </h3>
-              <ul className="space-y-3 text-muted-foreground">
-                <li>• Algunas cosas pueden fallar</li>
-                <li>• Algunas funciones pueden cambiar o desaparecer</li>
-              </ul>
-              <p className="mt-4 text-foreground font-medium">
-                Esto no es un producto terminado. Lo estamos construyendo paso a paso.
+              <p className="text-muted-foreground mb-3">
+                En aproximadamente <span className="text-foreground font-semibold">1 semana</span> tendremos los precios listos.
+              </p>
+              <p className="text-foreground font-medium">
+                Si estás en la lista de espera, te avisaremos antes que a nadie.
               </p>
             </div>
           </div>
