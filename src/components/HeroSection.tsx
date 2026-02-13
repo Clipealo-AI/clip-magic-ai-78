@@ -24,7 +24,7 @@ const HeroSection = () => {
             Herramienta de clips con IA #1 para streamers LATAM
           </span>
           <span className="flex items-center gap-1.5">
-            {['mx','ar','co','pe','ec','cl','br','ve','uy','bo'].map((code) => (
+            {['pe','mx','ar','co','ec','cl','br','ve','uy','bo'].map((code) => (
               <img
                 key={code}
                 src={`https://flagcdn.com/w40/${code}.png`}
