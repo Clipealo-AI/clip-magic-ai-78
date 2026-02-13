@@ -4,20 +4,28 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: '¿La beta ya terminó?',
-    answer: 'Sí. La beta cerrada terminó. Ahora estamos preparando el lanzamiento oficial con precios y nuevas funciones.',
+    question: '¿Cómo funciona Clipealo?',
+    answer: 'Pegas el link de tu stream (Kick, Twitch o YouTube) o subes tu archivo. Nuestra IA analiza el video completo, detecta los mejores momentos y genera clips listos para publicar con subtítulos, títulos y score de viralidad.',
   },
   {
-    question: '¿Cuánto va a costar?',
-    answer: 'Los precios se anunciarán en aproximadamente 1 semana. Si estás en la lista de espera, te avisaremos antes que a nadie.',
+    question: '¿Qué tipos de videos puedo subir?',
+    answer: 'Puedes subir cualquier stream o video largo. Soportamos enlaces de Kick, Twitch y YouTube, además de archivos de video directos.',
   },
   {
-    question: '¿Tengo que usar el comando de voz?',
-    answer: 'No. Es opcional. Puedes clipear sin decir nada, el sistema también detecta momentos automáticamente.',
+    question: '¿En qué idiomas funciona?',
+    answer: 'Clipealo está entrenada específicamente en contenido en español latino. Entiende jerga local, modismos y contexto cultural de toda LATAM.',
   },
   {
-    question: '¿Cómo me entero de las novedades?',
-    answer: 'Únete a la lista de espera y al Discord. Ahí publicamos todo primero.',
+    question: '¿Puedo agregar subtítulos?',
+    answer: 'Sí. Los subtítulos se generan automáticamente y sincronizados en menos de 1 minuto. No se requiere edición manual.',
+  },
+  {
+    question: '¿Clipealo es gratis?',
+    answer: 'Estamos preparando el lanzamiento con planes accesibles. Si te unes a la lista de espera, serás de los primeros en conocer los precios y acceder a beneficios exclusivos.',
+  },
+  {
+    question: '¡Tengo más preguntas!',
+    answer: 'Únete a nuestro Discord o escríbenos a contact@clipealo.com. Estamos para ayudarte.',
   },
 ];
 
@@ -25,21 +33,20 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 px-4 bg-bg-secondary">
+    <section id="faq" className="py-24 px-4">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <span className="text-4xl mb-4 block">❓</span>
-          <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground">
             Preguntas Frecuentes
           </h2>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -47,21 +54,21 @@ const FAQSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className={`faq-item ${openIndex === index ? 'active' : ''}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="faq-question w-full text-left"
+                className="w-full flex items-center justify-between text-left bg-background border border-border rounded-2xl px-6 py-5 hover:border-muted-foreground/30 transition-colors"
               >
-                <span>{faq.question}</span>
+                <span className="text-base font-semibold text-foreground pr-4">{faq.question}</span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
+                  className="flex-shrink-0"
                 >
-                  <ChevronDown className="w-6 h-6 text-secondary" />
+                  <ChevronDown className="w-5 h-5 text-muted-foreground" />
                 </motion.div>
               </button>
-              
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
@@ -71,7 +78,7 @@ const FAQSection = () => {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                    <div className="px-6 py-4 text-sm text-muted-foreground leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -80,6 +87,32 @@ const FAQSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Contact message */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-sm text-muted-foreground mt-10"
+        >
+          Únete a nuestro{' '}
+          <a
+            href="https://discord.gg/lovable-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            Discord
+          </a>{' '}
+          o escríbenos a{' '}
+          <a
+            href="mailto:contact@clipealo.com"
+            className="text-cyan underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            contact@clipealo.com
+          </a>{' '}
+          si necesitas ayuda o tienes alguna pregunta.
+        </motion.p>
       </div>
     </section>
   );
