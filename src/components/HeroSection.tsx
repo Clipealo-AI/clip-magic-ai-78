@@ -14,14 +14,19 @@ const HeroSection = () => {
 
       <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
         {/* Top badge */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-6"
+          className="flex items-center justify-center gap-3 mb-6"
         >
-          Herramienta de clips con IA #1 para streamers LATAM
-        </motion.p>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-secondary">
+            Herramienta de clips con IA #1 para streamers LATAM
+          </span>
+          <span className="flex items-center gap-1 text-base sm:text-lg">
+            🇲🇽🇦🇷🇨🇴🇵🇪🇪🇨🇨🇱🇧🇷🇻🇪🇺🇾🇧🇴
+          </span>
+        </motion.div>
 
         {/* Headline */}
         <motion.h1
