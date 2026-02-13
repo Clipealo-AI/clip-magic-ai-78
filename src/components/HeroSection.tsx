@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 gradient-glow-bg pointer-events-none" />
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto text-center">
         {/* Top badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6 }}
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6"
         >
           <span className="text-foreground">1 stream largo, 10 clips virales.</span>
           <br />
