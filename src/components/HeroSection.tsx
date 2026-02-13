@@ -18,13 +18,20 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-center gap-3 mb-6"
+          className="flex items-center justify-center gap-3 mb-6 flex-wrap"
         >
           <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-secondary">
             Herramienta de clips con IA #1 para streamers LATAM
           </span>
-          <span className="flex items-center gap-1 text-base sm:text-lg">
-            🇲🇽🇦🇷🇨🇴🇵🇪🇪🇨🇨🇱🇧🇷🇻🇪🇺🇾🇧🇴
+          <span className="flex items-center gap-1.5">
+            {['mx','ar','co','pe','ec','cl','br','ve','uy','bo'].map((code) => (
+              <img
+                key={code}
+                src={`https://flagcdn.com/w40/${code}.png`}
+                alt={code.toUpperCase()}
+                className="w-5 h-3.5 rounded-[2px] object-cover"
+              />
+            ))}
           </span>
         </motion.div>
 
