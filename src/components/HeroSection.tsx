@@ -1,244 +1,83 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Logo from '@/assets/clipealo-logo.svg';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
-import { Bell } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { Link2, Upload } from 'lucide-react';
 
 const HeroSection = () => {
-  const navigate = useNavigate();
-  const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    discord: '',
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name.trim() || !formData.email.trim()) {
-      toast({
-        title: "Campos requeridos",
-        description: "Por favor completa tu nombre y correo.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast({
-        title: "Correo inválido",
-        description: "Por favor ingresa un correo electrónico válido.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsLoading(true);
-    
-    try {
-      const { error } = await supabase
-        .from('beta_subscribers')
-        .insert({
-          name: formData.name.trim(),
-          email: formData.email.trim().toLowerCase(),
-          discord: formData.discord.trim() || null,
-        });
-
-      if (error) {
-        if (error.code === '23505') {
-          toast({
-            title: "Ya estás registrado",
-            description: "Este correo ya está en nuestra lista de espera.",
-            variant: "destructive",
-          });
-        } else {
-          throw error;
-        }
-        setIsLoading(false);
-        return;
-      }
-
-      setIsLoading(false);
-      navigate('/thankyoupage');
-    } catch (error) {
-      console.error('Error saving subscriber:', error);
-      setIsLoading(false);
-      toast({
-        title: "Error",
-        description: "Hubo un problema. Intenta de nuevo.",
-        variant: "destructive",
-      });
-    }
+  const scrollToWaitlist = () => {
+    document.querySelector('#aplicar-beta')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="aplicar-beta" className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-12 sm:pb-16 overflow-hidden">
+    <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-28 pb-16 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 gradient-glow-bg pointer-events-none" />
-      
-      {/* Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Column - Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
-            {/* Logo */}
-            <motion.img
-              src={Logo}
-              alt="Clipealo"
-              className="w-28 sm:w-36 md:w-40 lg:w-48 mx-auto lg:mx-0 mb-6 sm:mb-8 logo-glow"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            />
+      <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
+        {/* Top badge */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-6"
+        >
+          Herramienta de clips con IA #1 para streamers LATAM
+        </motion.p>
 
-            {/* Beta ended badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.6 }}
-              className="mb-4"
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 border border-secondary/50 text-secondary font-semibold text-xs sm:text-sm uppercase tracking-wide">
-                🎉 ¡La beta ya terminó!
-              </span>
-            </motion.div>
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6"
+        >
+          <span className="text-foreground">1 stream largo, 10 clips virales.</span>
+          <br />
+          <span className="gradient-text">Crea 10 veces más rápido.</span>
+        </motion.h1>
 
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 sm:mb-6"
-            >
-              <span className="gradient-text">No pierdas tus mejores</span>
-              <br />
-              <span className="gradient-text">momentos de stream</span>
-            </motion.h1>
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
+        >
+          Clipealo convierte tus streams largos en clips cortos y los publica en todas las plataformas con un solo clic.
+        </motion.p>
 
-            {/* Subheading */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-4 leading-relaxed"
+        {/* URL Input Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-0 max-w-2xl mx-auto"
+        >
+          {/* Input + Button group */}
+          <div className="flex items-center w-full sm:w-auto bg-muted/50 border border-border rounded-full px-2 py-1.5 gap-2">
+            <div className="flex items-center gap-2 px-3 text-muted-foreground flex-1 min-w-0">
+              <Link2 className="w-4 h-4 flex-shrink-0" />
+              <span className="text-sm truncate">Colocar un enlace de tu stream...</span>
+            </div>
+            <button
+              onClick={scrollToWaitlist}
+              className="px-5 py-2.5 bg-foreground text-background rounded-full font-semibold text-sm whitespace-nowrap hover:bg-foreground/90 transition-colors"
             >
-              Clipealo detecta los momentos más importantes de tus streams
-              para que no tengas que quedarte horas editando
-              ni perder las ganas de seguir streameando.
-            </motion.p>
-
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="mb-6"
-            >
-              <span className="benefit-badge text-xs sm:text-sm">
-                Lista de espera · Precios en 1 semana · Streamers LATAM
-              </span>
-            </motion.div>
+              Consigue clips gratis
+            </button>
           </div>
 
-          {/* Right Column - Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="order-1 lg:order-2"
+          <span className="text-muted-foreground text-sm mx-3 hidden sm:inline">o</span>
+
+          <button
+            onClick={scrollToWaitlist}
+            className="px-5 py-2.5 border border-border rounded-full font-semibold text-sm text-foreground hover:bg-muted/50 transition-colors whitespace-nowrap"
           >
-            <div className="bg-card/90 backdrop-blur-sm border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8">
-              {/* Form Header */}
-              <div className="text-center mb-5 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-                  📋 Únete a la lista de espera
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                  Sé de los primeros en enterarte cuando lancemos. Precios y novedades vienen pronto.
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Name */}
-                <div className="space-y-1.5">
-                  <Label htmlFor="hero-name" className="text-foreground text-sm">
-                    Nombre
-                  </Label>
-                  <Input
-                    id="hero-name"
-                    placeholder="Tu nombre"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-background border-border text-sm py-2.5"
-                    maxLength={100}
-                  />
-                </div>
-
-                {/* Email */}
-                <div className="space-y-1.5">
-                  <Label htmlFor="hero-email" className="text-foreground text-sm">
-                    Correo electrónico
-                  </Label>
-                  <Input
-                    id="hero-email"
-                    type="email"
-                    placeholder="Tu correo"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-background border-border text-sm py-2.5"
-                    maxLength={255}
-                  />
-                </div>
-
-                {/* Discord (optional) */}
-                <div className="space-y-1.5">
-                  <Label htmlFor="hero-discord" className="text-muted-foreground text-sm">
-                    Usuario de Discord <span className="text-muted-foreground/60">(opcional)</span>
-                  </Label>
-                  <Input
-                    id="hero-discord"
-                    placeholder="@usuario"
-                    value={formData.discord}
-                    onChange={(e) => setFormData({ ...formData, discord: e.target.value })}
-                    className="bg-background border-border text-sm py-2.5"
-                    maxLength={100}
-                  />
-                </div>
-
-                {/* Submit */}
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-pink-500 to-secondary hover:from-pink-600 hover:to-purple-600 text-white font-bold py-5 text-base mt-2"
-                >
-                  {isLoading ? (
-                    'Enviando...'
-                  ) : (
-                    <>
-                      <Bell className="w-4 h-4 mr-2" />
-                      Quiero estar en la lista
-                    </>
-                  )}
-                </Button>
-
-                {/* Microcopy */}
-                <p className="text-center text-muted-foreground text-xs">
-                  Usamos tu correo solo para avisarte sobre Clipealo.
-                </p>
-              </form>
-            </div>
-          </motion.div>
-        </div>
+            <span className="flex items-center gap-2">
+              <Upload className="w-4 h-4" />
+              Cargar archivos
+            </span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );

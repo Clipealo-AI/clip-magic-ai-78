@@ -10,6 +10,7 @@ import BetaInfoSection from '@/components/BetaInfoSection';
 import BetaAccessSection from '@/components/BetaAccessSection';
 import BetaBenefitsSection from '@/components/BetaBenefitsSection';
 import WhatWeNeedSection from '@/components/WhatWeNeedSection';
+import WaitlistFormSection from '@/components/WaitlistFormSection';
 
 import TeamSection from '@/components/TeamSection';
 import RoadmapSection from '@/components/RoadmapSection';
@@ -31,7 +32,7 @@ const Index = () => {
       <BetaAccessSection />
       <BetaBenefitsSection />
       <WhatWeNeedSection />
-      
+      <WaitlistFormSection />
       <TeamSection />
       <RoadmapSection />
       <FAQSection />
