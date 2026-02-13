@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown, Zap, Target, BarChart3, MessageSquare, Smartphone, PenTool, FolderOpen, Search, Gamepad2, Music, Palette, Users, BookOpen, HelpCircle, MessageCircle, FileText, Video } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Logo from '@/assets/clipealo-logo.svg';
 
 const DiscordIcon = () => (
@@ -9,32 +10,96 @@ const DiscordIcon = () => (
   </svg>
 );
 
+const featuresItems = [
+  { icon: Zap, label: 'Clips automáticos', description: 'Pega el link de tu stream. La IA procesa el video completo y genera clips listos para publicar.', color: 'text-[hsl(var(--color-pink))]' },
+  { icon: Target, label: 'Entrenada en contenido LATAM', description: 'Detecta momentos virales en español. Entiende jerga local y contexto cultural.', color: 'text-[hsl(var(--color-purple))]' },
+  { icon: BarChart3, label: 'Score de cada clip', description: 'Sistema de 4 métricas: Gancho, Ritmo, Formato, Potencial. Ves qué clips tienen más chance antes de publicar.', color: 'text-[hsl(var(--color-cyan))]' },
+  { icon: MessageSquare, label: 'Subtítulos automáticos', description: 'Genera subtítulos sincronizados en menos de 1 minuto. No se requiere edición manual.', color: 'text-[hsl(var(--color-blue))]' },
+  { icon: Smartphone, label: 'Exporta en 2 formatos', description: '16:9 para YouTube/Kick y 9:16 para TikTok/Reels. Reencuadre automático en 1 clic.', color: 'text-[hsl(var(--color-pink))]' },
+  { icon: PenTool, label: 'Título y descripción con IA', description: 'Genera copy optimizado para cada clip. Incluye contexto de por qué ese momento es viral.', color: 'text-[hsl(var(--color-purple))]' },
+  { icon: FolderOpen, label: 'Gestión de proyectos', description: 'Organiza todos tus streams procesados. Descarga clips individuales o todos a la vez.', color: 'text-[hsl(var(--color-cyan))]' },
+  { icon: Search, label: 'Búsqueda inteligente', description: 'Describe qué tipo de momentos buscas. La IA encuentra las escenas exactas en tu video.', color: 'text-[hsl(var(--color-blue))]' },
+];
+
+const useCasesItems = [
+  { icon: Gamepad2, label: 'Streamers de gaming', description: 'Clips de kills, fails épicos y reacciones que explotan en TikTok.', color: 'text-[hsl(var(--color-pink))]' },
+  { icon: MessageCircle, label: 'Just Chatting', description: 'Detecta las historias, opiniones y momentos que conectan con tu audiencia.', color: 'text-[hsl(var(--color-purple))]' },
+  { icon: Music, label: 'Streamers de música', description: 'Encuentra los mejores momentos de tus sesiones en vivo.', color: 'text-[hsl(var(--color-cyan))]' },
+  { icon: Palette, label: 'Creadores de contenido', description: 'Convierte streams largos en contenido corto para todas tus redes.', color: 'text-[hsl(var(--color-blue))]' },
+];
+
+const resourcesItems = [
+  { icon: Users, label: 'Discord', description: 'Únete a la comunidad de streamers LATAM.', color: 'text-[hsl(var(--color-purple))]', href: 'https://discord.gg/clipealo' },
+  { icon: BookOpen, label: 'Blog', description: 'Tips para crecer como streamer con IA.', color: 'text-[hsl(var(--color-cyan))]', href: '#' },
+  { icon: HelpCircle, label: 'FAQ', description: 'Resolvemos tus dudas más frecuentes.', color: 'text-[hsl(var(--color-blue))]', href: '#faq' },
+  { icon: FileText, label: 'Guías', description: 'Aprende a sacar el máximo de Clipealo.', color: 'text-[hsl(var(--color-pink))]', href: '#' },
+];
+
+type DropdownKey = 'funcionalidades' | 'casos' | 'recursos' | null;
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<DropdownKey>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const navLinks = [
-    { label: 'Problema', href: '#problema' },
-    { label: 'Solución', href: '#solucion' },
-    { label: 'Cómo funciona', href: '#como-funciona' },
-    { label: '¿Para quién?', href: '#para-quien' },
-    { label: 'FAQ', href: '#faq' },
-  ];
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
+  const handleMouseEnter = (key: DropdownKey) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveDropdown(key);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setActiveDropdown(null), 200);
   };
 
   const scrollToWaitlist = () => {
-    const element = document.querySelector('#aplicar-beta');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector('#aplicar-beta')?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    } else {
+      document.querySelector('#aplicar-beta')?.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
   };
+
+  const scrollToSection = (href: string) => {
+    if (href.startsWith('http')) {
+      window.open(href, '_blank');
+      setActiveDropdown(null);
+      return;
+    }
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setActiveDropdown(null);
+    setIsMenuOpen(false);
+  };
+
+  const navItems: { label: string; key: DropdownKey; items?: typeof featuresItems }[] = [
+    { label: 'Funcionalidades', key: 'funcionalidades', items: featuresItems },
+    { label: 'Casos de uso', key: 'casos', items: useCasesItems },
+    { label: 'Recursos', key: 'recursos', items: resourcesItems },
+  ];
 
   return (
     <motion.header
@@ -45,22 +110,77 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo - positioned to the left */}
-          <a href="#" className="flex-shrink-0 -ml-2">
+          {/* Logo */}
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex-shrink-0 -ml-2">
             <img src={Logo} alt="Clipealo" className="h-10 md:h-14" />
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
+          <nav className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
+            {navItems.map((item) => (
+              <div
+                key={item.key}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(item.key)}
+                onMouseLeave={handleMouseLeave}
               >
-                {link.label}
-              </button>
+                <button
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    activeDropdown === item.key
+                      ? 'text-foreground bg-muted/50'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {item.label}
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.key ? 'rotate-180' : ''}`} />
+                </button>
+
+                <AnimatePresence>
+                  {activeDropdown === item.key && item.items && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                      transition={{ duration: 0.15 }}
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-popover border border-border rounded-xl shadow-2xl shadow-black/40 p-4 z-[100] ${
+                        item.items.length > 4 ? 'w-[700px]' : 'w-[500px]'
+                      }`}
+                      onMouseEnter={() => handleMouseEnter(item.key)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className={`grid gap-1 ${item.items.length > 4 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                        {item.items.map((subItem) => {
+                          const Icon = subItem.icon;
+                          return (
+                            <button
+                              key={subItem.label}
+                              onClick={() => 'href' in subItem && subItem.href ? scrollToSection(subItem.href as string) : setActiveDropdown(null)}
+                              className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors text-left group"
+                            >
+                              <div className={`mt-0.5 ${subItem.color}`}>
+                                <Icon className="w-5 h-5" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-semibold text-foreground group-hover:text-foreground/90">{subItem.label}</p>
+                                <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{subItem.description}</p>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
+
+            {/* Precios - no dropdown */}
+            <button
+              onClick={() => navigate('/precios')}
+              className="px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Precios
+            </button>
           </nav>
 
           {/* CTA Buttons */}
@@ -86,8 +206,8 @@ const Header = () => {
             </motion.button>
           </div>
 
-          {/* Mobile CTA Buttons + Menu */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile */}
+          <div className="flex lg:hidden items-center gap-2">
             <motion.a
               href="https://discord.gg/clipealo"
               target="_blank"
@@ -114,43 +234,79 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-border/50"
-          >
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((link) => (
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden py-4 border-t border-border/50 overflow-hidden"
+            >
+              <nav className="flex flex-col gap-1">
+                {navItems.map((item) => (
+                  <div key={item.key}>
+                    <button
+                      onClick={() => setMobileExpanded(mobileExpanded === item.key ? null : item.key)}
+                      className="flex items-center justify-between w-full py-3 px-2 text-muted-foreground hover:text-foreground transition-colors font-medium"
+                    >
+                      {item.label}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${mobileExpanded === item.key ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileExpanded === item.key && item.items && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pl-2 pb-2 space-y-1">
+                            {item.items.map((subItem) => {
+                              const Icon = subItem.icon;
+                              return (
+                                <button
+                                  key={subItem.label}
+                                  onClick={() => {
+                                    if ('href' in subItem && subItem.href) scrollToSection(subItem.href as string);
+                                    setIsMenuOpen(false);
+                                  }}
+                                  className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-muted/50 transition-colors text-left w-full"
+                                >
+                                  <div className={`mt-0.5 ${subItem.color}`}>
+                                    <Icon className="w-4 h-4" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm font-medium text-foreground">{subItem.label}</p>
+                                    <p className="text-xs text-muted-foreground mt-0.5">{subItem.description}</p>
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+
                 <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-foreground transition-colors font-medium text-left py-2"
+                  onClick={() => { navigate('/precios'); setIsMenuOpen(false); }}
+                  className="py-3 px-2 text-muted-foreground hover:text-foreground transition-colors font-medium text-left"
                 >
-                  {link.label}
+                  Precios
                 </button>
-              ))}
-              <motion.a
-                href="https://discord.gg/clipealo"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-full text-muted-foreground font-medium"
-              >
-                <DiscordIcon />
-                Únete al Discord
-              </motion.a>
-              <motion.button
-                onClick={scrollToWaitlist}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-foreground text-background rounded-full font-semibold"
-              >
-                Lista de espera
-              </motion.button>
-            </nav>
-          </motion.div>
-        )}
+
+                <motion.button
+                  onClick={scrollToWaitlist}
+                  whileTap={{ scale: 0.98 }}
+                  className="mt-2 px-6 py-3 bg-foreground text-background rounded-full font-semibold"
+                >
+                  Lista de espera
+                </motion.button>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );
