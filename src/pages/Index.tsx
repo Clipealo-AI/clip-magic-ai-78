@@ -26,6 +26,7 @@ const Index = () => {
       <HeroSection />
       <DemoSection />
       <HowItWorksPreview />
+      <FAQSection />
       <ProblemSection />
       <SolutionSection />
       <FeaturesSection />
@@ -39,7 +40,6 @@ const Index = () => {
       <WaitlistFormSection />
       <TeamSection />
       <RoadmapSection />
-      <FAQSection />
       <Footer />
     </main>
   );
