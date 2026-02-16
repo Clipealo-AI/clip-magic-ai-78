@@ -44,7 +44,7 @@ const HeroSection = () => {
         >
           <span className="text-foreground">1 stream largo, 10 clips virales.</span>
           <br />
-          <span className="gradient-text">Crea 10 veces más rápido.</span>
+          <span className="gradient-text">Tu contenido, al toque.</span>
         </motion.h1>
 
         {/* Subtitle */}
