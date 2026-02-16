@@ -30,11 +30,8 @@ const Footer = () => {
         />
 
         {/* Tagline */}
-        <p className="text-muted-foreground text-base sm:text-lg mb-1 sm:mb-2">
-          Clipealo detecta el momento.
-        </p>
         <p className="text-foreground font-semibold text-base sm:text-lg mb-6 sm:mb-10">
-          El creador hace el clip.
+          Tu contenido, al toque.
         </p>
 
         {/* Social Links */}
