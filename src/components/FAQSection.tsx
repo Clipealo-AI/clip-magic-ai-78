@@ -97,7 +97,7 @@ const FAQSection = () => {
         >
           Únete a nuestro{' '}
           <a
-            href="https://discord.gg/lovable-dev"
+            href="https://discord.com/invite/XjhXBtaK6A"
             target="_blank"
             rel="noopener noreferrer"
             className="text-cyan underline underline-offset-2 hover:text-foreground transition-colors"
