@@ -124,7 +124,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-border pt-8 text-center space-y-3">
           <p className="text-sm font-bold tracking-[0.3em] uppercase text-foreground/80">
-            Hecho en Perú 🇵🇪 para Latinoamérica
+            Hecho en Perú <span className="tracking-normal not-italic">🇵🇪</span> para Latinoamérica
           </p>
           <p className="text-xs text-muted-foreground">
             © 2026 Clipealo. Todos los derechos reservados.
