@@ -34,7 +34,7 @@ const useCasesItems = [
 ];
 
 const resourcesItems = [
-  { icon: Users, label: 'Discord', description: 'Únete a la comunidad de streamers LATAM.', color: 'text-[hsl(var(--color-purple))]', href: 'https://discord.gg/clipealo' },
+  { icon: Users, label: 'Discord', description: 'Únete a la comunidad de streamers LATAM.', color: 'text-[hsl(var(--color-purple))]', href: 'https://discord.com/invite/XjhXBtaK6A' },
   { icon: BookOpen, label: 'Blog', description: 'Tips para crecer como streamer con IA.', color: 'text-[hsl(var(--color-cyan))]', href: '#' },
   { icon: HelpCircle, label: 'FAQ', description: 'Resolvemos tus dudas más frecuentes.', color: 'text-[hsl(var(--color-blue))]', href: '#faq' },
   { icon: FileText, label: 'Guías', description: 'Aprende a sacar el máximo de Clipealo.', color: 'text-[hsl(var(--color-pink))]', href: '#' },
@@ -191,7 +191,7 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <motion.a
-              href="https://discord.gg/clipealo"
+              href="https://discord.com/invite/XjhXBtaK6A"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -214,7 +214,7 @@ const Header = () => {
           {/* Mobile */}
           <div className="flex lg:hidden items-center gap-2">
             <motion.a
-              href="https://discord.gg/clipealo"
+              href="https://discord.com/invite/XjhXBtaK6A"
               target="_blank"
               rel="noopener noreferrer"
               whileTap={{ scale: 0.95 }}
