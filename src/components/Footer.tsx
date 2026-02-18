@@ -123,8 +123,14 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-border pt-8 text-center space-y-3">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase text-foreground/80">
-            Hecho en Perú <span className="tracking-normal not-italic">🇵🇪</span> para Latinoamérica
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-foreground/80 flex items-center justify-center gap-3">
+            Hecho en Perú
+            <svg width="22" height="15" viewBox="0 0 22 15" className="inline-block flex-shrink-0" style={{letterSpacing: 0}}>
+              <rect width="7.33" height="15" x="0" fill="#D91023"/>
+              <rect width="7.34" height="15" x="7.33" fill="#FFFFFF"/>
+              <rect width="7.33" height="15" x="14.67" fill="#D91023"/>
+            </svg>
+            para Latinoamérica
           </p>
           <p className="text-xs text-muted-foreground">
             © 2026 Clipealo. Todos los derechos reservados.
