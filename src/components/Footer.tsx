@@ -18,20 +18,22 @@ const footerColumns = [
   {
     title: 'FUNCIONALIDADES',
     links: [
-      { label: 'Análisis con IA', href: '#' },
-      { label: 'Clips Automáticos', href: '#' },
-      { label: 'Subtítulos Automáticos', href: '#' },
-      { label: 'Edición en Masa', href: '#' },
+      { label: 'Clips automáticos', href: '#' },
+      { label: 'Subtítulos con IA', href: '#' },
+      { label: 'Reencuadre automático', href: '#' },
+      { label: 'Score de viralidad', href: '#' },
+      { label: 'Detección LATAM', href: '#' },
+      { label: 'Título y descripción con IA', href: '#' },
     ],
   },
   {
     title: 'CASOS DE USO',
     links: [
       { label: 'Podcasts', href: '#' },
-      { label: 'Webinars', href: '#' },
       { label: 'Gameplays', href: '#' },
       { label: 'Vlogs', href: '#' },
       { label: 'Deportes', href: '#' },
+      { label: 'Streams', href: '#' },
     ],
   },
   {
@@ -47,9 +49,9 @@ const footerColumns = [
     title: 'RECURSOS',
     links: [
       { label: 'Precios', href: '#' },
-      { label: 'Blog', href: '#' },
       { label: 'Política de Privacidad', href: '#' },
       { label: 'Términos y Condiciones', href: '#' },
+      { label: 'Contacto', href: '#' },
     ],
   },
 ];
@@ -120,7 +122,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-border pt-6 text-center">
+        <div className="border-t border-border pt-8 text-center space-y-3">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-foreground/80">
+            Hecho en Perú 🇵🇪 para Latinoamérica
+          </p>
           <p className="text-xs text-muted-foreground">
             © 2026 Clipealo. Todos los derechos reservados.
           </p>
