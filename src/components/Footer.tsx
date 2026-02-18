@@ -60,7 +60,7 @@ const socialLinks = [
   { icon: TikTokIcon, href: 'https://www.tiktok.com/@clipealo.ai?lang=en', label: 'TikTok' },
   { icon: Instagram, href: 'https://www.instagram.com/clipealo.pe/', label: 'Instagram' },
   { icon: Facebook, href: 'https://www.facebook.com/clipealo.pe', label: 'Facebook' },
-  { icon: DiscordIcon, href: 'https://discord.gg/hEp2m3qa', label: 'Discord' },
+  { icon: DiscordIcon, href: 'https://discord.com/invite/XjhXBtaK6A', label: 'Discord' },
 ];
 
 const Footer = () => {
