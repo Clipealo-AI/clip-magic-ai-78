@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: '¿Cuánto cuesta Clipealo?',
-    answer: 'Tenemos planes desde S/.29.90/mes. Visita nuestra sección de precios para ver todos los detalles y elegir el plan que mejor se adapte a ti.',
+    answer: 'Tenemos planes desde S/.48/mes. Visita nuestra sección de precios para ver todos los detalles y elegir el plan que mejor se adapte a ti.',
   },
 ];
 
