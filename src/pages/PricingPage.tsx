@@ -535,7 +535,11 @@ const PricingPage = () => {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                   </div>
+
+                    <p className="text-xs text-muted-foreground mb-4">
+                      ⚠️ El plan Free solo incluye YouTube como plataforma.
+                    </p>
 
                   <button className="w-full py-3 rounded-xl font-semibold text-sm border border-border bg-background hover:bg-muted text-foreground transition-all">
                     {plan.cta}
@@ -556,8 +560,11 @@ const PricingPage = () => {
               <Coins className="w-6 h-6 text-primary" />
               <h2 className="text-2xl font-bold">Paquetes de Créditos</h2>
             </div>
-            <p className="text-sm text-muted-foreground mb-8">
+            <p className="text-sm text-muted-foreground mb-2">
               Compra paquetes de créditos y úsalos cuando quieras (1 crédito = 1 minuto · 60 créditos = 1 hora)
+            </p>
+            <p className="text-xs text-muted-foreground mb-8">
+              ⚠️ Sin un plan activo, los créditos solo pueden usarse con YouTube.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
