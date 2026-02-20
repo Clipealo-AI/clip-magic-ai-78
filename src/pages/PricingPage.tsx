@@ -560,7 +560,7 @@ const PricingPage = () => {
               Compra paquetes de créditos y úsalos cuando quieras (1 crédito = 1 minuto · 60 créditos = 1 hora)
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
               {[
                 { credits: 60, hours: 1, price: 5.50, perCredit: '0.092', popular: false },
                 { credits: 180, hours: 3, price: 16.50, perCredit: '0.092', popular: false },
