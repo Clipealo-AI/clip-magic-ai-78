@@ -334,24 +334,25 @@ const PricingPage = () => {
                   </div>
                 </div>
 
-                {/* Platforms */}
-                <div className="mb-5 min-h-[52px]">
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
-                    Plataformas
-                  </p>
-                  <div className="flex gap-2">
-                    {plan.platforms.map((p) => (
-                      <span key={p}>{platformIcons[p]}</span>
-                    ))}
-                  </div>
-                </div>
-
                 {/* Features */}
                 <div className="mb-5 flex-1">
                   <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-1 uppercase">
                     Incluye
                   </p>
                   <p className="text-xs text-muted-foreground mb-3">{plan.includesCopy}</p>
+
+                  {/* Platforms */}
+                  <div className="mb-4 min-h-[52px]">
+                    <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
+                      Plataformas
+                    </p>
+                    <div className="flex gap-2">
+                      {plan.platforms.map((p) => (
+                        <span key={p}>{platformIcons[p]}</span>
+                      ))}
+                    </div>
+                  </div>
+
                   <ul className="space-y-2">
                     {plan.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
