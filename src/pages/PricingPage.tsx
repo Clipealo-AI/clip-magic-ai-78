@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Coins, Clock, Calculator } from 'lucide-react';
+import { Check, Coins, Clock } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CountdownTimer from '@/components/CountdownTimer';
@@ -610,33 +610,6 @@ const PricingPage = () => {
                   </button>
                 </motion.div>
               ))}
-
-              {/* Custom credits card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="rounded-2xl border border-dashed border-border bg-card p-6 flex flex-col"
-              >
-                <div className="mb-4">
-                  <Calculator className="w-8 h-8 text-primary mb-2" />
-                  <h3 className="text-lg font-bold">Créditos a tu medida</h3>
-                </div>
-
-                <p className="text-sm text-muted-foreground mb-4">
-                  Recarga la cantidad de créditos que necesites.
-                </p>
-
-                <div className="bg-background/50 border border-border rounded-xl p-4 mb-4 flex-1">
-                  <p className="text-xs text-muted-foreground mb-1">Precio por crédito</p>
-                  <p className="text-2xl font-extrabold text-primary">S/.0.092</p>
-                  <p className="text-xs text-muted-foreground mt-2">1 crédito = 1 minuto</p>
-                </div>
-
-                <button className="w-full py-3 rounded-xl font-semibold text-sm border border-primary text-primary hover:bg-primary/10 transition-all">
-                  Personalizar →
-                </button>
-              </motion.div>
             </div>
           </motion.div>
 
