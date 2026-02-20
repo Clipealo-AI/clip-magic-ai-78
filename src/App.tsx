@@ -8,6 +8,14 @@ import ThankYouPage from "./pages/ThankYouPage";
 import PricingPage from "./pages/PricingPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import NotFound from "./pages/NotFound";
+import CliperosPage from "./pages/use-cases/CliperosPage";
+import StreamersPage from "./pages/use-cases/StreamersPage";
+import PodcastersPage from "./pages/use-cases/PodcastersPage";
+import CoachesPage from "./pages/use-cases/CoachesPage";
+import CreadoresPage from "./pages/use-cases/CreadoresPage";
+import ComunidadesPage from "./pages/use-cases/ComunidadesPage";
+import AgenciasPage from "./pages/use-cases/AgenciasPage";
+import MarcasPage from "./pages/use-cases/MarcasPage";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +30,14 @@ const App = () => (
           <Route path="/thankyoupage" element={<ThankYouPage />} />
           <Route path="/precios" element={<PricingPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/casos/cliperos" element={<CliperosPage />} />
+          <Route path="/casos/streamers" element={<StreamersPage />} />
+          <Route path="/casos/podcasters" element={<PodcastersPage />} />
+          <Route path="/casos/coaches" element={<CoachesPage />} />
+          <Route path="/casos/creadores" element={<CreadoresPage />} />
+          <Route path="/casos/comunidades" element={<ComunidadesPage />} />
+          <Route path="/casos/agencias" element={<AgenciasPage />} />
+          <Route path="/casos/marcas" element={<MarcasPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
