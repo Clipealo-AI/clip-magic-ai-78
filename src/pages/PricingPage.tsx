@@ -59,6 +59,7 @@ const plans = [
       { label: '60 créditos únicos', value: '1h' },
     ],
     hoursTotal: '1h de prueba',
+    includesCopy: 'Ideal para probar la plataforma sin compromiso.',
     features: [
       { text: 'Subida manual' },
       { text: 'Análisis de audio' },
@@ -92,6 +93,7 @@ const plans = [
       { label: 'Análisis con IA', value: '10h' },
     ],
     hoursTotal: '10h/mes',
+    includesCopy: 'Todo para empezar a crear clips profesionales.',
     features: [
       { text: 'Subida manual' },
       { text: 'Análisis de audio' },
@@ -129,6 +131,7 @@ const plans = [
       { label: 'Análisis con IA', value: '15h' },
     ],
     hoursTotal: '15h/mes',
+    includesCopy: 'El kit completo para streamers que crean contenido constante.',
     features: [
       { text: 'Subida manual' },
       { text: 'Análisis de audio' },
@@ -171,6 +174,7 @@ const plans = [
       { label: 'Análisis con IA', value: '30h' },
     ],
     hoursTotal: '30h/mes',
+    includesCopy: 'Máximo rendimiento para creadores de alto volumen.',
     features: [
       { text: 'Todo lo de Estándar', highlight: true },
       { text: 'Historial de proyectos ilimitado' },
@@ -275,14 +279,14 @@ const PricingPage = () => {
                 )}
 
                 {/* Header */}
-                <div className="mb-5">
+                <div className="mb-5 min-h-[72px]">
                   <span className="text-2xl">{plan.icon}</span>
                   <h3 className="text-xl font-bold mt-1">{plan.name}</h3>
                   <p className="text-sm text-muted-foreground">{plan.tagline}</p>
                 </div>
 
                 {/* Price */}
-                <div className="mb-5">
+                <div className="mb-5 min-h-[100px]">
                   <div className="flex items-baseline gap-1">
                     <span className="text-sm text-muted-foreground">S/.</span>
                     <span className="text-5xl font-extrabold">
@@ -331,7 +335,7 @@ const PricingPage = () => {
                 </div>
 
                 {/* Platforms */}
-                <div className="mb-5">
+                <div className="mb-5 min-h-[52px]">
                   <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
                     Plataformas
                   </p>
@@ -344,9 +348,10 @@ const PricingPage = () => {
 
                 {/* Features */}
                 <div className="mb-5 flex-1">
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
+                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-1 uppercase">
                     Incluye
                   </p>
+                  <p className="text-xs text-muted-foreground mb-3">{plan.includesCopy}</p>
                   <ul className="space-y-2">
                     {plan.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
@@ -420,7 +425,7 @@ const PricingPage = () => {
                   Para agencias y alto volumen
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
-                  Créditos custom · Multi-canal · Multi-usuario · SLA garantizado · Facturación empresarial
+                  Todo lo de Premium · Créditos custom · Multi-canal · Multi-usuario · SLA garantizado · Facturación empresarial
                 </p>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold gradient-primary text-foreground">
                   🎬 Clipero dedicado incluido — IA + criterio humano para tus clips
