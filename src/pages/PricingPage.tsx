@@ -161,7 +161,11 @@ const plans = [
 
 const platformIcons: Record<string, React.ReactNode> = {
   YouTube: <img src={platformYoutube} alt="YouTube" className="w-6 h-6 object-contain" />,
-  Twitch: <img src={platformTwitch} alt="Twitch" className="w-6 h-6 object-contain rounded" />,
+  Twitch: (
+    <svg viewBox="0 0 256 268" className="w-6 h-6" fill="none">
+      <path d="M17.458 0L0 46.556v185.81h63.983V268h46.555l35.874-35.874h53.805L256 176.343V0H17.458zm23.259 23.265h192.024v139.95l-40.739 40.738h-69.446l-35.874 35.874v-35.874H40.717V23.265zm69.44 104.63h23.265V69.49h-23.264v58.404zm63.983 0h23.264V69.49h-23.264v58.404z" fill="#9146FF"/>
+    </svg>
+  ),
   Kick: <img src={platformKick} alt="Kick" className="w-6 h-6 object-contain rounded" />,
 };
 
