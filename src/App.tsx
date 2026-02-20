@@ -8,6 +8,8 @@ import ThankYouPage from "./pages/ThankYouPage";
 import PricingPage from "./pages/PricingPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import NotFound from "./pages/NotFound";
+import BlogPage from "./pages/BlogPage";
+import BlogArticlePage from "./pages/BlogArticlePage";
 import CliperosPage from "./pages/use-cases/CliperosPage";
 import StreamersPage from "./pages/use-cases/StreamersPage";
 import PodcastersPage from "./pages/use-cases/PodcastersPage";
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/casos/comunidades" element={<ComunidadesPage />} />
           <Route path="/casos/agencias" element={<AgenciasPage />} />
           <Route path="/casos/marcas" element={<MarcasPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogArticlePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
