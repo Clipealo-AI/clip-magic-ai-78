@@ -70,15 +70,8 @@ const Header = () => {
     timeoutRef.current = setTimeout(() => setActiveDropdown(null), 200);
   };
 
-  const scrollToWaitlist = () => {
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        document.querySelector('#aplicar-beta')?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    } else {
-      document.querySelector('#aplicar-beta')?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const goToPricing = () => {
+    navigate('/precios');
     setIsMenuOpen(false);
   };
 
@@ -202,12 +195,12 @@ const Header = () => {
               Discord
             </motion.a>
             <motion.button
-              onClick={scrollToWaitlist}
+              onClick={goToPricing}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="px-6 py-2.5 bg-foreground text-background rounded-full font-semibold hover:bg-foreground/90 transition-colors text-sm"
             >
-              Lista de espera
+              Adquiere Clipealo
             </motion.button>
           </div>
 
@@ -223,11 +216,11 @@ const Header = () => {
               <DiscordIcon />
             </motion.a>
             <motion.button
-              onClick={scrollToWaitlist}
+              onClick={goToPricing}
               whileTap={{ scale: 0.98 }}
               className="px-4 py-2 bg-foreground text-background rounded-full font-semibold text-xs"
             >
-              Unirme
+              Adquirir
             </motion.button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -302,11 +295,11 @@ const Header = () => {
                 </button>
 
                 <motion.button
-                  onClick={scrollToWaitlist}
+                  onClick={goToPricing}
                   whileTap={{ scale: 0.98 }}
                   className="mt-2 px-6 py-3 bg-foreground text-background rounded-full font-semibold"
                 >
-                  Lista de espera
+                  Adquiere Clipealo
                 </motion.button>
               </nav>
             </motion.div>
