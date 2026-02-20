@@ -88,11 +88,11 @@ const plans = [
     popular: false,
     highlighted: false,
     platforms: ['YouTube', 'Twitch'],
-    hoursLabel: 'HORAS AL MES',
+    hoursLabel: 'CRÉDITOS POR MES',
     hours: [
-      { label: 'Análisis con IA', value: '10h' },
+      { label: '600 créditos', value: '≈ 10h' },
     ],
-    hoursTotal: '10h/mes',
+    hoursTotal: '600 créditos/mes',
     includesCopy: 'Todo para empezar a crear clips profesionales.',
     features: [
       { text: 'Subida manual' },
@@ -126,11 +126,11 @@ const plans = [
     popular: true,
     highlighted: true,
     platforms: ['YouTube', 'Twitch', 'Kick'],
-    hoursLabel: 'HORAS AL MES',
+    hoursLabel: 'CRÉDITOS POR MES',
     hours: [
-      { label: 'Análisis con IA', value: '15h' },
+      { label: '900 créditos', value: '≈ 15h' },
     ],
-    hoursTotal: '15h/mes',
+    hoursTotal: '900 créditos/mes',
     includesCopy: 'El kit completo para streamers que crean contenido constante.',
     features: [
       { text: 'Subida manual' },
@@ -169,11 +169,11 @@ const plans = [
     popular: false,
     highlighted: false,
     platforms: ['YouTube', 'Twitch', 'Kick'],
-    hoursLabel: 'HORAS AL MES',
+    hoursLabel: 'CRÉDITOS POR MES',
     hours: [
-      { label: 'Análisis con IA', value: '30h' },
+      { label: '1800 créditos', value: '≈ 30h' },
     ],
-    hoursTotal: '30h/mes',
+    hoursTotal: '1800 créditos/mes',
     includesCopy: 'Máximo rendimiento para creadores de alto volumen.',
     features: [
       { text: 'Todo lo de Estándar', highlight: true },
@@ -418,9 +418,9 @@ const PricingPage = () => {
             >
               <div className="mb-5 min-h-[72px]">
                 <span className="text-xs font-bold tracking-widest text-secondary uppercase">
-                  ● ENTERPRISE
+                  ● EMPRESARIAL
                 </span>
-                <h3 className="text-xl font-bold mt-1">Enterprise</h3>
+                <h3 className="text-xl font-bold mt-1">Empresarial</h3>
                 <p className="text-sm text-muted-foreground">Para agencias y alto volumen</p>
               </div>
 
