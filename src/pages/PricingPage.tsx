@@ -256,8 +256,8 @@ const PricingPage = () => {
             )}
           </motion.div>
 
-          {/* Plan Cards - Básico, Estándar, Premium */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {/* Plan Cards - Básico, Estándar, Premium + Enterprise */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
             {plans.filter(p => p.name !== 'Free').map((plan, idx) => (
               <motion.div
                 key={plan.name}
@@ -408,43 +408,95 @@ const PricingPage = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
 
-          {/* Enterprise + Free row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {/* Enterprise */}
+            {/* Enterprise card */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl border border-border bg-card p-8 md:p-10 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.24 }}
+              className="relative rounded-2xl border border-border bg-card p-6 flex flex-col"
             >
-              <div>
+              <div className="mb-5 min-h-[72px]">
                 <span className="text-xs font-bold tracking-widest text-secondary uppercase">
                   ● ENTERPRISE
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold mt-2 mb-2">
-                  Para agencias y alto volumen
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Todo lo de Premium · Créditos custom · Multi-canal · Multi-usuario · SLA garantizado · Facturación empresarial
+                <h3 className="text-xl font-bold mt-1">Enterprise</h3>
+                <p className="text-sm text-muted-foreground">Para agencias y alto volumen</p>
+              </div>
+
+              <div className="mb-5 min-h-[100px]">
+                <span className="text-2xl font-bold text-muted-foreground">A consultar</span>
+              </div>
+
+              <a
+                href="mailto:contacto@clipealo.com"
+                className="w-full py-3 rounded-xl font-semibold text-sm border border-primary text-primary hover:bg-primary/10 transition-all mb-6 text-center block"
+              >
+                Contactar →
+              </a>
+
+              <div className="mb-5 flex-1">
+                <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-1 uppercase">
+                  Incluye
                 </p>
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold gradient-primary text-foreground">
-                  🎬 Clipero dedicado incluido — IA + criterio humano para tus clips
+                <p className="text-xs text-muted-foreground mb-3">Solución completa para equipos y agencias.</p>
+                <ul className="space-y-2">
+                  {[
+                    { text: 'Todo lo de Premium', highlight: true },
+                    { text: 'Créditos según volumen negociado' },
+                    { text: 'Canales simultáneos ilimitados' },
+                    { text: 'Multi-usuario custom' },
+                    { text: 'Branding completo multi-canal' },
+                    { text: 'SLA de procesamiento garantizado' },
+                    { text: 'Analytics avanzado + exportable', soon: true },
+                  ].map((f, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                      <span className={f.highlight ? 'text-secondary font-semibold' : ''}>
+                        {f.text}
+                        {f.soon && (
+                          <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-medium">
+                            pronto
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-5">
+                <span className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold gradient-primary text-foreground">
+                  🎬 Clipero dedicado — IA + criterio humano
                 </span>
               </div>
-              <div className="flex items-center justify-between mt-6 pt-6 border-t border-border">
-                <span className="text-muted-foreground text-sm">A consultar</span>
-                <a
-                  href="mailto:contacto@clipealo.com"
-                  className="px-6 py-2.5 rounded-full border border-primary text-primary font-semibold text-sm hover:bg-primary/10 transition-colors"
-                >
-                  Contactar →
-                </a>
+
+              <div>
+                <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
+                  Servicios
+                </p>
+                <ul className="space-y-1.5">
+                  {[
+                    { text: 'Comunidad Discord', icon: 'discord' as const },
+                    { text: 'Soporte por WhatsApp dedicado' },
+                    { text: 'Onboarding personalizado' },
+                    { text: 'Reuniones de seguimiento mensuales' },
+                  ].map((s) => (
+                    <li key={s.text} className="flex items-center gap-2 text-sm">
+                      <Check className="w-3.5 h-3.5 flex-shrink-0 text-secondary" />
+                      <span className="flex items-center gap-1.5">
+                        {s.text}
+                        {'icon' in s && s.icon === 'discord' && <DiscordSvg />}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
+          </div>
 
-            {/* Free plan card */}
+          {/* Free plan row */}
+          <div className="max-w-md mx-auto mb-12">
             {(() => {
               const plan = plans.find(p => p.name === 'Free')!;
               return (
