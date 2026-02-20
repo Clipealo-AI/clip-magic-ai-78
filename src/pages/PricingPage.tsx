@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, Coins, Clock } from 'lucide-react';
 import Header from '@/components/Header';
@@ -210,6 +211,13 @@ const platformIcons: Record<string, React.ReactNode> = {
 
 const PricingPage = () => {
   const [isAnnual, setIsAnnual] = useState(true);
+  const navigate = useNavigate();
+
+  const planKeyMap: Record<string, string> = {
+    'Básico': 'basico',
+    'Estándar': 'estandar',
+    'Premium': 'premium',
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -308,6 +316,7 @@ const PricingPage = () => {
 
                 {/* CTA */}
                 <button
+                  onClick={() => navigate(`/checkout?type=plan&plan=${planKeyMap[plan.name]}&billing=${isAnnual ? 'annual' : 'monthly'}`)}
                   className={`w-full py-3 rounded-xl font-semibold text-sm transition-all mb-6 ${
                     plan.highlighted
                       ? 'gradient-primary text-foreground hover:opacity-90'
@@ -608,7 +617,9 @@ const PricingPage = () => {
                   </div>
                   <p className="text-xs text-muted-foreground mb-5">S/.{pack.perCredit} por crédito</p>
 
-                  <button className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
+                  <button
+                    onClick={() => navigate(`/checkout?type=credits&credits=${pack.credits}`)}
+                    className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
                     pack.popular
                       ? 'gradient-primary text-foreground hover:opacity-90'
                       : 'border border-border bg-background hover:bg-muted text-foreground'
