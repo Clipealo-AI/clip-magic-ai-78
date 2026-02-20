@@ -8,6 +8,39 @@ import platformYoutube from '@/assets/platform-youtube.png';
 import platformTwitch from '@/assets/platform-twitch.png';
 import platformKick from '@/assets/platform-kick.png';
 
+const DiscordSvg = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 inline-block text-[#5865F2]">
+    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.11 18.1.132 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+  </svg>
+);
+
+const TikTokSvg = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 inline-block">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+  </svg>
+);
+
+const YTShortsSvg = () => (
+  <svg viewBox="0 0 24 24" fill="#FF0000" className="w-3.5 h-3.5 inline-block">
+    <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25z"/>
+  </svg>
+);
+
+const InstagramSvg = () => (
+  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 inline-block">
+    <defs>
+      <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#feda75"/>
+        <stop offset="25%" stopColor="#fa7e1e"/>
+        <stop offset="50%" stopColor="#d62976"/>
+        <stop offset="75%" stopColor="#962fbf"/>
+        <stop offset="100%" stopColor="#4f5bd5"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+  </svg>
+);
+
 const plans = [
   {
     icon: '🎮',
@@ -28,17 +61,18 @@ const plans = [
     hoursTotal: '1h de prueba',
     features: [
       { text: 'Subida manual' },
-      { text: 'Análisis de audio + reconocimiento facial' },
+      { text: 'Análisis de audio' },
+      { text: 'Reconocimiento facial', soon: true },
       { text: 'Título, descripción y Razón del clip' },
       { text: 'Prompt de momentos específicos' },
-      { text: 'Comunidad Discord' },
+      { text: '3 días almacenamiento' },
     ],
     addons: [
       { label: 'Recarga de horas', value: 'S/.5.00/hora' },
     ],
     services: [
-      'Comunidad Discord',
-      'Recursos para crecer tu canal',
+      { text: 'Comunidad Discord', icon: 'discord' },
+      { text: 'Recursos para crecer tu canal' },
     ],
   },
   {
@@ -60,21 +94,22 @@ const plans = [
     hoursTotal: '10h/mes',
     features: [
       { text: 'Subida manual' },
-      { text: 'Análisis de audio + reconocimiento facial' },
+      { text: 'Análisis de audio' },
+      { text: 'Reconocimiento facial', soon: true },
       { text: 'Título, descripción y Razón del clip' },
       { text: 'Prompt de momentos específicos' },
       { text: 'Editor básico (recorte + subtítulos)' },
       { text: 'Sin marca de agua' },
       { text: '10 GB · 30 días almacenamiento' },
       { text: 'Soporte por email' },
-      { text: 'Publicación a TikTok (próximamente)', soon: true },
+      { text: 'Publicar desde Clipealo a TikTok', soon: true, icon: 'tiktok' },
     ],
     addons: [
       { label: 'Recarga de horas', value: 'S/.4.00/hora' },
     ],
     services: [
-      'Comunidad Discord',
-      'Soporte por email',
+      { text: 'Comunidad Discord', icon: 'discord' },
+      { text: 'Soporte por email' },
     ],
   },
   {
@@ -96,26 +131,27 @@ const plans = [
     hoursTotal: '15h/mes',
     features: [
       { text: 'Subida manual' },
+      { text: 'Análisis de audio' },
+      { text: 'Reconocimiento facial', soon: true },
       { text: 'Título, descripción y Razón del clip' },
       { text: 'Prompt de momentos específicos' },
       { text: 'Editor básico completo' },
-      { text: 'Editor de subtítulos animados (próximamente)', soon: true },
-      { text: 'Reframing automático vertical/horizontal (próximamente)', soon: true },
+      { text: 'Editor de subtítulos animados', soon: true },
+      { text: 'Reframing automático vertical/horizontal', soon: true },
       { text: 'Sin marca de agua' },
       { text: 'Marca de agua personalizada con @handle' },
       { text: '25 GB · 90 días almacenamiento' },
-      { text: 'Prioridad en cola' },
-      { text: 'TikTok + YouTube Shorts + Instagram (próximamente)', soon: true },
-      { text: 'Analytics de clips (próximamente)', soon: true },
+      { text: 'Publicar desde Clipealo a TikTok + YouTube Shorts + Instagram', soon: true, icon: 'social' },
+      { text: 'Analytics de clips', soon: true },
     ],
     addons: [
       { label: 'Horas adicionales', value: 'S/.4.00/hora' },
       { label: 'Redes sociales adicionales', value: 'Próximamente' },
     ],
     services: [
-      'Comunidad Discord',
-      'Email prioritario',
-      'Acceso anticipado a nuevas features',
+      { text: 'Comunidad Discord', icon: 'discord' },
+      { text: 'Email prioritario' },
+      { text: 'Acceso anticipado a nuevas features' },
     ],
   },
   {
@@ -137,24 +173,23 @@ const plans = [
     hoursTotal: '30h/mes',
     features: [
       { text: 'Todo lo de Estándar', highlight: true },
-      { text: 'Prioridad máxima en cola' },
       { text: 'Historial de proyectos ilimitado' },
       { text: '75 GB · 90 días almacenamiento' },
       { text: 'Branding completo por canal' },
-      { text: 'Editor avanzado completo (próximamente)', soon: true },
-      { text: 'Hasta 6 cuentas sociales (próximamente)', soon: true },
-      { text: 'Hasta 3 usuarios (próximamente)', soon: true },
-      { text: 'Analytics completo + tendencias (próximamente)', soon: true },
+      { text: 'Editor avanzado completo', soon: true },
+      { text: 'Hasta 6 cuentas sociales', soon: true },
+      { text: 'Hasta 3 usuarios', soon: true },
+      { text: 'Analytics completo + tendencias', soon: true },
     ],
     addons: [
       { label: 'Recarga de horas', value: 'S/.4.00/hora' },
       { label: 'Usuarios adicionales', value: 'Próximamente' },
     ],
     services: [
-      'Comunidad Discord',
-      'Email prioritario',
-      'Soporte por WhatsApp',
-      'Acceso anticipado a todas las features',
+      { text: 'Comunidad Discord', icon: 'discord' },
+      { text: 'Email prioritario' },
+      { text: 'Soporte por WhatsApp' },
+      { text: 'Acceso anticipado a todas las features' },
     ],
   },
 ];
@@ -318,6 +353,12 @@ const PricingPage = () => {
                         <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
                         <span className={f.highlight ? 'text-secondary font-semibold' : ''}>
                           {f.text}
+                          {f.icon === 'tiktok' && <span className="ml-1"><TikTokSvg /></span>}
+                          {f.icon === 'social' && (
+                            <span className="ml-1 inline-flex gap-1 align-middle">
+                              <TikTokSvg /><YTShortsSvg /><InstagramSvg />
+                            </span>
+                          )}
                           {f.soon && (
                             <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-medium">
                               pronto
@@ -349,9 +390,12 @@ const PricingPage = () => {
                   </p>
                   <ul className="space-y-1.5">
                     {plan.services.map((s) => (
-                      <li key={s} className="flex items-center gap-2 text-sm">
+                      <li key={s.text} className="flex items-center gap-2 text-sm">
                         <Check className="w-3.5 h-3.5 flex-shrink-0 text-secondary" />
-                        <span>{s}</span>
+                        <span className="flex items-center gap-1.5">
+                          {s.text}
+                          {s.icon === 'discord' && <DiscordSvg />}
+                        </span>
                       </li>
                     ))}
                   </ul>
