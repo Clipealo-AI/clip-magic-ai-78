@@ -22,14 +22,14 @@ const featuresItems = [
 ];
 
 const useCasesItems = [
-  { icon: Video, label: 'Cliperos', description: 'Convierte momentos épicos en clips virales listos para publicar.', color: 'text-[hsl(var(--color-pink))]' },
-  { icon: Gamepad2, label: 'Streamers', description: 'Extrae los mejores momentos de tus streams automáticamente.', color: 'text-[hsl(var(--color-purple))]' },
-  { icon: MessageCircle, label: 'Podcasters', description: 'Convierte episodios largos en clips cortos para redes sociales.', color: 'text-[hsl(var(--color-cyan))]' },
-  { icon: BookOpen, label: 'Coaches y educadores', description: 'Transforma clases y tutoriales en contenido fácil de compartir.', color: 'text-[hsl(var(--color-blue))]' },
-  { icon: Palette, label: 'Creadores de contenido', description: 'Convierte videos largos en contenido corto para todas tus redes.', color: 'text-[hsl(var(--color-pink))]' },
-  { icon: Users, label: 'Comunidades y esports', description: 'Crea highlights de torneos y eventos competitivos automáticamente.', color: 'text-[hsl(var(--color-purple))]' },
-  { icon: Target, label: 'Agencias audiovisuales', description: 'Gestiona el contenido de múltiples creadores desde una sola herramienta.', color: 'text-[hsl(var(--color-cyan))]' },
-  { icon: Search, label: 'Marcas', description: 'Genera contenido de marca a partir de streams y videos patrocinados.', color: 'text-[hsl(var(--color-blue))]' },
+  { icon: Video, label: 'Cliperos', description: 'Convierte momentos épicos en clips virales listos para publicar.', color: 'text-[hsl(var(--color-pink))]', href: '/casos/cliperos' },
+  { icon: Gamepad2, label: 'Streamers', description: 'Extrae los mejores momentos de tus streams automáticamente.', color: 'text-[hsl(var(--color-purple))]', href: '/casos/streamers' },
+  { icon: MessageCircle, label: 'Podcasters', description: 'Convierte episodios largos en clips cortos para redes sociales.', color: 'text-[hsl(var(--color-cyan))]', href: '/casos/podcasters' },
+  { icon: BookOpen, label: 'Coaches y educadores', description: 'Transforma clases y tutoriales en contenido fácil de compartir.', color: 'text-[hsl(var(--color-blue))]', href: '/casos/coaches' },
+  { icon: Palette, label: 'Creadores de contenido', description: 'Convierte videos largos en contenido corto para todas tus redes.', color: 'text-[hsl(var(--color-pink))]', href: '/casos/creadores' },
+  { icon: Users, label: 'Comunidades y esports', description: 'Crea highlights de torneos y eventos competitivos automáticamente.', color: 'text-[hsl(var(--color-purple))]', href: '/casos/comunidades' },
+  { icon: Target, label: 'Agencias audiovisuales', description: 'Gestiona el contenido de múltiples creadores desde una sola herramienta.', color: 'text-[hsl(var(--color-cyan))]', href: '/casos/agencias' },
+  { icon: Search, label: 'Marcas', description: 'Genera contenido de marca a partir de streams y videos patrocinados.', color: 'text-[hsl(var(--color-blue))]', href: '/casos/marcas' },
 ];
 
 const resourcesItems = [
@@ -78,6 +78,12 @@ const Header = () => {
     if (href.startsWith('http')) {
       window.open(href, '_blank');
       setActiveDropdown(null);
+      return;
+    }
+    if (href.startsWith('/')) {
+      navigate(href);
+      setActiveDropdown(null);
+      setIsMenuOpen(false);
       return;
     }
     if (location.pathname !== '/') {
@@ -151,7 +157,12 @@ const Header = () => {
                           return (
                             <button
                               key={subItem.label}
-                              onClick={() => 'href' in subItem && subItem.href ? scrollToSection(subItem.href as string) : setActiveDropdown(null)}
+                              onClick={() => {
+                                if ('href' in subItem && subItem.href) {
+                                  scrollToSection(subItem.href as string);
+                                }
+                                setActiveDropdown(null);
+                              }}
                               className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors text-left group"
                             >
                               <div className={`mt-0.5 ${subItem.color}`}>
