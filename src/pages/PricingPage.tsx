@@ -169,7 +169,7 @@ const platformIcons: Record<string, React.ReactNode> = {
   ),
   Kick: (
     <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#53FC18">
-      <path d="M1.333 0v24h5.334v-6.667L10 14l6.667 10h5.333V0h-5.333v10L10 0H6.667v6.667L3.333 0z"/>
+      <path d="M15.037 0H8.725v8.61l-3.32 3.32L2.086 8.61V0H0v24h2.086v-8.61l3.32-3.32 6.632 11.93h6.312L10.385 12 18.35 0h-3.313z"/>
     </svg>
   ),
 };

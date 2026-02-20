@@ -12,8 +12,8 @@ const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    // Launch date: February 9, 2026 at midnight (local time)
-    const launchDate = new Date('2026-02-10T12:00:00').getTime();
+    // 60 days from now (calculated once on mount)
+    const launchDate = Date.now() + 60 * 24 * 60 * 60 * 1000;
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
