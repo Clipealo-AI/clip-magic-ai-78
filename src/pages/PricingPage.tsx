@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Coins } from 'lucide-react';
+import { Check, Coins, Clock, Calculator } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CountdownTimer from '@/components/CountdownTimer';
@@ -544,6 +544,101 @@ const PricingPage = () => {
               );
             })()}
           </div>
+
+          {/* Credit Packs Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <Coins className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-bold">Paquetes de Créditos</h2>
+            </div>
+            <p className="text-sm text-muted-foreground mb-8">
+              Compra paquetes de créditos y úsalos cuando quieras (1 crédito = 1 minuto · 60 créditos = 1 hora)
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+              {[
+                { credits: 60, hours: 1, price: 5.50, perCredit: '0.092', popular: false },
+                { credits: 180, hours: 3, price: 16.50, perCredit: '0.092', popular: false },
+                { credits: 300, hours: 5, price: 27.50, perCredit: '0.092', popular: true },
+              ].map((pack) => (
+                <motion.div
+                  key={pack.credits}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className={`relative rounded-2xl border p-6 flex flex-col ${
+                    pack.popular
+                      ? 'border-primary bg-card shadow-[0_0_30px_hsla(350,95%,62%,0.12)]'
+                      : 'border-border bg-card'
+                  }`}
+                >
+                  {pack.popular && (
+                    <div className="absolute -top-3 right-4">
+                      <span className="px-3 py-1 text-[10px] font-bold rounded-full gradient-primary text-foreground">
+                        Popular
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="mb-4">
+                    <span className="text-4xl font-extrabold text-primary">{pack.credits}</span>
+                    <span className="text-lg text-muted-foreground ml-1">créditos</span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-4">
+                    <Clock className="w-4 h-4" />
+                    <span>≈ {pack.hours} {pack.hours === 1 ? 'hora' : 'horas'}</span>
+                  </div>
+
+                  <div className="mb-1">
+                    <span className="text-sm text-muted-foreground">S/.</span>
+                    <span className="text-3xl font-extrabold ml-0.5">{pack.price.toFixed(2)}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mb-5">S/.{pack.perCredit} por crédito</p>
+
+                  <button className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
+                    pack.popular
+                      ? 'gradient-primary text-foreground hover:opacity-90'
+                      : 'border border-border bg-background hover:bg-muted text-foreground'
+                  }`}>
+                    Comprar
+                  </button>
+                </motion.div>
+              ))}
+
+              {/* Custom credits card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="rounded-2xl border border-dashed border-border bg-card p-6 flex flex-col"
+              >
+                <div className="mb-4">
+                  <Calculator className="w-8 h-8 text-primary mb-2" />
+                  <h3 className="text-lg font-bold">Créditos a tu medida</h3>
+                </div>
+
+                <p className="text-sm text-muted-foreground mb-4">
+                  Recarga la cantidad de créditos que necesites.
+                </p>
+
+                <div className="bg-background/50 border border-border rounded-xl p-4 mb-4 flex-1">
+                  <p className="text-xs text-muted-foreground mb-1">Precio por crédito</p>
+                  <p className="text-2xl font-extrabold text-primary">S/.0.092</p>
+                  <p className="text-xs text-muted-foreground mt-2">1 crédito = 1 minuto</p>
+                </div>
+
+                <button className="w-full py-3 rounded-xl font-semibold text-sm border border-primary text-primary hover:bg-primary/10 transition-all">
+                  Personalizar →
+                </button>
+              </motion.div>
+            </div>
+          </motion.div>
 
           {/* Countdown Banner */}
           <motion.div
