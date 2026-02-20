@@ -34,7 +34,7 @@ const useCasesItems = [
 
 const resourcesItems = [
   { icon: Users, label: 'Discord', description: 'Únete a la comunidad de streamers LATAM.', color: 'text-[hsl(var(--color-purple))]', href: 'https://discord.com/invite/XjhXBtaK6A' },
-  { icon: BookOpen, label: 'Blog', description: 'Tips para crecer como streamer con IA.', color: 'text-[hsl(var(--color-cyan))]', href: '#' },
+  { icon: BookOpen, label: 'Blog', description: 'Tips para crecer como streamer con IA.', color: 'text-[hsl(var(--color-cyan))]', href: '/blog' },
   { icon: HelpCircle, label: 'FAQ', description: 'Resolvemos tus dudas más frecuentes.', color: 'text-[hsl(var(--color-blue))]', href: '#faq' },
   { icon: FileText, label: 'Guías', description: 'Aprende a sacar el máximo de Clipealo.', color: 'text-[hsl(var(--color-pink))]', href: '#' },
 ];

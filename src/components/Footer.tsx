@@ -51,7 +51,8 @@ const footerColumns = [
   {
     title: 'RECURSOS',
     links: [
-      { label: 'Precios', href: '#' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Precios', href: '/precios' },
       { label: 'Política de Privacidad', href: '#' },
       { label: 'Términos y Condiciones', href: '#' },
       { label: 'Contacto', href: '#' },
