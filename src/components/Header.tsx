@@ -22,15 +22,14 @@ const featuresItems = [
 ];
 
 const useCasesItems = [
-  { icon: Gamepad2, label: 'Streamers de gaming', description: 'Clips de kills, fails épicos y reacciones que explotan en TikTok.', color: 'text-[hsl(var(--color-pink))]' },
-  { icon: MessageCircle, label: 'Just Chatting', description: 'Detecta historias, opiniones y momentos que conectan con tu audiencia.', color: 'text-[hsl(var(--color-purple))]' },
-  { icon: Music, label: 'Streamers de música', description: 'Encuentra los mejores momentos de tus sesiones en vivo.', color: 'text-[hsl(var(--color-cyan))]' },
-  { icon: Palette, label: 'Creadores de contenido', description: 'Convierte streams largos en contenido corto para todas tus redes.', color: 'text-[hsl(var(--color-blue))]' },
-  { icon: Video, label: 'Podcasters', description: 'Extrae los mejores momentos de tus podcasts en vivo para redes sociales.', color: 'text-[hsl(var(--color-pink))]' },
+  { icon: Video, label: 'Cliperos', description: 'Convierte momentos épicos en clips virales listos para publicar.', color: 'text-[hsl(var(--color-pink))]' },
+  { icon: Gamepad2, label: 'Streamers', description: 'Extrae los mejores momentos de tus streams automáticamente.', color: 'text-[hsl(var(--color-purple))]' },
+  { icon: MessageCircle, label: 'Podcasters', description: 'Convierte episodios largos en clips cortos para redes sociales.', color: 'text-[hsl(var(--color-cyan))]' },
+  { icon: BookOpen, label: 'Coaches y educadores', description: 'Transforma clases y tutoriales en contenido fácil de compartir.', color: 'text-[hsl(var(--color-blue))]' },
+  { icon: Palette, label: 'Creadores de contenido', description: 'Convierte videos largos en contenido corto para todas tus redes.', color: 'text-[hsl(var(--color-pink))]' },
   { icon: Users, label: 'Comunidades y esports', description: 'Crea highlights de torneos y eventos competitivos automáticamente.', color: 'text-[hsl(var(--color-purple))]' },
-  { icon: BookOpen, label: 'Streamers educativos', description: 'Convierte tus clases y tutoriales en clips cortos y fáciles de compartir.', color: 'text-[hsl(var(--color-cyan))]' },
-  { icon: Target, label: 'Agencias y managers', description: 'Gestiona el contenido de múltiples streamers desde una sola herramienta.', color: 'text-[hsl(var(--color-blue))]' },
-  { icon: Smartphone, label: 'IRL Streamers', description: 'Captura los mejores momentos de tus streams en la calle o eventos.', color: 'text-[hsl(var(--color-pink))]' },
+  { icon: Target, label: 'Agencias audiovisuales', description: 'Gestiona el contenido de múltiples creadores desde una sola herramienta.', color: 'text-[hsl(var(--color-cyan))]' },
+  { icon: Search, label: 'Marcas', description: 'Genera contenido de marca a partir de streams y videos patrocinados.', color: 'text-[hsl(var(--color-blue))]' },
 ];
 
 const resourcesItems = [
