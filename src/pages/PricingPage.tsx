@@ -256,9 +256,9 @@ const PricingPage = () => {
             )}
           </motion.div>
 
-          {/* Plan Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
-            {plans.map((plan, idx) => (
+          {/* Plan Cards - Básico, Estándar, Premium */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {plans.filter(p => p.name !== 'Free').map((plan, idx) => (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 30 }}
@@ -410,15 +410,16 @@ const PricingPage = () => {
             ))}
           </div>
 
-          {/* Enterprise */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-2xl border border-border bg-card p-8 md:p-10 mb-12"
-          >
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-              <div className="flex-1">
+          {/* Enterprise + Free row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {/* Enterprise */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl border border-border bg-card p-8 md:p-10 flex flex-col justify-between"
+            >
+              <div>
                 <span className="text-xs font-bold tracking-widest text-secondary uppercase">
                   ● ENTERPRISE
                 </span>
@@ -432,7 +433,7 @@ const PricingPage = () => {
                   🎬 Clipero dedicado incluido — IA + criterio humano para tus clips
                 </span>
               </div>
-              <div className="flex flex-col items-end gap-3 shrink-0">
+              <div className="flex items-center justify-between mt-6 pt-6 border-t border-border">
                 <span className="text-muted-foreground text-sm">A consultar</span>
                 <a
                   href="mailto:contacto@clipealo.com"
@@ -441,8 +442,55 @@ const PricingPage = () => {
                   Contactar →
                 </a>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Free plan card */}
+            {(() => {
+              const plan = plans.find(p => p.name === 'Free')!;
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl border border-border bg-card p-8 md:p-10 flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-2xl">{plan.icon}</span>
+                    <h3 className="text-2xl font-bold mt-1">{plan.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{plan.tagline}</p>
+
+                    <div className="flex items-baseline gap-1 mb-4">
+                      <span className="text-sm text-muted-foreground">S/.</span>
+                      <span className="text-5xl font-extrabold">0</span>
+                      <span className="text-sm text-muted-foreground">/mes</span>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground mb-4">{plan.includesCopy}</p>
+
+                    <ul className="space-y-2 mb-4">
+                      {plan.features.map((f, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                          <span>
+                            {f.text}
+                            {f.soon && (
+                              <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-medium">
+                                pronto
+                              </span>
+                            )}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <button className="w-full py-3 rounded-xl font-semibold text-sm border border-border bg-background hover:bg-muted text-foreground transition-all">
+                    {plan.cta}
+                  </button>
+                </motion.div>
+              );
+            })()}
+          </div>
 
           {/* Countdown Banner */}
           <motion.div
