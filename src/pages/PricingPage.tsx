@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Coins } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CountdownTimer from '@/components/CountdownTimer';
@@ -54,11 +54,11 @@ const plans = [
     popular: false,
     highlighted: false,
     platforms: ['YouTube'],
-    hoursLabel: 'CRÉDITOS INCLUIDOS',
+    hoursLabel: 'CRÉDITOS POR MES',
     hours: [
-      { label: '60 créditos únicos', value: '1h' },
+      { label: '60 créditos', value: '≈ 1h' },
     ],
-    hoursTotal: '1h de prueba',
+    hoursTotal: '60 créditos/mes',
     includesCopy: 'Ideal para probar la plataforma sin compromiso.',
     features: [
       { text: 'Subida manual' },
@@ -319,7 +319,8 @@ const PricingPage = () => {
 
                 {/* Hours */}
                 <div className="bg-background/50 border border-border rounded-xl p-4 mb-5">
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
+                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase flex items-center gap-1.5">
+                    <Coins className="w-4 h-4 text-primary" />
                     {plan.hoursLabel}
                   </p>
                   {plan.hours.map((h) => (
