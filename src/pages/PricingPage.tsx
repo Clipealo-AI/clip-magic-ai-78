@@ -550,7 +550,12 @@ const PricingPage = () => {
                       ⚠️ El plan Free solo incluye YouTube como plataforma.
                     </p>
 
-                  <button className="w-full py-3 rounded-xl font-semibold text-sm border border-border bg-background hover:bg-muted text-foreground transition-all">
+                  <button
+                    onClick={() => {
+                      navigate('/?free=1');
+                    }}
+                    className="w-full py-3 rounded-xl font-semibold text-sm border border-border bg-background hover:bg-muted text-foreground transition-all"
+                  >
                     {plan.cta}
                   </button>
                 </motion.div>
