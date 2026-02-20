@@ -69,7 +69,7 @@ const plans = [
       { text: '3 días almacenamiento' },
     ],
     addons: [
-      { label: 'Recarga de horas', value: 'S/.5.50/hora' },
+      { label: 'Recarga de créditos (60 créditos = 1h)', value: 'S/.5.50' },
     ],
     services: [
       { text: 'Comunidad Discord', icon: 'discord' },
@@ -107,7 +107,7 @@ const plans = [
       { text: 'Publicar desde Clipealo a TikTok', soon: true, icon: 'tiktok' },
     ],
     addons: [
-      { label: 'Recarga de horas', value: 'S/.5.00/hora' },
+      { label: 'Recarga de créditos (60 créditos = 1h)', value: 'S/.5.00' },
     ],
     services: [
       { text: 'Comunidad Discord', icon: 'discord' },
@@ -148,7 +148,7 @@ const plans = [
       { text: 'Analytics de clips', soon: true },
     ],
     addons: [
-      { label: 'Horas adicionales', value: 'S/.5.00/hora' },
+      { label: 'Créditos adicionales (60 créditos = 1h)', value: 'S/.5.00' },
       { label: 'Redes sociales adicionales', value: 'Próximamente' },
     ],
     services: [
@@ -186,7 +186,7 @@ const plans = [
       { text: 'Analytics completo + tendencias', soon: true },
     ],
     addons: [
-      { label: 'Recarga de horas', value: 'S/.5.00/hora' },
+      { label: 'Recarga de créditos (60 créditos = 1h)', value: 'S/.5.00' },
       { label: 'Usuarios adicionales', value: 'Próximamente' },
     ],
     services: [
