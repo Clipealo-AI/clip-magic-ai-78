@@ -90,10 +90,10 @@ const WaitlistFormSection = () => {
           <div className="bg-card/90 backdrop-blur-sm border border-border rounded-2xl p-6 sm:p-8">
             <div className="text-center mb-6">
               <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-                📋 Únete a la lista de espera
+                🎮 Obtén tu acceso gratuito
               </h2>
               <p className="text-sm text-muted-foreground">
-                Sé de los primeros en enterarte cuando lancemos. Precios y novedades vienen pronto.
+                Regístrate y te enviaremos tus accesos para empezar a crear clips gratis.
               </p>
             </div>
 
@@ -145,7 +145,7 @@ const WaitlistFormSection = () => {
                 {isLoading ? 'Enviando...' : (
                   <>
                     <Bell className="w-4 h-4 mr-2" />
-                    Quiero estar en la lista
+                    Obtener acceso gratis
                   </>
                 )}
               </Button>
