@@ -8,24 +8,24 @@ const faqs = [
     answer: 'Pegas el link de tu stream (Kick, Twitch o YouTube) o subes tu archivo. Nuestra IA analiza el video completo, detecta los mejores momentos y genera clips listos para publicar con subtítulos, títulos y score de viralidad.',
   },
   {
-    question: '¿Qué tipos de videos puedo subir?',
-    answer: 'Puedes subir cualquier stream o video largo. Soportamos enlaces de Kick, Twitch y YouTube, además de archivos de video directos.',
+    question: '¿Qué plataformas soporta?',
+    answer: 'Soportamos Kick, Twitch y YouTube. Puedes pegar el enlace de tu stream o subir un archivo de video directamente.',
   },
   {
-    question: '¿En qué idiomas funciona?',
+    question: '¿Cuánto tarda en generar los clips?',
+    answer: 'Depende de la duración del video, pero en promedio un stream de 2 horas se procesa en menos de 10 minutos. Recibirás tus clips listos para descargar.',
+  },
+  {
+    question: '¿Los clips incluyen subtítulos?',
+    answer: 'Sí. Los subtítulos se generan automáticamente y sincronizados. No se requiere edición manual.',
+  },
+  {
+    question: '¿Clipealo funciona en español?',
     answer: 'Clipealo está entrenada específicamente en contenido en español latino. Entiende jerga local, modismos y contexto cultural de toda LATAM.',
   },
   {
-    question: '¿Puedo agregar subtítulos?',
-    answer: 'Sí. Los subtítulos se generan automáticamente y sincronizados en menos de 1 minuto. No se requiere edición manual.',
-  },
-  {
-    question: '¿Clipealo es gratis?',
-    answer: 'Estamos preparando el lanzamiento con planes accesibles. Si te unes a la lista de espera, serás de los primeros en conocer los precios y acceder a beneficios exclusivos.',
-  },
-  {
-    question: '¡Tengo más preguntas!',
-    answer: 'Únete a nuestro Discord o escríbenos a contact@clipealo.com. Estamos para ayudarte.',
+    question: '¿Cuánto cuesta Clipealo?',
+    answer: 'Tenemos planes desde S/.29.90/mes. Visita nuestra sección de precios para ver todos los detalles y elegir el plan que mejor se adapte a ti.',
   },
 ];
 
@@ -97,7 +97,7 @@ const FAQSection = () => {
         >
           Únete a nuestro{' '}
           <a
-            href="https://discord.com/invite/XjhXBtaK6A"
+            href="https://discord.gg/XjhXBtaK6A"
             target="_blank"
             rel="noopener noreferrer"
             className="text-cyan underline underline-offset-2 hover:text-foreground transition-colors"
@@ -106,10 +106,10 @@ const FAQSection = () => {
           </a>{' '}
           o escríbenos a{' '}
           <a
-            href="mailto:contact@clipealo.com"
+            href="mailto:clipealoai@gmail.com"
             className="text-cyan underline underline-offset-2 hover:text-foreground transition-colors"
           >
-            contact@clipealo.com
+            clipealoai@gmail.com
           </a>{' '}
           si necesitas ayuda o tienes alguna pregunta.
         </motion.p>
