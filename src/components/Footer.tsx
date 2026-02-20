@@ -29,11 +29,14 @@ const footerColumns = [
   {
     title: 'CASOS DE USO',
     links: [
-      { label: 'Podcasts', href: '#' },
-      { label: 'Gameplays', href: '#' },
-      { label: 'Vlogs', href: '#' },
-      { label: 'Deportes', href: '#' },
-      { label: 'Streams', href: '#' },
+      { label: 'Cliperos', href: '#' },
+      { label: 'Streamers', href: '#' },
+      { label: 'Podcasters', href: '#' },
+      { label: 'Coaches y educadores', href: '#' },
+      { label: 'Creadores de contenido', href: '#' },
+      { label: 'Comunidades y esports', href: '#' },
+      { label: 'Agencias audiovisuales', href: '#' },
+      { label: 'Marcas', href: '#' },
     ],
   },
   {
