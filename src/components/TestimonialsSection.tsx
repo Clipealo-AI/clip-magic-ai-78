@@ -4,6 +4,7 @@ import avatarSkilpe from '@/assets/testimonials/skilpe.jpeg';
 import avatarRin from '@/assets/testimonials/rinnakavt.png';
 import avatarEvolutive from '@/assets/testimonials/evolutive-playbook.jpg';
 import avatarJarod from '@/assets/testimonials/jarod-blade.jpeg';
+import avatarSirghostv from '@/assets/testimonials/sirghostv.jpg';
 
 import iconTiktok from '@/assets/icons/tiktok.png';
 import iconKick from '@/assets/icons/kick.png';
@@ -47,6 +48,12 @@ const testimonials = [
     avatar: avatarJarod,
     platforms: [iconTiktok],
     stat: '850 seguidores',
+  },
+  {
+    name: 'SirGhostv',
+    avatar: avatarSirghostv,
+    platforms: [iconYoutube],
+    stat: 'Creador de contenido',
   },
 ];
 
