@@ -53,7 +53,7 @@ const testimonials = [
     name: 'SirGhostv',
     avatar: avatarSirghostv,
     platforms: [iconYoutube],
-    stat: 'Creador de contenido',
+    stat: '1.85K seguidores',
   },
 ];
 
