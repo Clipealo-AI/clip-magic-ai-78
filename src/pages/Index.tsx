@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import DemoSection from '@/components/DemoSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import HowItWorksPreview from '@/components/HowItWorksPreview';
 import FAQSection from '@/components/FAQSection';
 import WaitlistFormSection from '@/components/WaitlistFormSection';
@@ -30,6 +31,7 @@ const Index = () => {
       <Header />
       <HeroSection onFreeClick={revealWaitlist} />
       <DemoSection />
+      <TestimonialsSection />
       <HowItWorksPreview />
       <FAQSection />
       {showWaitlist && <WaitlistFormSection />}
