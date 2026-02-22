@@ -3,6 +3,7 @@ import avatarGatimixx from '@/assets/testimonials/gatimixx.png';
 import avatarSkilpe from '@/assets/testimonials/skilpe.jpeg';
 import avatarRin from '@/assets/testimonials/rinnakavt.png';
 import avatarEvolutive from '@/assets/testimonials/evolutive-playbook.jpg';
+import avatarJarod from '@/assets/testimonials/jarod-blade.jpeg';
 
 import iconTiktok from '@/assets/icons/tiktok.png';
 import iconKick from '@/assets/icons/kick.png';
@@ -40,6 +41,12 @@ const testimonials = [
     avatar: avatarEvolutive,
     platforms: [iconLinkedin, iconYoutube],
     stat: 'Canal de gestión',
+  },
+  {
+    name: 'Jarod Blade',
+    avatar: avatarJarod,
+    platforms: [iconTiktok],
+    stat: '850 seguidores',
   },
 ];
 
