@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import type { LucideIcon } from 'lucide-react';
 
 export interface MetricItem {
@@ -94,6 +95,7 @@ const stagger = {
 
 const UseCasePageTemplate = ({ data }: { data: UseCasePageData }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -109,6 +111,11 @@ const UseCasePageTemplate = ({ data }: { data: UseCasePageData }) => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEOHead
+        title={`${data.hero.title} — Clipealo`}
+        description={data.hero.description}
+        canonicalPath={location.pathname}
+      />
       <Header />
 
       {/* Hero */}
