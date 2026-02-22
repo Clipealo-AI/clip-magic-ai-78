@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Twitch } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Twitch, Linkedin, Youtube } from 'lucide-react';
 
 import avatarChupapi from '@/assets/testimonials/chupapi.jpeg';
 import avatarGatimixx from '@/assets/testimonials/gatimixx.png';
 import avatarSkilpe from '@/assets/testimonials/skilpe.jpeg';
 import avatarRin from '@/assets/testimonials/rinnakavt.png';
+import avatarEvolutive from '@/assets/testimonials/evolutive-playbook.jpg';
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -57,6 +58,16 @@ const testimonials = [
     ],
     stat: '400 seguidores',
     quote: 'La detección de momentos clave es increíble. Puedo enfocarme en hacer contenido y Clipealo se encarga del resto.',
+  },
+  {
+    name: 'Evolutive Playbook',
+    avatar: avatarEvolutive,
+    platforms: [
+      { name: 'LinkedIn', icon: Linkedin, color: 'text-[hsl(210,80%,55%)]' },
+      { name: 'YouTube', icon: Youtube, color: 'text-[hsl(0,80%,50%)]' },
+    ],
+    stat: 'Canal de gestión',
+    quote: 'Clipealo nos ayudó a generar shorts de nuestro contenido de gestión de forma rápida y eficiente. Ideal para repurposear contenido largo.',
   },
 ];
 
