@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { blogArticles, categoryColors } from '@/data/blogArticles';
 
 const AuthorAvatar = ({ initial }: { initial: string }) => (
@@ -61,6 +62,12 @@ const BlogArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={article.title}
+        description={article.metaDescription}
+        canonicalPath={`/blog/${article.id}`}
+        type="article"
+      />
       <Header />
 
       <article className="pt-28 pb-20 px-4">

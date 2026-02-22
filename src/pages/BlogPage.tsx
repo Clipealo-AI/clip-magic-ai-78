@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { blogArticles, categoryColors, type BlogCategory } from '@/data/blogArticles';
 
 const categories: Array<'Todos' | BlogCategory> = ['Todos', 'Buenas Prácticas', 'Por Qué Importa', 'Guía de Inicio'];
@@ -28,6 +29,11 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Blog — Guías y estrategias para cliperos y streamers"
+        description="Guías, estrategias y casos reales para cliperos, streamers y creadores de contenido en LATAM. Aprende a clipear y crece más rápido."
+        canonicalPath="/blog"
+      />
       <Header />
 
       {/* Hero */}
