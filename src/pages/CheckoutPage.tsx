@@ -3,6 +3,8 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Coins, Clock, Minus, Plus, CreditCard, MessageCircle, ArrowLeft } from 'lucide-react';
 import yapeQr from '@/assets/yape-qr.png';
+import mercadopagoLogo from '@/assets/icons/mercadopago.png';
+import yapeLogo from '@/assets/icons/yape.png';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { trackInitiateCheckout } from '@/lib/tracking';
@@ -382,7 +384,7 @@ const CheckoutPage = () => {
                         : 'border-2 border-border bg-background hover:bg-muted text-muted-foreground'
                     }`}
                   >
-                    <CreditCard className="w-4 h-4" />
+                    <img src={mercadopagoLogo} alt="Mercado Pago" className="w-6 h-6 rounded object-contain" />
                     Mercado Pago
                   </button>
                   <button
@@ -393,9 +395,7 @@ const CheckoutPage = () => {
                         : 'border-2 border-border bg-background hover:bg-muted text-muted-foreground'
                     }`}
                   >
-                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                      <circle cx="12" cy="12" r="10" />
-                    </svg>
+                    <img src={yapeLogo} alt="Yape" className="w-6 h-6 rounded object-contain" />
                     Yape
                   </button>
                 </div>
