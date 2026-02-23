@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Coins, Clock, Minus, Plus, CreditCard, ArrowLeft } from 'lucide-react';
+import { Check, Coins, Clock, Minus, Plus, CreditCard, MessageCircle, ArrowLeft } from 'lucide-react';
+import yapeQr from '@/assets/yape-qr.png';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { trackInitiateCheckout } from '@/lib/tracking';
@@ -395,18 +396,65 @@ const CheckoutPage = () => {
                 )}
               </motion.div>
 
+              {/* Divider */}
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-px bg-border" />
+                <span className="text-xs text-muted-foreground font-semibold">o paga con Yape</span>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+
+              {/* Yape Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="rounded-2xl border border-border bg-card p-6 text-center"
+              >
+                <h3 className="text-lg font-bold mb-1">Escanea con Yape</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Abre tu app de Yape y escanea el QR por <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span>
+                </p>
+                <div className="flex justify-center mb-4">
+                  <img
+                    src={yapeQr}
+                    alt="QR de Yape para pagar"
+                    className="w-48 h-48 rounded-xl object-contain"
+                  />
+                </div>
+                <a
+                  href={`https://wa.me/51906160948?text=${encodeURIComponent(
+                    `¡Hola! Acabo de realizar el pago por Yape para:\n📦 ${baseName}${extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''}\n💰 Total: S/.${totalPrice.toFixed(2)}\nAdjunto mi comprobante.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackInitiateCheckout({
+                      value: totalPrice,
+                      contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
+                      contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
+                    });
+                  }}
+                  className="flex items-center justify-center gap-3 w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:opacity-90"
+                  style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Enviar comprobante por WhatsApp
+                </a>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Respuesta en menos de 24h
+                </p>
+              </motion.div>
+
               {/* Info note */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 }}
+                transition={{ delay: 0.3 }}
                 className="rounded-2xl border border-border bg-card p-5 text-center"
               >
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Serás redirigido a Mercado Pago para completar tu pago de forma segura.
-                  {(type === 'credits' || extraCredits > 0) && (
-                    <> Recuerda ingresar <strong className="text-foreground">S/.{totalPrice.toFixed(2)}</strong> como monto.</>
-                  )}
+                  Elige el método de pago que prefieras. Con <strong className="text-foreground">Mercado Pago</strong> tu plan se activa automáticamente.
+                  Con <strong className="text-foreground">Yape</strong>, envía el comprobante por WhatsApp y lo activamos en menos de 24h.
                 </p>
               </motion.div>
             </div>
