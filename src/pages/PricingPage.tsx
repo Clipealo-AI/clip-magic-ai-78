@@ -296,9 +296,9 @@ const PricingPage = () => {
 
                 {/* Price */}
                 <div className="mb-5 min-h-[100px]">
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex items-baseline gap-1" data-product-price={isAnnual ? plan.annualPrice : plan.monthlyPrice} data-currency="PEN">
                     <span className="text-sm text-muted-foreground">S/.</span>
-                    <span className="text-5xl font-extrabold">
+                    <span className="text-5xl font-extrabold" data-price-value={isAnnual ? plan.annualPrice : plan.monthlyPrice}>
                       {isAnnual ? plan.annualPrice : plan.monthlyPrice}
                     </span>
                     <span className="text-sm text-muted-foreground">/mes</span>
@@ -625,9 +625,9 @@ const PricingPage = () => {
                     <span>≈ {pack.hours} {pack.hours === 1 ? 'hora' : 'horas'}</span>
                   </div>
 
-                  <div className="mb-1">
+                  <div className="mb-1" data-product-price={pack.price} data-currency="PEN">
                     <span className="text-sm text-muted-foreground">S/.</span>
-                    <span className="text-3xl font-extrabold ml-0.5">{pack.price.toFixed(2)}</span>
+                    <span className="text-3xl font-extrabold ml-0.5" data-price-value={pack.price}>{pack.price.toFixed(2)}</span>
                   </div>
                   <p className="text-xs text-muted-foreground mb-5">S/.{pack.perCredit} por crédito</p>
 
