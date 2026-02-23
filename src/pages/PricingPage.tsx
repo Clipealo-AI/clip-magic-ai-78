@@ -220,20 +220,6 @@ const PricingPage = () => {
     'Premium': 'premium',
   };
 
-  const mercadoPagoLinks: Record<string, { monthly: string; annual: string }> = {
-    'Básico': {
-      monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=989b30f9e3364e5dbac23fe5adfa6a14',
-      annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=0e0099539af0454091231caf97dad888',
-    },
-    'Estándar': {
-      monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=bf25660a9d7844eab841c005c0252d25',
-      annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=82b7be1357d34c7e92530fb79750d9f4',
-    },
-    'Premium': {
-      monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=dd844da23d96422d92524caaf67b06f2',
-      annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=04c1fe46c4c943baab4809baf51d9f40',
-    },
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -339,12 +325,7 @@ const PricingPage = () => {
                       contentName: `Plan ${plan.name}`,
                       contentId: planKeyMap[plan.name],
                     });
-                    const mpLink = mercadoPagoLinks[plan.name];
-                    if (mpLink) {
-                      window.open(isAnnual ? mpLink.annual : mpLink.monthly, '_blank');
-                    } else {
-                      navigate(`/checkout?type=plan&plan=${planKeyMap[plan.name]}&billing=${isAnnual ? 'annual' : 'monthly'}`);
-                    }
+                    navigate(`/checkout?type=plan&plan=${planKeyMap[plan.name]}&billing=${isAnnual ? 'annual' : 'monthly'}`);
                   }}
                   className={`w-full py-3 rounded-xl font-semibold text-sm transition-all mb-6 ${
                     plan.highlighted
