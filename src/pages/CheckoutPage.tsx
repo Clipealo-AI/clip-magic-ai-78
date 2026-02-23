@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Coins, Clock, Minus, Plus, CreditCard, MessageCircle, ArrowLeft } from 'lucide-react';
 import yapeQr from '@/assets/yape-qr.png';
 import Header from '@/components/Header';
@@ -93,6 +93,7 @@ const CheckoutPage = () => {
   const creditPack = creditPacks.find(p => p.credits === packCredits);
 
   const [extraCredits, setExtraCredits] = useState(0);
+  const [payMethod, setPayMethod] = useState<'mercadopago' | 'yape'>('mercadopago');
   const extraBlocks = extraCredits / 60;
 
   const addCredits = () => setExtraCredits(prev => prev + 60);
@@ -360,102 +361,137 @@ const CheckoutPage = () => {
                 </div>
               </motion.div>
 
-              {/* Mercado Pago Button */}
+              {/* Payment Method Selector */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
+                transition={{ delay: 0.1 }}
+                className="rounded-2xl border border-border bg-card overflow-hidden"
               >
-                <a
-                  href={
-                    type === 'plan' && extraCredits === 0 && mercadoPagoSubscriptionLinks[planKey]
-                      ? (billing === 'annual'
-                          ? mercadoPagoSubscriptionLinks[planKey].annual
-                          : mercadoPagoSubscriptionLinks[planKey].monthly)
-                      : MERCADO_PAGO_GENERIC_LINK
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    trackInitiateCheckout({
-                      value: totalPrice,
-                      contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
-                      contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
-                    });
-                  }}
-                  className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-bold text-base text-white transition-all hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, #009ee3, #003087)' }}
-                >
-                  <CreditCard className="w-5 h-5" />
-                  Pagar con Mercado Pago — S/.{totalPrice.toFixed(2)}
-                </a>
-                {(type === 'credits' || extraCredits > 0) && (
-                  <p className="text-center text-xs text-muted-foreground mt-3">
-                    Ingresa el monto de <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span> en Mercado Pago
-                  </p>
-                )}
-              </motion.div>
+                <h3 className="text-sm font-bold text-muted-foreground px-6 pt-5 pb-3 uppercase tracking-widest">
+                  Método de pago
+                </h3>
 
-              {/* Divider */}
-              <div className="flex items-center gap-3">
-                <div className="flex-1 h-px bg-border" />
-                <span className="text-xs text-muted-foreground font-semibold">o paga con Yape</span>
-                <div className="flex-1 h-px bg-border" />
-              </div>
-
-              {/* Yape Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="rounded-2xl border border-border bg-card p-6 text-center"
-              >
-                <h3 className="text-lg font-bold mb-1">Escanea con Yape</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Abre tu app de Yape y escanea el QR por <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span>
-                </p>
-                <div className="flex justify-center mb-4">
-                  <img
-                    src={yapeQr}
-                    alt="QR de Yape para pagar"
-                    className="w-48 h-48 rounded-xl object-contain"
-                  />
+                {/* Tabs */}
+                <div className="grid grid-cols-2 gap-2 px-4 pb-4">
+                  <button
+                    onClick={() => setPayMethod('mercadopago')}
+                    className={`relative flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold transition-all ${
+                      payMethod === 'mercadopago'
+                        ? 'bg-[#009ee3]/10 border-2 border-[#009ee3] text-[#009ee3]'
+                        : 'border-2 border-border bg-background hover:bg-muted text-muted-foreground'
+                    }`}
+                  >
+                    <CreditCard className="w-4 h-4" />
+                    Mercado Pago
+                  </button>
+                  <button
+                    onClick={() => setPayMethod('yape')}
+                    className={`relative flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold transition-all ${
+                      payMethod === 'yape'
+                        ? 'bg-[#742284]/10 border-2 border-[#742284] text-[#742284]'
+                        : 'border-2 border-border bg-background hover:bg-muted text-muted-foreground'
+                    }`}
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                      <circle cx="12" cy="12" r="10" />
+                    </svg>
+                    Yape
+                  </button>
                 </div>
-                <a
-                  href={`https://wa.me/51906160948?text=${encodeURIComponent(
-                    `¡Hola! Acabo de realizar el pago por Yape para:\n📦 ${baseName}${extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''}\n💰 Total: S/.${totalPrice.toFixed(2)}\nAdjunto mi comprobante.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    trackInitiateCheckout({
-                      value: totalPrice,
-                      contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
-                      contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
-                    });
-                  }}
-                  className="flex items-center justify-center gap-3 w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Enviar comprobante por WhatsApp
-                </a>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Respuesta en menos de 24h
-                </p>
-              </motion.div>
 
-              {/* Info note */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="rounded-2xl border border-border bg-card p-5 text-center"
-              >
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Elige el método de pago que prefieras. Con <strong className="text-foreground">Mercado Pago</strong> tu plan se activa automáticamente.
-                  Con <strong className="text-foreground">Yape</strong>, envía el comprobante por WhatsApp y lo activamos en menos de 24h.
-                </p>
+                {/* Content */}
+                <div className="px-6 pb-6">
+                  <AnimatePresence mode="wait">
+                    {payMethod === 'mercadopago' ? (
+                      <motion.div
+                        key="mercadopago"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="space-y-4"
+                      >
+                        <p className="text-sm text-muted-foreground text-center">
+                          Paga de forma segura con tarjeta, transferencia o billetera digital.
+                        </p>
+                        <a
+                          href={
+                            type === 'plan' && extraCredits === 0 && mercadoPagoSubscriptionLinks[planKey]
+                              ? (billing === 'annual'
+                                  ? mercadoPagoSubscriptionLinks[planKey].annual
+                                  : mercadoPagoSubscriptionLinks[planKey].monthly)
+                              : MERCADO_PAGO_GENERIC_LINK
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            trackInitiateCheckout({
+                              value: totalPrice,
+                              contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
+                              contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
+                            });
+                          }}
+                          className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-bold text-base text-white transition-all hover:opacity-90"
+                          style={{ background: 'linear-gradient(135deg, #009ee3, #003087)' }}
+                        >
+                          <CreditCard className="w-5 h-5" />
+                          Pagar S/.{totalPrice.toFixed(2)}
+                        </a>
+                        {(type === 'credits' || extraCredits > 0) && (
+                          <p className="text-center text-xs text-muted-foreground">
+                            Ingresa <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span> como monto en Mercado Pago
+                          </p>
+                        )}
+                        <p className="text-xs text-muted-foreground text-center">
+                          Activación automática · Pago seguro
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="yape"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="space-y-4"
+                      >
+                        <p className="text-sm text-muted-foreground text-center">
+                          Escanea el QR con tu app de Yape por <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span>
+                        </p>
+                        <div className="flex justify-center">
+                          <img
+                            src={yapeQr}
+                            alt="QR de Yape para pagar"
+                            className="w-48 h-48 rounded-xl object-contain"
+                          />
+                        </div>
+                        <a
+                          href={`https://wa.me/51906160948?text=${encodeURIComponent(
+                            `¡Hola! Acabo de realizar el pago por Yape para:\n📦 ${baseName}${extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''}\n💰 Total: S/.${totalPrice.toFixed(2)}\nAdjunto mi comprobante.`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            trackInitiateCheckout({
+                              value: totalPrice,
+                              contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
+                              contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
+                            });
+                          }}
+                          className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-bold text-sm text-white transition-all hover:opacity-90"
+                          style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
+                        >
+                          <MessageCircle className="w-4 h-4" />
+                          Enviar comprobante por WhatsApp
+                        </a>
+                        <p className="text-xs text-muted-foreground text-center">
+                          Activación manual · Respuesta en menos de 24h
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
             </div>
           </div>
