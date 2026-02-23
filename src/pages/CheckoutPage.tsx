@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Coins, Clock, Minus, Plus, MessageCircle, ArrowLeft } from 'lucide-react';
+import { Check, Coins, Clock, Minus, Plus, CreditCard, ArrowLeft } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import yapeQr from '@/assets/yape-qr.png';
 import { trackInitiateCheckout } from '@/lib/tracking';
 
 type CheckoutType = 'plan' | 'credits';
@@ -65,6 +64,23 @@ const creditPacks = [
 
 const CREDIT_PRICE = 5.50; // price per 60 credits
 
+const mercadoPagoSubscriptionLinks: Record<string, { monthly: string; annual: string }> = {
+  basico: {
+    monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=989b30f9e3364e5dbac23fe5adfa6a14',
+    annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=0e0099539af0454091231caf97dad888',
+  },
+  estandar: {
+    monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=bf25660a9d7844eab841c005c0252d25',
+    annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=82b7be1357d34c7e92530fb79750d9f4',
+  },
+  premium: {
+    monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=dd844da23d96422d92524caaf67b06f2',
+    annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=04c1fe46c4c943baab4809baf51d9f40',
+  },
+};
+
+const MERCADO_PAGO_GENERIC_LINK = 'https://link.mercadopago.com.pe/clipealo';
+
 const CheckoutPage = () => {
   const [searchParams] = useSearchParams();
   const type = (searchParams.get('type') || 'plan') as CheckoutType;
@@ -101,15 +117,6 @@ const CheckoutPage = () => {
   const extraCost = extraBlocks * CREDIT_PRICE;
   const totalPrice = basePrice + extraCost;
 
-  // WhatsApp message
-  const whatsappNumber = '51906160948';
-  const whatsappMessage = encodeURIComponent(
-    `¡Hola! Acabo de realizar el pago por Yape para:\n` +
-    `📦 ${baseName}${extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''}\n` +
-    `💰 Total: S/.${totalPrice.toFixed(2)}\n` +
-    `Adjunto mi comprobante.`
-  );
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   if ((type === 'plan' && !plan) || (type === 'credits' && !creditPack)) {
     return (
@@ -284,18 +291,18 @@ const CheckoutPage = () => {
                   {[
                     {
                       step: 1,
-                      title: 'Realiza el pago',
-                      desc: 'Abre Yape, escanea el QR y transfiere el monto de tu plan.',
+                      title: 'Revisa tu pedido',
+                      desc: 'Verifica el plan y los créditos extra que quieras agregar.',
                     },
                     {
                       step: 2,
-                      title: 'Guarda el comprobante',
-                      desc: 'Toma una captura de pantalla o guarda el comprobante de Yape.',
+                      title: 'Paga con Mercado Pago',
+                      desc: 'Haz clic en el botón de pago y completa la transacción de forma segura.',
                     },
                     {
                       step: 3,
-                      title: 'Envíanoslo por WhatsApp',
-                      desc: 'Mándanos el comprobante y te activamos el plan en menos de 24h.',
+                      title: 'Activación inmediata',
+                      desc: 'Para planes, la activación es automática. Para créditos extra, se activan en menos de 24h.',
                     },
                   ].map(s => (
                     <div key={s.step} className="flex items-start gap-4">
@@ -314,23 +321,29 @@ const CheckoutPage = () => {
 
             {/* RIGHT COLUMN */}
             <div className="space-y-6">
-              {/* Yape QR */}
+              {/* Order Summary */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
                 className="rounded-2xl border border-border bg-card p-6 text-center"
               >
-                <h3 className="text-lg font-bold mb-1">Escanea con Yape</h3>
+                <h3 className="text-lg font-bold mb-1">Resumen de pago</h3>
                 <p className="text-sm text-muted-foreground mb-5">
-                  Abre tu app de Yape y escanea el QR
+                  Revisa tu pedido antes de pagar
                 </p>
-                <div className="flex justify-center mb-5">
-                  <img
-                    src={yapeQr}
-                    alt="QR de Yape para pagar"
-                    className="w-64 h-64 rounded-xl object-contain"
-                  />
+
+                <div className="space-y-3 text-sm text-left mb-5">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">{baseName}</span>
+                    <span className="font-semibold">S/.{basePrice.toFixed(2)}</span>
+                  </div>
+                  {extraCredits > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">+{extraCredits} créditos extra</span>
+                      <span className="font-semibold">S/.{extraCost.toFixed(2)}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Total */}
@@ -346,14 +359,20 @@ const CheckoutPage = () => {
                 </div>
               </motion.div>
 
-              {/* WhatsApp Button */}
+              {/* Mercado Pago Button */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
               >
                 <a
-                  href={whatsappUrl}
+                  href={
+                    type === 'plan' && extraCredits === 0 && mercadoPagoSubscriptionLinks[planKey]
+                      ? (billing === 'annual'
+                          ? mercadoPagoSubscriptionLinks[planKey].annual
+                          : mercadoPagoSubscriptionLinks[planKey].monthly)
+                      : MERCADO_PAGO_GENERIC_LINK
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
@@ -364,14 +383,16 @@ const CheckoutPage = () => {
                     });
                   }}
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-bold text-base text-white transition-all hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
+                  style={{ background: 'linear-gradient(135deg, #009ee3, #003087)' }}
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Enviar comprobante por WhatsApp
+                  <CreditCard className="w-5 h-5" />
+                  Pagar con Mercado Pago — S/.{totalPrice.toFixed(2)}
                 </a>
-                <p className="text-center text-xs text-muted-foreground mt-3">
-                  WhatsApp Business: <span className="text-primary">+51 906 160 948</span> · Respuesta en menos de 24h
-                </p>
+                {(type === 'credits' || extraCredits > 0) && (
+                  <p className="text-center text-xs text-muted-foreground mt-3">
+                    Ingresa el monto de <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span> en Mercado Pago
+                  </p>
+                )}
               </motion.div>
 
               {/* Info note */}
@@ -382,9 +403,10 @@ const CheckoutPage = () => {
                 className="rounded-2xl border border-border bg-card p-5 text-center"
               >
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Al enviar el comprobante, nuestro equipo verificará tu pago y activará tu{' '}
-                  <strong className="text-foreground">{baseName}</strong> manualmente.
-                  Recibirás confirmación por WhatsApp.
+                  Serás redirigido a Mercado Pago para completar tu pago de forma segura.
+                  {(type === 'credits' || extraCredits > 0) && (
+                    <> Recuerda ingresar <strong className="text-foreground">S/.{totalPrice.toFixed(2)}</strong> como monto.</>
+                  )}
                 </p>
               </motion.div>
             </div>
