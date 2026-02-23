@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link2, Upload } from 'lucide-react';
+import { trackLead } from '@/lib/tracking';
 
 interface HeroSectionProps {
   onFreeClick?: () => void;
@@ -72,7 +73,10 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
               <span className="text-sm truncate">Colocar un enlace de tu stream...</span>
             </div>
             <button
-              onClick={onFreeClick}
+              onClick={() => {
+                trackLead('Hero - Consigue clips gratis');
+                onFreeClick?.();
+              }}
               className="px-5 py-2.5 bg-foreground text-background rounded-full font-semibold text-sm whitespace-nowrap hover:bg-foreground/90 transition-colors"
             >
               Consigue clips gratis
@@ -82,7 +86,10 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
           <span className="text-muted-foreground text-sm mx-3 hidden sm:inline">o</span>
 
           <button
-            onClick={onFreeClick}
+            onClick={() => {
+              trackLead('Hero - Cargar archivos');
+              onFreeClick?.();
+            }}
             className="px-5 py-2.5 border border-border rounded-full font-semibold text-sm text-foreground hover:bg-muted/50 transition-colors whitespace-nowrap"
           >
             <span className="flex items-center gap-2">
