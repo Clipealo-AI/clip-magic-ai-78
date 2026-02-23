@@ -5,6 +5,7 @@ import { Check, Coins, Clock, Minus, Plus, MessageCircle, ArrowLeft } from 'luci
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import yapeQr from '@/assets/yape-qr.png';
+import { trackInitiateCheckout } from '@/lib/tracking';
 
 type CheckoutType = 'plan' | 'credits';
 
@@ -355,6 +356,13 @@ const CheckoutPage = () => {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    trackInitiateCheckout({
+                      value: totalPrice,
+                      contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
+                      contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
+                    });
+                  }}
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-bold text-base text-white transition-all hover:opacity-90"
                   style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
                 >

@@ -8,6 +8,7 @@ import CountdownTimer from '@/components/CountdownTimer';
 import platformYoutube from '@/assets/platform-youtube.png';
 import platformTwitch from '@/assets/platform-twitch.png';
 import platformKick from '@/assets/platform-kick.png';
+import { trackInitiateCheckout } from '@/lib/tracking';
 
 const DiscordSvg = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 inline-block text-[#5865F2]">
@@ -316,7 +317,15 @@ const PricingPage = () => {
 
                 {/* CTA */}
                 <button
-                  onClick={() => navigate(`/checkout?type=plan&plan=${planKeyMap[plan.name]}&billing=${isAnnual ? 'annual' : 'monthly'}`)}
+                  onClick={() => {
+                    const price = isAnnual ? plan.annualPrice : plan.monthlyPrice;
+                    trackInitiateCheckout({
+                      value: price,
+                      contentName: `Plan ${plan.name}`,
+                      contentId: planKeyMap[plan.name],
+                    });
+                    navigate(`/checkout?type=plan&plan=${planKeyMap[plan.name]}&billing=${isAnnual ? 'annual' : 'monthly'}`);
+                  }}
                   className={`w-full py-3 rounded-xl font-semibold text-sm transition-all mb-6 ${
                     plan.highlighted
                       ? 'gradient-primary text-foreground hover:opacity-90'
@@ -623,12 +632,19 @@ const PricingPage = () => {
                   <p className="text-xs text-muted-foreground mb-5">S/.{pack.perCredit} por crédito</p>
 
                   <button
-                    onClick={() => navigate(`/checkout?type=credits&credits=${pack.credits}`)}
+                    onClick={() => {
+                      trackInitiateCheckout({
+                        value: pack.price,
+                        contentName: `${pack.credits} créditos`,
+                        contentId: `credits_${pack.credits}`,
+                      });
+                      navigate(`/checkout?type=credits&credits=${pack.credits}`);
+                    }}
                     className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
                     pack.popular
                       ? 'gradient-primary text-foreground hover:opacity-90'
                       : 'border border-border bg-background hover:bg-muted text-foreground'
-                  }`}>
+                   }`}>
                     Comprar
                   </button>
                 </motion.div>
