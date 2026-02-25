@@ -441,11 +441,12 @@ const PricingPage = () => {
                   ● EMPRESARIAL
                 </span>
                 <h3 className="text-xl font-bold mt-1">Empresarial</h3>
-                <p className="text-sm text-muted-foreground">Para agencias y alto volumen</p>
+                <p className="text-sm text-muted-foreground leading-snug">Para agencias de contenido, agencias de growth, casas de apuestas, estudios de videojuegos, publishers, canales televisivos, marcas de gaming y agencias de gaming.</p>
               </div>
 
               <div className="mb-5 min-h-[100px]">
                 <span className="text-2xl font-bold text-muted-foreground">A consultar</span>
+                <p className="text-xs text-muted-foreground mt-2">Cuéntanos tu caso y te enviamos una propuesta en 24 horas.</p>
               </div>
 
               <a
@@ -455,12 +456,11 @@ const PricingPage = () => {
                 Contactar →
               </a>
 
-              <div className="mb-5 flex-1">
+              <div className="mb-5">
                 <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-1 uppercase">
                   Incluye
                 </p>
-                <p className="text-xs text-muted-foreground mb-3">Solución completa para equipos y agencias.</p>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mt-2">
                   {[
                     { text: 'Todo lo de Premium', highlight: true },
                     { text: 'Créditos según volumen negociado' },
@@ -486,28 +486,34 @@ const PricingPage = () => {
               </div>
 
               <div className="mb-5">
-                <span className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold gradient-primary text-foreground">
-                  🎬 Clipero dedicado — IA + criterio humano
-                </span>
+                <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-1 uppercase">
+                  Add-ons
+                </p>
+                <ul className="space-y-2 mt-2">
+                  {[
+                    'Flujo de aprobación de clips',
+                    'White label',
+                  ].map((text) => (
+                    <li key={text} className="flex items-start gap-2 text-sm">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                      <span>{text}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div>
-                <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-2 uppercase">
+                <p className="text-[10px] font-bold tracking-widest text-muted-foreground mb-1 uppercase">
                   Servicios
                 </p>
-                <ul className="space-y-1.5">
+                <ul className="space-y-2 mt-2">
                   {[
-                    { text: 'Comunidad Discord', icon: 'discord' as const },
-                    { text: 'Soporte por WhatsApp dedicado' },
-                    { text: 'Onboarding personalizado' },
-                    { text: 'Reuniones de seguimiento mensuales' },
-                  ].map((s) => (
-                    <li key={s.text} className="flex items-center gap-2 text-sm">
-                      <Check className="w-3.5 h-3.5 flex-shrink-0 text-secondary" />
-                      <span className="flex items-center gap-1.5">
-                        {s.text}
-                        {'icon' in s && s.icon === 'discord' && <DiscordSvg />}
-                      </span>
+                    'Clips con tu marca del contenido de todos tus streamers patrocinados',
+                    'Clipero especializado dedicado por vertical — fútbol, gaming, entretenimiento o apuestas',
+                  ].map((text) => (
+                    <li key={text} className="flex items-start gap-2 text-sm">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                      <span>{text}</span>
                     </li>
                   ))}
                 </ul>
