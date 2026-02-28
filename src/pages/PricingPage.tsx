@@ -52,7 +52,7 @@ const plans = [
     annualPrice: 0,
     annualBilled: null,
     savings: null,
-    cta: 'Comenzar gratis',
+    cta: 'Prueba Clipealo',
     popular: false,
     highlighted: false,
     platforms: ['YouTube'],
@@ -566,14 +566,12 @@ const PricingPage = () => {
                       ⚠️ El plan Free solo incluye YouTube como plataforma.
                     </p>
 
-                  <button
-                    onClick={() => {
-                      navigate('/?free=1');
-                    }}
-                    className="w-full py-3 rounded-xl font-semibold text-sm border border-border bg-background hover:bg-muted text-foreground transition-all"
+                  <a
+                    href="https://app.clipealo-ai.com/login"
+                    className="w-full py-3 rounded-xl font-semibold text-sm border border-border bg-background hover:bg-muted text-foreground transition-all text-center block"
                   >
-                    {plan.cta}
-                  </button>
+                    Prueba Clipealo
+                  </a>
                 </motion.div>
               );
             })()}
