@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Coins, Clock, Minus, Plus, CreditCard, MessageCircle, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Check, Coins, Clock, Minus, Plus, MessageCircle, ArrowLeft } from 'lucide-react';
 import yapeQr from '@/assets/yape-qr.png';
-import mercadopagoLogo from '@/assets/icons/mercadopago.png';
-import yapeLogo from '@/assets/icons/yape.png';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { trackInitiateCheckout } from '@/lib/tracking';
@@ -67,22 +65,6 @@ const creditPacks = [
 
 const CREDIT_PRICE = 5.50; // price per 60 credits
 
-const mercadoPagoSubscriptionLinks: Record<string, { monthly: string; annual: string }> = {
-  basico: {
-    monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=989b30f9e3364e5dbac23fe5adfa6a14',
-    annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=0e0099539af0454091231caf97dad888',
-  },
-  estandar: {
-    monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=bf25660a9d7844eab841c005c0252d25',
-    annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=82b7be1357d34c7e92530fb79750d9f4',
-  },
-  premium: {
-    monthly: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=dd844da23d96422d92524caaf67b06f2',
-    annual: 'https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=04c1fe46c4c943baab4809baf51d9f40',
-  },
-};
-
-const MERCADO_PAGO_GENERIC_LINK = 'https://link.mercadopago.com.pe/clipealo';
 
 const CheckoutPage = () => {
   const [searchParams] = useSearchParams();
@@ -95,7 +77,7 @@ const CheckoutPage = () => {
   const creditPack = creditPacks.find(p => p.credits === packCredits);
 
   const [extraCredits, setExtraCredits] = useState(0);
-  const [payMethod, setPayMethod] = useState<'mercadopago' | 'yape'>('mercadopago');
+  
   const extraBlocks = extraCredits / 60;
 
   const addCredits = () => setExtraCredits(prev => prev + 60);
@@ -298,10 +280,10 @@ const CheckoutPage = () => {
                       title: 'Revisa tu pedido',
                       desc: 'Verifica el plan y los créditos extra que quieras agregar.',
                     },
-                    {
+                     {
                       step: 2,
-                      title: 'Paga con Mercado Pago',
-                      desc: 'Haz clic en el botón de pago y completa la transacción de forma segura.',
+                      title: 'Paga con Yape',
+                      desc: 'Escanea el QR con tu app de Yape y envía el comprobante por WhatsApp.',
                     },
                     {
                       step: 3,
@@ -363,7 +345,7 @@ const CheckoutPage = () => {
                 </div>
               </motion.div>
 
-              {/* Payment Method Selector */}
+              {/* Payment - Yape Only */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -374,123 +356,39 @@ const CheckoutPage = () => {
                   Método de pago
                 </h3>
 
-                {/* Tabs */}
-                <div className="grid grid-cols-2 gap-2 px-4 pb-4">
-                  <button
-                    onClick={() => setPayMethod('mercadopago')}
-                    className={`relative flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold transition-all ${
-                      payMethod === 'mercadopago'
-                        ? 'bg-[#009ee3]/10 border-2 border-[#009ee3] text-[#009ee3]'
-                        : 'border-2 border-border bg-background hover:bg-muted text-muted-foreground'
-                    }`}
+                <div className="px-6 pb-6 space-y-4">
+                  <p className="text-sm text-muted-foreground text-center">
+                    Escanea el QR con tu app de Yape por <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span>
+                  </p>
+                  <div className="flex justify-center">
+                    <img
+                      src={yapeQr}
+                      alt="QR de Yape para pagar"
+                      className="w-48 h-48 rounded-xl object-contain"
+                    />
+                  </div>
+                  <a
+                    href={`https://wa.me/51906160948?text=${encodeURIComponent(
+                      `¡Hola! Acabo de realizar el pago por Yape para:\n📦 ${baseName}${extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''}\n💰 Total: S/.${totalPrice.toFixed(2)}\nAdjunto mi comprobante.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      trackInitiateCheckout({
+                        value: totalPrice,
+                        contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
+                        contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
+                      });
+                    }}
+                    className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-bold text-sm text-white transition-all hover:opacity-90"
+                    style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
                   >
-                    <img src={mercadopagoLogo} alt="Mercado Pago" className="w-6 h-6 rounded object-contain" />
-                    Mercado Pago
-                  </button>
-                  <button
-                    onClick={() => setPayMethod('yape')}
-                    className={`relative flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold transition-all ${
-                      payMethod === 'yape'
-                        ? 'bg-[#742284]/10 border-2 border-[#742284] text-[#742284]'
-                        : 'border-2 border-border bg-background hover:bg-muted text-muted-foreground'
-                    }`}
-                  >
-                    <img src={yapeLogo} alt="Yape" className="w-6 h-6 rounded object-contain" />
-                    Yape
-                  </button>
-                </div>
-
-                {/* Content */}
-                <div className="px-6 pb-6">
-                  <AnimatePresence mode="wait">
-                    {payMethod === 'mercadopago' ? (
-                      <motion.div
-                        key="mercadopago"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="space-y-4"
-                      >
-                        <p className="text-sm text-muted-foreground text-center">
-                          Paga de forma segura con tarjeta, transferencia o billetera digital.
-                        </p>
-                        <a
-                          href={
-                            type === 'plan' && extraCredits === 0 && mercadoPagoSubscriptionLinks[planKey]
-                              ? (billing === 'annual'
-                                  ? mercadoPagoSubscriptionLinks[planKey].annual
-                                  : mercadoPagoSubscriptionLinks[planKey].monthly)
-                              : MERCADO_PAGO_GENERIC_LINK
-                          }
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => {
-                            trackInitiateCheckout({
-                              value: totalPrice,
-                              contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
-                              contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
-                            });
-                          }}
-                          className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-bold text-base text-white transition-all hover:opacity-90"
-                          style={{ background: 'linear-gradient(135deg, #009ee3, #003087)' }}
-                        >
-                          <CreditCard className="w-5 h-5" />
-                          Pagar S/.{totalPrice.toFixed(2)}
-                        </a>
-                        {(type === 'credits' || extraCredits > 0) && (
-                          <p className="text-center text-xs text-muted-foreground">
-                            Ingresa <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span> como monto en Mercado Pago
-                          </p>
-                        )}
-                        <p className="text-xs text-muted-foreground text-center">
-                          Activación automática · Pago seguro
-                        </p>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="yape"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="space-y-4"
-                      >
-                        <p className="text-sm text-muted-foreground text-center">
-                          Escanea el QR con tu app de Yape por <span className="text-primary font-semibold">S/.{totalPrice.toFixed(2)}</span>
-                        </p>
-                        <div className="flex justify-center">
-                          <img
-                            src={yapeQr}
-                            alt="QR de Yape para pagar"
-                            className="w-48 h-48 rounded-xl object-contain"
-                          />
-                        </div>
-                        <a
-                          href={`https://wa.me/51906160948?text=${encodeURIComponent(
-                            `¡Hola! Acabo de realizar el pago por Yape para:\n📦 ${baseName}${extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''}\n💰 Total: S/.${totalPrice.toFixed(2)}\nAdjunto mi comprobante.`
-                          )}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => {
-                            trackInitiateCheckout({
-                              value: totalPrice,
-                              contentName: baseName + (extraCredits > 0 ? ` + ${extraCredits} créditos extra` : ''),
-                              contentId: type === 'plan' ? planKey : `credits_${packCredits}`,
-                            });
-                          }}
-                          className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-bold text-sm text-white transition-all hover:opacity-90"
-                          style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
-                        >
-                          <MessageCircle className="w-4 h-4" />
-                          Enviar comprobante por WhatsApp
-                        </a>
-                        <p className="text-xs text-muted-foreground text-center">
-                          Activación manual · Respuesta en menos de 24h
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    <MessageCircle className="w-4 h-4" />
+                    Enviar comprobante por WhatsApp
+                  </a>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Activación manual · Respuesta en menos de 24h
+                  </p>
                 </div>
               </motion.div>
             </div>
