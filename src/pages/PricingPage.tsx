@@ -83,9 +83,9 @@ const plans = [
     name: 'Básico',
     tagline: 'Para el creador que arranca',
     monthlyPrice: 48,
-    annualPrice: 33.60,
-    annualBilled: 'S/.403/año',
-    savings: 'S/.173',
+    annualPrice: 38.40,
+    annualBilled: 'S/.461/año',
+    savings: 'S/.115',
     cta: 'Comenzar',
     popular: false,
     highlighted: false,
@@ -121,9 +121,9 @@ const plans = [
     name: 'Estándar',
     tagline: 'Para el streamer activo',
     monthlyPrice: 72,
-    annualPrice: 50.40,
-    annualBilled: 'S/.605/año',
-    savings: 'S/.259',
+    annualPrice: 57.60,
+    annualBilled: 'S/.691/año',
+    savings: 'S/.173',
     cta: 'Comenzar',
     popular: true,
     highlighted: true,
@@ -164,9 +164,9 @@ const plans = [
     name: 'Premium',
     tagline: 'Para alto volumen',
     monthlyPrice: 126,
-    annualPrice: 88.20,
-    annualBilled: 'S/.1,058/año',
-    savings: 'S/.454',
+    annualPrice: 100.80,
+    annualBilled: 'S/.1,210/año',
+    savings: 'S/.302',
     cta: 'Comenzar',
     popular: false,
     highlighted: false,
@@ -261,7 +261,7 @@ const PricingPage = () => {
             </button>
             {isAnnual && (
               <span className="text-xs font-bold px-3 py-1 rounded-full bg-secondary/20 text-secondary border border-secondary/30">
-                Ahorra hasta 30%
+                Ahorra hasta 20%
               </span>
             )}
           </motion.div>
