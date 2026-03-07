@@ -51,7 +51,7 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
