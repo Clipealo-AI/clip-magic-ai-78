@@ -17,7 +17,7 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center">
         {/* Top badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex items-center justify-center gap-3 mb-6 flex-wrap"
@@ -39,7 +39,7 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
 
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6"
@@ -51,7 +51,7 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
@@ -61,7 +61,7 @@ const HeroSection = ({ onFreeClick }: HeroSectionProps) => {
 
         {/* URL Input Bar */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-0 max-w-2xl mx-auto"
