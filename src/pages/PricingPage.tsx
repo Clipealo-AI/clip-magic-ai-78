@@ -128,7 +128,7 @@ const plans = [
     cta: 'Comenzar',
     popular: true,
     highlighted: true,
-    platforms: ['YouTube', 'Twitch', 'Kick'],
+    platforms: ['YouTube', 'Twitch', 'Kick', 'GoogleDrive'],
     hoursLabel: 'CRÉDITOS POR MES',
     hours: [
       { label: '900 créditos', value: '≈ 15h' },
