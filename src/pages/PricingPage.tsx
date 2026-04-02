@@ -664,7 +664,7 @@ const PricingPage = () => {
                         contentName: `${pack.credits} créditos`,
                         contentId: `credits_${pack.credits}`,
                       });
-                      navigate(`/checkout?type=credits&credits=${pack.credits}`);
+                      window.location.href = 'https://app.clipealo-ai.com/plan';
                     }}
                     className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
                     pack.popular
