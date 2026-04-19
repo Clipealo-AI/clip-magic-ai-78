@@ -145,7 +145,6 @@ const plans = [
       { text: 'Editor de subtítulos animados', soon: true },
       { text: 'Reframing automático vertical/horizontal', soon: true },
       { text: 'Sin marca de agua' },
-      { text: 'Marca de agua personalizada con @handle' },
       { text: '25 GB · 90 días almacenamiento' },
       { text: 'Publicar desde Clipealo a TikTok + YouTube Shorts + Instagram', soon: true, icon: 'social' },
       { text: 'Analytics de clips', soon: true },
