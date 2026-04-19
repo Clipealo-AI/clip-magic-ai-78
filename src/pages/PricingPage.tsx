@@ -598,7 +598,7 @@ const PricingPage = () => {
                     <p className="text-sm text-muted-foreground mb-4">{plan.tagline}</p>
 
                     <div className="flex items-baseline gap-1 mb-4">
-                      <span className="text-sm text-muted-foreground">S/.</span>
+                      <span className="text-sm text-muted-foreground">{symbol}</span>
                       <span className="text-5xl font-extrabold">0</span>
                       <span className="text-sm text-muted-foreground">/mes</span>
                     </div>
@@ -606,17 +606,10 @@ const PricingPage = () => {
                     <p className="text-xs text-muted-foreground mb-4">{plan.includesCopy}</p>
 
                     <ul className="space-y-2 mb-4">
-                      {plan.features.map((f, i) => (
+                      {plan.features.filter((f: any) => !f.soon).map((f, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm">
                           <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
-                          <span>
-                            {f.text}
-                            {f.soon && (
-                              <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-medium">
-                                pronto
-                              </span>
-                            )}
-                          </span>
+                          <span>{f.text}</span>
                         </li>
                       ))}
                     </ul>
