@@ -683,11 +683,11 @@ const PricingPage = () => {
                     <span>≈ {pack.hours} {pack.hours === 1 ? 'hora' : 'horas'}</span>
                   </div>
 
-                  <div className="mb-1" data-product-price={pack.price} data-currency="PEN">
-                    <span className="text-sm text-muted-foreground">S/.</span>
-                    <span className="text-3xl font-extrabold ml-0.5" data-price-value={pack.price}>{pack.price.toFixed(2)}</span>
+                  <div className="mb-1" data-product-price={convert(pack.price)} data-currency={currency}>
+                    <span className="text-sm text-muted-foreground">{symbol}</span>
+                    <span className="text-3xl font-extrabold ml-0.5" data-price-value={convert(pack.price)}>{formatPrice(pack.price)}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground mb-5">S/.{pack.perCredit} por crédito</p>
+                  <p className="text-xs text-muted-foreground mb-5">{symbol}{currency === 'PEN' ? pack.perCredit : (parseFloat(pack.perCredit) / USD_RATE).toFixed(3)} por crédito</p>
 
                   <button
                     onClick={() => {
