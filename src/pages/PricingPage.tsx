@@ -298,25 +298,43 @@ const PricingPage = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="flex items-center justify-center gap-4 mb-12"
+            className="flex flex-col items-center justify-center gap-4 mb-12"
           >
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`text-sm font-semibold px-4 py-2 rounded-full transition-colors ${!isAnnual ? 'bg-foreground text-background' : 'text-muted-foreground hover:text-foreground'}`}
-            >
-              Mensual
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`text-sm font-semibold px-4 py-2 rounded-full transition-colors ${isAnnual ? 'bg-foreground text-background' : 'text-muted-foreground hover:text-foreground'}`}
-            >
-              Anual
-            </button>
-            {isAnnual && (
-              <span className="text-xs font-bold px-3 py-1 rounded-full bg-secondary/20 text-secondary border border-secondary/30">
-                Ahorra hasta 20%
-              </span>
-            )}
+            <div className="flex items-center justify-center gap-4">
+              <button
+                onClick={() => setIsAnnual(false)}
+                className={`text-sm font-semibold px-4 py-2 rounded-full transition-colors ${!isAnnual ? 'bg-foreground text-background' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                Mensual
+              </button>
+              <button
+                onClick={() => setIsAnnual(true)}
+                className={`text-sm font-semibold px-4 py-2 rounded-full transition-colors ${isAnnual ? 'bg-foreground text-background' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                Anual
+              </button>
+              {isAnnual && (
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-secondary/20 text-secondary border border-secondary/30">
+                  Ahorra hasta 20%
+                </span>
+              )}
+            </div>
+
+            {/* Currency switch */}
+            <div className="inline-flex items-center bg-card border border-border rounded-full p-1">
+              <button
+                onClick={() => setCurrency('PEN')}
+                className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-colors ${currency === 'PEN' ? 'bg-foreground text-background' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                🇵🇪 Soles (S/.)
+              </button>
+              <button
+                onClick={() => setCurrency('USD')}
+                className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-colors ${currency === 'USD' ? 'bg-foreground text-background' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                🇺🇸 Dólares ($)
+              </button>
+            </div>
           </motion.div>
 
           {/* Plan Cards - Básico, Estándar, Premium + Enterprise */}
