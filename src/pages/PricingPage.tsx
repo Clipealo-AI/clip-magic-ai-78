@@ -730,7 +730,7 @@ const PricingPage = () => {
               <span className="text-primary">Disponible solo por tiempo limitado antes del precio oficial.</span>
             </p>
             <p className="text-xs text-muted-foreground">
-              Todos los planes incluyen cancelación en cualquier momento · Pago seguro · Facturación en soles peruanos
+              Todos los planes incluyen cancelación en cualquier momento · Pago seguro · Facturación en {currency === 'PEN' ? 'soles peruanos' : 'dólares estadounidenses'}
             </p>
           </div>
         </div>
