@@ -141,7 +141,7 @@ const BlogArticlePage = () => {
           }}>
             <p className="text-lg font-bold text-foreground mb-2">¿Listo para probarlo?</p>
             <p className="text-sm text-muted-foreground mb-5">Clipealo detecta automáticamente los mejores momentos de tus VODs. 60 minutos gratis.</p>
-            <a href="/#waitlist" className="btn-cta inline-block text-base">
+            <a href="https://app.clipealo-ai.com/?utm_source=landing_blog_article&utm_medium=cta" className="btn-cta inline-block text-base">
               Empezar gratis →
             </a>
           </div>

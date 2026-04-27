@@ -36,7 +36,7 @@ const resourcesItems = [
   { icon: Users, label: 'Discord', description: 'Únete a la comunidad de streamers LATAM.', color: 'text-[hsl(var(--color-purple))]', href: 'https://discord.com/invite/XjhXBtaK6A' },
   { icon: BookOpen, label: 'Blog', description: 'Tips para crecer como streamer con IA.', color: 'text-[hsl(var(--color-cyan))]', href: '/blog' },
   { icon: HelpCircle, label: 'FAQ', description: 'Resolvemos tus dudas más frecuentes.', color: 'text-[hsl(var(--color-blue))]', href: '#faq' },
-  { icon: FileText, label: 'Guías', description: 'Aprende a sacar el máximo de Clipealo.', color: 'text-[hsl(var(--color-pink))]', href: '#' },
+  { icon: FileText, label: 'Guías', description: 'Aprende a sacar el máximo de Clipealo.', color: 'text-[hsl(var(--color-pink))]', href: '/blog' },
 ];
 
 type DropdownKey = 'funcionalidades' | 'casos' | 'recursos' | null;
@@ -145,7 +145,7 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.96 }}
                       transition={{ duration: 0.15 }}
-                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-popover border border-border rounded-xl shadow-2xl shadow-black/40 p-4 z-[100] ${
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-popover border border-border rounded-xl shadow-2xl shadow-black/40 p-4 z-[100] max-w-[calc(100vw-2rem)] ${
                         item.items.length > 4 ? 'w-[700px]' : 'w-[500px]'
                       }`}
                       onMouseEnter={() => handleMouseEnter(item.key)}

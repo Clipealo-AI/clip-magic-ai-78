@@ -75,7 +75,7 @@ const StickyBottomBar = () => {
   return (
     <div
       ref={barRef}
-      className="fixed left-1/2 bottom-6 px-4 w-full max-w-[900px] pointer-events-none"
+      className="fixed left-1/2 bottom-4 md:bottom-6 px-3 md:px-4 w-full max-w-[900px] pointer-events-none"
       style={{
         zIndex: 9999,
         transform: `translateX(-50%) translateY(${visible && !hidden ? '0' : '120px'})`,
@@ -84,7 +84,7 @@ const StickyBottomBar = () => {
       }}
     >
       <div
-        className="pointer-events-auto flex items-center gap-3 rounded-full px-3 md:px-5 py-2.5"
+        className="pointer-events-auto flex items-center gap-2 md:gap-3 rounded-full px-2.5 md:px-5 py-2 md:py-2.5"
         style={{
           background: '#0d0d0d',
           border: '1px solid rgba(255, 45, 135, 0.3)',
@@ -117,7 +117,7 @@ const StickyBottomBar = () => {
         {/* CTA Button */}
         <button
           onClick={handleRedirect}
-          className="flex-1 md:flex-none flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all hover:scale-[1.02]"
+          className="flex-1 md:flex-none flex items-center justify-center gap-1.5 rounded-full px-4 md:px-5 py-2.5 text-xs md:text-sm font-bold text-white transition-all hover:scale-[1.02] whitespace-nowrap"
           style={{
             background: 'hsl(var(--color-pink))',
             boxShadow: '0 0 16px rgba(255, 45, 135, 0.4)',

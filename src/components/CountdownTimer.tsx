@@ -27,7 +27,9 @@ const CountdownTimer = () => {
       launchDate = Date.now() + THIRTY_DAYS_MS;
       try {
         localStorage.setItem(STORAGE_KEY, String(launchDate));
-      } catch {}
+      } catch {
+        // Ignore storage errors in private/incognito contexts.
+      }
     }
 
     const calculateTimeLeft = () => {

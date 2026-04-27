@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Logo from '@/assets/clipealo-logo.svg';
 import HeroImage from '@/assets/thankyou-hero.jpg';
-import { supabase } from '@/integrations/supabase/client';
 
 // Discord icon
 const DiscordIcon = ({ className }: { className?: string }) => (
@@ -14,20 +12,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 );
 
 const ThankYouPage = () => {
-  const [position, setPosition] = useState(5);
-
-  useEffect(() => {
-    const fetchPosition = async () => {
-      const { count, error } = await supabase
-        .from('beta_subscribers')
-        .select('*', { count: 'exact', head: true });
-      
-      if (!error && count !== null) {
-        setPosition(count + 5);
-      }
-    };
-    fetchPosition();
-  }, []);
+  const position = 5;
 
   return (
     <main className="min-h-screen bg-background text-foreground">

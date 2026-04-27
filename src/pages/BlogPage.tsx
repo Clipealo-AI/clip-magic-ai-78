@@ -170,7 +170,7 @@ const BlogPage = () => {
             Procesa tu primer VOD gratis. Sin tarjeta. Sin setup.
           </p>
           <a
-            href="/#waitlist"
+            href="https://app.clipealo-ai.com/?utm_source=landing_blog&utm_medium=cta"
             className="btn-cta inline-block text-base"
           >
             Empezar con Clipealo gratis →

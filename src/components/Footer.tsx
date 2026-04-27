@@ -18,12 +18,12 @@ const footerColumns = [
   {
     title: 'FUNCIONALIDADES',
     links: [
-      { label: 'Clips automáticos', href: '#' },
-      { label: 'Subtítulos con IA', href: '#' },
-      { label: 'Reencuadre automático', href: '#' },
-      { label: 'Score de viralidad', href: '#' },
-      { label: 'Detección LATAM', href: '#' },
-      { label: 'Título y descripción con IA', href: '#' },
+      { label: 'Clips automáticos', href: '/#faq' },
+      { label: 'Subtítulos con IA', href: '/#faq' },
+      { label: 'Reencuadre automático', href: '/#faq' },
+      { label: 'Score de viralidad', href: '/#faq' },
+      { label: 'Detección LATAM', href: '/#faq' },
+      { label: 'Título y descripción con IA', href: '/#faq' },
     ],
   },
   {
@@ -42,10 +42,10 @@ const footerColumns = [
   {
     title: 'CANALES',
     links: [
-      { label: 'Instagram Reels', href: '#' },
-      { label: 'Facebook Reels', href: '#' },
-      { label: 'TikTok', href: '#' },
-      { label: 'YouTube Shorts', href: '#' },
+      { label: 'Instagram Reels', href: 'https://www.instagram.com/clipealo.pe/' },
+      { label: 'Facebook Reels', href: 'https://www.facebook.com/clipealo.pe' },
+      { label: 'TikTok', href: 'https://www.tiktok.com/@clipealo.ai?lang=en' },
+      { label: 'YouTube Shorts', href: 'https://www.youtube.com/@clipealo' },
     ],
   },
   {
@@ -55,7 +55,7 @@ const footerColumns = [
       { label: 'Precios', href: '/precios' },
       { label: 'Política de Privacidad', href: '/politica-de-privacidad' },
       { label: 'Términos y Condiciones', href: '/terminos-y-condiciones' },
-      { label: 'Contacto', href: '#' },
+      { label: 'Contacto', href: 'mailto:contacto@clipealo.com' },
     ],
   },
 ];
@@ -114,6 +114,8 @@ const Footer = () => {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                     >
                       {link.label}
