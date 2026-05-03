@@ -14,7 +14,7 @@ interface SEOHeadProps {
 const BASE_URL = 'https://www.clipealo-ai.com';
 const DEFAULT_OG_IMAGE = 'https://storage.googleapis.com/gpt-engineer-file-uploads/uUehV3bYuzgNzbsXMdDHUepZq4z2/social-images/social-1770175321286-file (2).jpg';
 
-const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website', jsonLd }: SEOHeadProps) => {
+const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website', jsonLd, publishedTime, modifiedTime }: SEOHeadProps) => {
   useEffect(() => {
     const fullTitle = title.includes('Clipealo') ? title : `${title} | Clipealo`;
     document.title = fullTitle;
