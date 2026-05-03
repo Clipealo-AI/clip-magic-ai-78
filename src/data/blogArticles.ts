@@ -27,6 +27,10 @@ export interface BlogArticle {
   };
   cover: string;
   content: string[];
+  isoDate: string;
+  modifiedDate: string;
+  displayDate: string;
+  internalLinks: { label: string; href: string }[];
 }
 
 export const categoryColors: Record<BlogCategory, string> = {
@@ -45,6 +49,13 @@ export const blogArticles: BlogArticle[] = [
     date: '15 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover1,
+    isoDate: '2025-02-15T00:00:00-05:00',
+    modifiedDate: '2025-02-15T00:00:00-05:00',
+    displayDate: '15 de febrero de 2025',
+    internalLinks: [
+      { label: 'Ver precios de Clipealo', href: '/precios' },
+      { label: 'Cómo funciona para cliperos', href: '/casos/cliperos' },
+    ],
     content: [
       '## Introducción',
       'Hay un número que lo determina todo en TikTok: **3**.',
@@ -80,6 +91,13 @@ export const blogArticles: BlogArticle[] = [
     date: '12 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover2,
+    isoDate: '2025-02-12T00:00:00-05:00',
+    modifiedDate: '2025-02-12T00:00:00-05:00',
+    displayDate: '12 de febrero de 2025',
+    internalLinks: [
+      { label: 'Guía para cliperos: de 2 a 10 clientes', href: '/blog/de-2-a-10-clientes' },
+      { label: 'Clipealo para streamers', href: '/casos/streamers' },
+    ],
     content: [
       '## Introducción',
       'El problema clásico del clipero: tienes un VOD de 4 horas. Sabes que ahí dentro hay 10 clips que pueden viralizarse. El proceso manual es: ponerte los auriculares, dale play, y ver las 4 horas enteras.',
@@ -113,6 +131,13 @@ export const blogArticles: BlogArticle[] = [
     date: '10 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Research', initial: 'C' },
     cover: cover3,
+    isoDate: '2025-02-10T00:00:00-05:00',
+    modifiedDate: '2025-02-10T00:00:00-05:00',
+    displayDate: '10 de febrero de 2025',
+    internalLinks: [
+      { label: 'Los streamers que publican clips crecen 5x más rápido', href: '/blog/streamers-clips-crecen-5x' },
+      { label: 'Ver precios de Clipealo', href: '/precios' },
+    ],
     content: [
       '## Introducción',
       'De cada 10 personas que empiezan a hacer stream hoy, 8 o 9 habrán parado antes de que termine el año.',
@@ -145,6 +170,13 @@ export const blogArticles: BlogArticle[] = [
     date: '8 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover4,
+    isoDate: '2025-02-08T00:00:00-05:00',
+    modifiedDate: '2025-02-08T00:00:00-05:00',
+    displayDate: '8 de febrero de 2025',
+    internalLinks: [
+      { label: 'Clipealo para cliperos', href: '/casos/cliperos' },
+      { label: 'La regla de los 3 segundos', href: '/blog/regla-3-segundos' },
+    ],
     content: [
       '## Introducción',
       'No todos los momentos de un stream son igual de clipables. Hay tipos de momentos que, independientemente del streamer, el juego o el idioma, funcionan sistemáticamente bien en TikTok.',
@@ -172,6 +204,13 @@ export const blogArticles: BlogArticle[] = [
     date: '5 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover5,
+    isoDate: '2025-02-05T00:00:00-05:00',
+    modifiedDate: '2025-02-05T00:00:00-05:00',
+    displayDate: '5 de febrero de 2025',
+    internalLinks: [
+      { label: 'Ver precios de Clipealo', href: '/precios' },
+      { label: 'Clipealo para agencias', href: '/casos/agencias' },
+    ],
     content: [
       '## Introducción',
       'El clipero promedio tiene un techo muy claro: el tiempo de sus 24 horas. Si cada streamer requiere 4-6 horas de trabajo semanal, un clipero a tiempo completo puede atender máximo 4-5 streamers antes de quemarse.',
@@ -200,6 +239,13 @@ export const blogArticles: BlogArticle[] = [
     date: '3 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Research', initial: 'C' },
     cover: cover6,
+    isoDate: '2025-02-03T00:00:00-05:00',
+    modifiedDate: '2025-02-03T00:00:00-05:00',
+    displayDate: '3 de febrero de 2025',
+    internalLinks: [
+      { label: 'Clipealo para cliperos', href: '/casos/cliperos' },
+      { label: 'Kick vs Twitch para cliperos', href: '/blog/kick-vs-twitch' },
+    ],
     content: [
       '## Introducción',
       'En Perú, Colombia y Argentina existe un oficio que no aparece en los libros de economía laboral todavía, pero que paga el alquiler de miles de jóvenes: **el clipero**.',
@@ -226,6 +272,13 @@ export const blogArticles: BlogArticle[] = [
     date: '1 Feb 2025',
     author: { name: 'Equipo Clipealo', role: 'Research', initial: 'C' },
     cover: cover7,
+    isoDate: '2025-02-01T00:00:00-05:00',
+    modifiedDate: '2025-02-01T00:00:00-05:00',
+    displayDate: '1 de febrero de 2025',
+    internalLinks: [
+      { label: 'Clipealo para streamers', href: '/casos/streamers' },
+      { label: 'Clip economy en LATAM', href: '/blog/clip-economy-latam' },
+    ],
     content: [
       '## Introducción',
       'Hasta hace tres años, la pregunta para un clipero era simple: Twitch. Era la plataforma dominante del streaming.',
@@ -252,6 +305,13 @@ export const blogArticles: BlogArticle[] = [
     date: '28 Ene 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover8,
+    isoDate: '2025-01-28T00:00:00-05:00',
+    modifiedDate: '2025-01-28T00:00:00-05:00',
+    displayDate: '28 de enero de 2025',
+    internalLinks: [
+      { label: 'El flujo perfecto del clipero', href: '/blog/flujo-perfecto-clipero' },
+      { label: 'Ver precios de Clipealo', href: '/precios' },
+    ],
     content: [
       '## Introducción',
       'La mayoría de cliperos dedica horas a encontrar el momento perfecto, horas más a editar el clip, y 20 segundos a escribir el título. Ese desequilibrio es un error costoso.',
@@ -278,6 +338,13 @@ export const blogArticles: BlogArticle[] = [
     date: '25 Ene 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover9,
+    isoDate: '2025-01-25T00:00:00-05:00',
+    modifiedDate: '2025-01-25T00:00:00-05:00',
+    displayDate: '25 de enero de 2025',
+    internalLinks: [
+      { label: 'Cómo escribir títulos que consiguen 10x más clicks', href: '/blog/titulos-10x-clicks' },
+      { label: 'Clipealo para cliperos', href: '/casos/cliperos' },
+    ],
     content: [
       '## Introducción',
       'El enemigo del clipero no es la falta de talento. Es el tiempo. Cada minuto que se tarda en procesar un VOD es un minuto que no se puede dedicar al siguiente streamer o al siguiente clip.',
@@ -303,6 +370,13 @@ export const blogArticles: BlogArticle[] = [
     date: '22 Ene 2025',
     author: { name: 'Equipo Clipealo', role: 'Research', initial: 'C' },
     cover: cover10,
+    isoDate: '2025-01-22T00:00:00-05:00',
+    modifiedDate: '2025-01-22T00:00:00-05:00',
+    displayDate: '22 de enero de 2025',
+    internalLinks: [
+      { label: 'Por qué el 83% de los streamers abandona', href: '/blog/83-streamers-abandona' },
+      { label: 'Clipealo para creadores', href: '/casos/creadores' },
+    ],
     content: [
       '## Introducción',
       'Si hay una conclusión que se repite en el análisis de canales de streaming en crecimiento en LATAM, es esta: los streamers que publican clips de forma consistente crecen entre **3x y 5x más rápido** que los que solo transmiten en vivo.',
@@ -330,6 +404,13 @@ export const blogArticles: BlogArticle[] = [
     date: '20 Ene 2025',
     author: { name: 'Equipo Clipealo', role: 'Content', initial: 'C' },
     cover: cover11,
+    isoDate: '2025-01-20T00:00:00-05:00',
+    modifiedDate: '2025-01-20T00:00:00-05:00',
+    displayDate: '20 de enero de 2025',
+    internalLinks: [
+      { label: 'La regla de los 3 segundos en TikTok', href: '/blog/regla-3-segundos' },
+      { label: 'Clipealo para podcasters', href: '/casos/podcasters' },
+    ],
     content: [
       '## Introducción',
       'El 85% de los videos en redes sociales se ven sin sonido. Lee eso de nuevo.',
@@ -357,6 +438,13 @@ export const blogArticles: BlogArticle[] = [
     date: '18 Ene 2025',
     author: { name: 'Equipo Clipealo', role: 'Research', initial: 'C' },
     cover: cover12,
+    isoDate: '2025-01-18T00:00:00-05:00',
+    modifiedDate: '2025-01-18T00:00:00-05:00',
+    displayDate: '18 de enero de 2025',
+    internalLinks: [
+      { label: 'Clip economy en LATAM', href: '/blog/clip-economy-latam' },
+      { label: 'Clipealo para comunidades', href: '/casos/comunidades' },
+    ],
     content: [
       '## Introducción',
       'Los números son claros y apuntan todos en la misma dirección: Latinoamérica no es un mercado secundario del streaming. Es el mercado de mayor crecimiento del planeta en esta categoría.',
