@@ -17,6 +17,56 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Feature Pages -->
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/clips-automaticos-con-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/editor-subtitulos-estilos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/exportacion-en-masa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/plantillas-de-marca</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/gestion-proyectos-carpetas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/exporta-dos-formatos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.clipealo-ai.com/funciones/ia-entrenada-contenido-latam</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+
   <!-- Blog Articles -->
   <url>
     <loc>https://www.clipealo-ai.com/blog/regla-3-segundos</loc>
