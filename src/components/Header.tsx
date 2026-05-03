@@ -11,14 +11,13 @@ const DiscordIcon = () => (
 );
 
 const featuresItems = [
-  { icon: Zap, label: 'Clips automáticos', description: 'Pega el link de tu stream. La IA procesa el video completo y genera clips listos para publicar.', color: 'text-[hsl(var(--color-pink))]' },
-  { icon: Target, label: 'Entrenada en contenido LATAM', description: 'Detecta momentos virales en español. Entiende jerga local y contexto cultural.', color: 'text-[hsl(var(--color-purple))]' },
-  { icon: BarChart3, label: 'Score de cada clip', description: 'Sistema de 4 métricas: Gancho, Ritmo, Formato, Potencial. Ves qué clips tienen más chance antes de publicar.', color: 'text-[hsl(var(--color-cyan))]' },
-  { icon: MessageSquare, label: 'Subtítulos automáticos', description: 'Genera subtítulos sincronizados en menos de 1 minuto. No se requiere edición manual.', color: 'text-[hsl(var(--color-blue))]' },
-  { icon: Smartphone, label: 'Exporta en 2 formatos', description: '16:9 para YouTube/Kick y 9:16 para TikTok/Reels. Reencuadre automático en 1 clic.', color: 'text-[hsl(var(--color-pink))]' },
-  { icon: PenTool, label: 'Título y descripción con IA', description: 'Genera copy optimizado para cada clip. Incluye contexto de por qué ese momento es viral.', color: 'text-[hsl(var(--color-purple))]' },
-  { icon: FolderOpen, label: 'Gestión de proyectos', description: 'Organiza todos tus streams procesados. Descarga clips individuales o todos a la vez.', color: 'text-[hsl(var(--color-cyan))]' },
-  { icon: Search, label: 'Búsqueda inteligente', description: 'Describe qué tipo de momentos buscas. La IA encuentra las escenas exactas en tu video.', color: 'text-[hsl(var(--color-blue))]' },
+  { icon: Zap, label: 'Clips automáticos', description: 'Pega el link de tu stream. La IA procesa el video completo y genera clips listos para publicar.', color: 'text-[hsl(var(--color-pink))]', href: '/funciones/clips-automaticos-con-ia' },
+  { icon: Target, label: 'Entrenada en contenido LATAM', description: 'Detecta momentos virales en español. Entiende jerga local y contexto cultural.', color: 'text-[hsl(var(--color-purple))]', href: '/funciones/ia-entrenada-contenido-latam' },
+  { icon: MessageSquare, label: 'Editor de subtítulos', description: 'Personaliza fuentes, colores, animaciones y posición de subtítulos automáticos.', color: 'text-[hsl(var(--color-cyan))]', href: '/funciones/editor-subtitulos-estilos' },
+  { icon: Smartphone, label: 'Exporta en 2 formatos', description: '16:9 para YouTube/Kick y 9:16 para TikTok/Reels. Reencuadre automático en 1 clic.', color: 'text-[hsl(var(--color-blue))]', href: '/funciones/exporta-dos-formatos' },
+  { icon: PenTool, label: 'Plantillas de marca', description: 'Configura el branding de cada cliente y aplícalo a todos sus clips en un clic.', color: 'text-[hsl(var(--color-pink))]', href: '/funciones/plantillas-de-marca' },
+  { icon: FolderOpen, label: 'Gestión de proyectos', description: 'Organiza todos tus videos y clips por cliente, campaña o fecha.', color: 'text-[hsl(var(--color-purple))]', href: '/funciones/gestion-proyectos-carpetas' },
+  { icon: Search, label: 'Exportación en masa', description: 'Descarga todos los clips de un proyecto en un solo clic.', color: 'text-[hsl(var(--color-cyan))]', href: '/funciones/exportacion-en-masa' },
 ];
 
 const useCasesItems = [

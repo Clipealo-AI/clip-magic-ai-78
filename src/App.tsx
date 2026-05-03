@@ -12,6 +12,8 @@ import BlogPage from "./pages/BlogPage";
 import BlogArticlePage from "./pages/BlogArticlePage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsPage from "./pages/TermsPage";
+import FeaturesIndexPage from "./pages/FeaturesIndexPage";
+import FeaturePage from "./pages/FeaturePage";
 import CliperosPage from "./pages/use-cases/CliperosPage";
 import StreamersPage from "./pages/use-cases/StreamersPage";
 import PodcastersPage from "./pages/use-cases/PodcastersPage";
@@ -44,6 +46,8 @@ const App = () => (
           <Route path="/casos/marcas" element={<MarcasPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogArticlePage />} />
+          <Route path="/funciones" element={<FeaturesIndexPage />} />
+          <Route path="/funciones/:slug" element={<FeaturePage />} />
           <Route path="/politica-de-privacidad" element={<PrivacyPolicyPage />} />
           <Route path="/terminos-y-condiciones" element={<TermsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
