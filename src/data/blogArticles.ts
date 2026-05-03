@@ -35,6 +35,7 @@ export interface BlogArticle {
   modifiedDate: string;
   displayDate: string;
   internalLinks: { label: string; href: string }[];
+  faqs?: { question: string; answer: string }[];
 }
 
 export const categoryColors: Record<BlogCategory, string> = {
