@@ -487,6 +487,13 @@ export const blogArticles: BlogArticle[] = [
       { label: 'Ver precios de Clipealo', href: '/precios' },
       { label: 'Clipealo para agencias', href: '/casos/agencias' },
     ],
+    faqs: [
+      { question: '¿Cuánto tiempo tarda en procesar una entrevista de 1 hora?', answer: 'Entre 10 y 20 minutos dependiendo de la duración y calidad del audio.' },
+      { question: '¿En qué formatos entrega los clips?', answer: '9:16 para TikTok, Reels y Shorts. 16:9 para YouTube y Twitch. Puedes elegir ambos.' },
+      { question: '¿Los subtítulos salen en español latino?', answer: 'Sí. La IA está entrenada específicamente en español latino con reconocimiento de modismos y jerga local.' },
+      { question: '¿Puedo usarlo para entrevistas de mis clientes?', answer: 'Sí. Puedes gestionar múltiples proyectos y aplicar plantillas de marca diferentes por cliente.' },
+      { question: '¿Cuánto cuesta?', answer: 'Desde S/.72/mes con el plan Pro. Plan gratuito disponible con 60 minutos incluidos.' },
+    ],
     content: [
       '## Introducción',
       'Las entrevistas son uno de los formatos de video más ricos en contenido valioso, pero también uno de los más difíciles de reutilizar. Una entrevista de 60 minutos puede contener 10, 15 o hasta 20 momentos publicables en redes sociales, pero extraerlos manualmente requiere ver el video completo, marcar timestamps, recortar, agregar subtítulos y adaptar el formato. Ese proceso puede tomar horas.',
