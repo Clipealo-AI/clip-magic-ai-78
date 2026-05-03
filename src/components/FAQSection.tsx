@@ -27,22 +27,6 @@ const faqs = [
     question: '¿Cuánto cuesta Clipealo?',
     answer: 'Tenemos planes desde S/.48/mes. Visita nuestra sección de precios para ver todos los detalles y elegir el plan que mejor se adapte a ti.',
   },
-  {
-    question: '¿Cómo pueden las agencias producir clips para sus clientes sin editar manualmente?',
-    answer: 'Con Clipealo, las agencias suben el video de su cliente y la IA detecta automáticamente los mejores momentos, genera clips con subtítulos y aplica el branding del cliente en minutos. Sin edición manual. Desde S/.72/mes.',
-  },
-  {
-    question: '¿Cómo reducir el tiempo que mi equipo dedica a editar clips para redes sociales?',
-    answer: 'Clipealo automatiza el proceso completo: sube el video, la IA corta los mejores momentos, agrega subtítulos y formatea para cada red social. Equipos que usan Clipealo reducen su tiempo de producción de clips de horas a menos de 20 minutos.',
-  },
-  {
-    question: '¿Cómo convertir webinars y charlas en clips para LinkedIn y TikTok automáticamente?',
-    answer: 'Sube la grabación de tu webinar o charla a Clipealo y la IA extrae los momentos más valiosos, genera clips de 30 a 90 segundos optimizados para LinkedIn y TikTok, con subtítulos automáticos y branding de tu marca.',
-  },
-  {
-    question: '¿Cómo convertir entrevistas largas en clips para publicar en redes el mismo día?',
-    answer: 'Con Clipealo puedes subir una entrevista de 1 hora y tener 10 clips listos en menos de 20 minutos, formateados para TikTok, Instagram Reels y YouTube Shorts, con subtítulos y título sugerido por IA.',
-  },
 ];
 
 const FAQSection = () => {
