@@ -12,8 +12,8 @@ const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Clipealo - Clips Virales Automáticos con IA para Streamers y Cliperos LATAM"
-        description="Herramienta de IA #1 en LATAM para crear clips virales de YouTube, Twitch y Kick. Detecta los mejores momentos, corta con precisión y prepara clips para TikTok, Reels y Shorts. 60 minutos gratis."
+        title="Clipealo — Clips con IA para Agencias, Editores y Cliperos"
+        description="Clipealo detecta automáticamente los mejores momentos de tus videos y genera clips listos para TikTok, Reels y Shorts. Para agencias, editores y cliperos en LATAM. Desde S/.35/mes."
         canonicalPath="/"
       />
       <Header />
