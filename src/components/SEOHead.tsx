@@ -40,7 +40,9 @@ const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website',
     setMeta('name', 'twitter:card', 'summary_large_image');
 
     if (canonicalPath) {
-      const url = `${BASE_URL}${canonicalPath}`;
+      // Ensure trailing slash for consistency
+      const normalizedPath = canonicalPath.endsWith('/') ? canonicalPath : `${canonicalPath}/`;
+      const url = `${BASE_URL}${normalizedPath}`;
       setMeta('property', 'og:url', url);
       setMeta('name', 'twitter:url', url);
       let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -50,6 +52,22 @@ const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website',
         document.head.appendChild(link);
       }
       link.setAttribute('href', url);
+
+      // Hreflang tags
+      const setHreflang = (hreflangValue: string) => {
+        const selector = `link[rel="alternate"][hreflang="${hreflangValue}"]`;
+        let hreflangEl = document.querySelector(selector) as HTMLLinkElement | null;
+        if (!hreflangEl) {
+          hreflangEl = document.createElement('link');
+          hreflangEl.setAttribute('rel', 'alternate');
+          hreflangEl.setAttribute('hreflang', hreflangValue);
+          document.head.appendChild(hreflangEl);
+        }
+        hreflangEl.setAttribute('href', url);
+      };
+
+      setHreflang('es');
+      setHreflang('x-default');
     }
 
     // Article meta tags
@@ -94,6 +112,9 @@ const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website',
       // Clean up article meta tags
       document.querySelector('meta[property="article:published_time"]')?.remove();
       document.querySelector('meta[property="article:modified_time"]')?.remove();
+      // Clean up hreflang tags
+      document.querySelector('link[rel="alternate"][hreflang="es"]')?.remove();
+      document.querySelector('link[rel="alternate"][hreflang="x-default"]')?.remove();
     };
   }, [title, description, ogImage, canonicalPath, type, jsonLd, publishedTime, modifiedTime]);
 
