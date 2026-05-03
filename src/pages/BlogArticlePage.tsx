@@ -74,6 +74,16 @@ const BlogArticlePage = () => {
     inLanguage: 'es',
   };
 
+  const faqJsonLd = article.faqs && article.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: article.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  } : null;
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -85,6 +95,12 @@ const BlogArticlePage = () => {
         publishedTime={article.isoDate}
         modifiedTime={article.modifiedDate}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Header />
 
       <article className="pt-28 pb-20 px-4">
