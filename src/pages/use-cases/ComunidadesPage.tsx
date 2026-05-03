@@ -9,7 +9,7 @@ const data: UseCasePageData = {
     title: 'Cada partida genera cientos de clips potenciales. Captura todos.',
     description: 'Clipealo convierte las transmisiones de tus torneos, ligas y partidas en highlights automáticos para crecer tu comunidad y atraer sponsors.',
     ctaText: 'Hablar con el equipo de Clipealo',
-    ctaHref: 'https://wa.me/51991351498?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20esports',
+    ctaHref: 'https://wa.me/51906160948?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20esports',
     image: heroImage,
   },
   context: {
@@ -57,7 +57,7 @@ const data: UseCasePageData = {
     title: 'Tus jugadores hacen plays increíbles todos los días. El mundo merece verlos.',
     subtitle: 'Hablemos de cómo Clipealo puede impulsar tu organización.',
     ctaText: 'Contactar al equipo de Clipealo',
-    ctaHref: 'https://wa.me/51991351498?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20esports',
+    ctaHref: 'https://wa.me/51906160948?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20esports',
   },
 };
 

@@ -9,7 +9,7 @@ const data: UseCasePageData = {
     title: 'Escala tu producción de clips x5 sin contratar más editores.',
     description: 'Clipealo automatiza el clipping de video para agencias que manejan múltiples clientes. Reduce costos, aumenta márgenes y entrega más contenido en menos tiempo.',
     ctaText: 'Hablar con el equipo de Clipealo',
-    ctaHref: 'https://wa.me/51991351498?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20agencias',
+    ctaHref: 'https://wa.me/51906160948?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20agencias',
     image: heroImage,
   },
   context: {
@@ -57,7 +57,7 @@ const data: UseCasePageData = {
     title: 'Tu agencia puede hacer más con lo que ya tiene.',
     subtitle: 'Hablemos de cómo Clipealo encaja en tu stack de herramientas.',
     ctaText: 'Contactar al equipo de Clipealo',
-    ctaHref: 'https://wa.me/51991351498?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20agencias',
+    ctaHref: 'https://wa.me/51906160948?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20agencias',
   },
 };
 
