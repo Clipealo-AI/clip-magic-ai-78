@@ -1,0 +1,121 @@
+// Lightweight metadata for build-time prerendering (no image imports)
+export interface BlogArticleMeta {
+  id: string;
+  title: string;
+  category: string;
+  metaDescription: string;
+  isoDate: string;
+  modifiedDate: string;
+  displayDate: string;
+}
+
+export const blogArticlesData: BlogArticleMeta[] = [
+  {
+    id: 'regla-3-segundos',
+    title: 'La regla de los 3 segundos: cómo hacer que tu clip no se skipee en TikTok',
+    category: 'Buenas Prácticas',
+    metaDescription: 'Aprende la regla de los 3 segundos en TikTok: qué dice el algoritmo, por qué los primeros fotogramas determinan si tu clip llega a miles o muere en 200 vistas.',
+    isoDate: '2025-02-15T00:00:00-05:00',
+    modifiedDate: '2025-02-15T00:00:00-05:00',
+    displayDate: '15 de febrero de 2025',
+  },
+  {
+    id: 'convertir-4h-stream-clips',
+    title: 'Cómo convertir 4 horas de stream en 10 clips virales',
+    category: 'Buenas Prácticas',
+    metaDescription: 'Guía práctica para cliperos y streamers: cómo extraer los mejores momentos de un VOD de horas sin tener que verlo completo, usando criterios claros y herramientas de IA.',
+    isoDate: '2025-02-12T00:00:00-05:00',
+    modifiedDate: '2025-02-12T00:00:00-05:00',
+    displayDate: '12 de febrero de 2025',
+  },
+  {
+    id: '83-streamers-abandona',
+    title: 'Por qué el 83% de los streamers abandona antes del año',
+    category: 'Por Qué Importa',
+    metaDescription: 'Los datos muestran que la gran mayoría de streamers que empiezan hoy abandonarán antes de 12 meses. Analizamos las causas reales y por qué el contenido de clips cortos es la variable que cambia el resultado.',
+    isoDate: '2025-02-10T00:00:00-05:00',
+    modifiedDate: '2025-02-10T00:00:00-05:00',
+    displayDate: '10 de febrero de 2025',
+  },
+  {
+    id: '7-momentos-virales',
+    title: 'Los 7 tipos de momentos que siempre se vuelven virales en TikTok',
+    category: 'Buenas Prácticas',
+    metaDescription: 'Guía con los 7 tipos de momentos de streaming que el algoritmo de TikTok premia consistentemente, con ejemplos de streamers latinoamericanos.',
+    isoDate: '2025-02-08T00:00:00-05:00',
+    modifiedDate: '2025-02-08T00:00:00-05:00',
+    displayDate: '8 de febrero de 2025',
+  },
+  {
+    id: 'de-2-a-10-clientes',
+    title: 'Guía definitiva para cliperos: de 2 a 10 clientes',
+    category: 'Guía de Inicio',
+    metaDescription: 'Si eres clipero y quieres escalar tu negocio sin trabajar más horas, esta guía te enseña a reorganizar tu flujo de trabajo y usar IA para multiplicar tu capacidad.',
+    isoDate: '2025-02-05T00:00:00-05:00',
+    modifiedDate: '2025-02-05T00:00:00-05:00',
+    displayDate: '5 de febrero de 2025',
+  },
+  {
+    id: 'clip-economy-latam',
+    title: 'Clip economy: el negocio de miles de millones en LATAM',
+    category: 'Por Qué Importa',
+    metaDescription: 'El ecosistema de cliperos es un fenómeno económico único de LATAM: miles de jóvenes ganando ingresos reales editando momentos de streamers.',
+    isoDate: '2025-02-03T00:00:00-05:00',
+    modifiedDate: '2025-02-03T00:00:00-05:00',
+    displayDate: '3 de febrero de 2025',
+  },
+  {
+    id: 'kick-vs-twitch',
+    title: 'Kick vs Twitch para cliperos: oportunidad en 2025',
+    category: 'Por Qué Importa',
+    metaDescription: 'Análisis comparativo de Kick y Twitch desde la perspectiva del clipero: diferencias en split de ingresos, crecimiento de audiencia y oportunidades en LATAM.',
+    isoDate: '2025-02-01T00:00:00-05:00',
+    modifiedDate: '2025-02-01T00:00:00-05:00',
+    displayDate: '1 de febrero de 2025',
+  },
+  {
+    id: 'titulos-10x-clicks',
+    title: 'Cómo escribir títulos para clips que consiguen 10x más clicks',
+    category: 'Buenas Prácticas',
+    metaDescription: 'Los títulos de tus clips en YouTube Shorts y TikTok determinan cuántas personas los ven. Estas son las fórmulas de títulos que funcionan para clips de streaming en español.',
+    isoDate: '2025-01-28T00:00:00-05:00',
+    modifiedDate: '2025-01-28T00:00:00-05:00',
+    displayDate: '28 de enero de 2025',
+  },
+  {
+    id: 'flujo-perfecto-clipero',
+    title: 'El flujo perfecto del clipero: de VOD a publicado en 20 minutos',
+    category: 'Buenas Prácticas',
+    metaDescription: 'Guía paso a paso del flujo de trabajo óptimo para cliperos: desde recibir el VOD hasta publicar en TikTok, Reels y Shorts en el menor tiempo posible.',
+    isoDate: '2025-01-25T00:00:00-05:00',
+    modifiedDate: '2025-01-25T00:00:00-05:00',
+    displayDate: '25 de enero de 2025',
+  },
+  {
+    id: 'streamers-clips-crecen-5x',
+    title: 'Por qué los streamers que publican clips crecen 5x más rápido',
+    category: 'Por Qué Importa',
+    metaDescription: 'Análisis con datos de por qué los streamers con estrategia de clips cortos en TikTok e Instagram crecen significativamente más rápido que los que solo transmiten en vivo, con casos reales de LATAM.',
+    isoDate: '2025-01-22T00:00:00-05:00',
+    modifiedDate: '2025-01-22T00:00:00-05:00',
+    displayDate: '22 de enero de 2025',
+  },
+  {
+    id: 'subtitulos-animados-retienen',
+    title: 'Subtítulos que retienen: guía para animar texto en clips de stream',
+    category: 'Guía de Inicio',
+    metaDescription: 'Guía completa para añadir subtítulos animados a clips de streaming: por qué son esenciales, las mejores herramientas y cómo configurarlos correctamente para maximizar la retención en TikTok y Reels.',
+    isoDate: '2025-01-20T00:00:00-05:00',
+    modifiedDate: '2025-01-20T00:00:00-05:00',
+    displayDate: '20 de enero de 2025',
+  },
+  {
+    id: 'latam-lidera-crecimiento',
+    title: 'LATAM lidera el crecimiento global de streaming',
+    category: 'Por Qué Importa',
+    metaDescription: 'Latinoamérica es la región de mayor crecimiento en streaming y economía de creadores a nivel global. Analizamos qué significa esto para streamers, cliperos y creadores de contenido en Perú y Colombia.',
+    isoDate: '2025-01-18T00:00:00-05:00',
+    modifiedDate: '2025-01-18T00:00:00-05:00',
+    displayDate: '18 de enero de 2025',
+  },
+];

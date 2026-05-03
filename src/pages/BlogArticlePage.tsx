@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Calendar } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -62,13 +62,14 @@ const BlogArticlePage = () => {
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: article.title,
     description: article.metaDescription,
     image: typeof article.cover === 'string' ? article.cover : undefined,
     author: { '@type': 'Person', name: article.author.name },
     publisher: { '@type': 'Organization', name: 'Clipealo', logo: { '@type': 'ImageObject', url: 'https://www.clipealo-ai.com/favicon.png' } },
-    datePublished: article.date,
+    datePublished: article.isoDate,
+    dateModified: article.modifiedDate,
     mainEntityOfPage: `https://www.clipealo-ai.com/blog/${article.id}`,
     inLanguage: 'es',
   };
@@ -81,6 +82,8 @@ const BlogArticlePage = () => {
         canonicalPath={`/blog/${article.id}`}
         type="article"
         jsonLd={articleJsonLd}
+        publishedTime={article.isoDate}
+        modifiedTime={article.modifiedDate}
       />
       <Header />
 
@@ -90,6 +93,12 @@ const BlogArticlePage = () => {
           <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ArrowLeft className="w-4 h-4" /> Volver al blog
           </Link>
+
+          {/* Visible publication date */}
+          <div className="flex items-center gap-2 mb-5 text-sm text-muted-foreground">
+            <Calendar className="w-4 h-4" />
+            <time dateTime={article.isoDate}>Publicado el {article.displayDate}</time>
+          </div>
 
           {/* Category & Reading Time */}
           <div className="flex items-center gap-3 mb-5">
@@ -121,7 +130,7 @@ const BlogArticlePage = () => {
             className="rounded-xl overflow-hidden mb-10"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
           >
-            <img src={article.cover} alt={article.title} className="w-full" />
+            <img src={article.cover} alt={`Imagen de portada del artículo: ${article.title}`} className="w-full" loading="lazy" />
           </motion.div>
 
           {/* Content */}
@@ -133,6 +142,22 @@ const BlogArticlePage = () => {
               <div key={i}>{renderContent(block)}</div>
             ))}
           </motion.div>
+
+          {/* Internal links */}
+          {article.internalLinks && article.internalLinks.length > 0 && (
+            <div className="mt-10 mb-6 rounded-xl border border-border p-6" style={{ background: 'rgba(255,255,255,0.03)' }}>
+              <p className="text-sm font-semibold text-foreground mb-3">Te puede interesar:</p>
+              <ul className="space-y-2">
+                {article.internalLinks.map((link, i) => (
+                  <li key={i}>
+                    <Link to={link.href} className="text-sm text-primary hover:underline underline-offset-2 transition-colors">
+                      → {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* CTA */}
           <div className="mt-12 rounded-2xl p-8 text-center border" style={{

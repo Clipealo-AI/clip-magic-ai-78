@@ -7,12 +7,14 @@ interface SEOHeadProps {
   canonicalPath?: string;
   type?: 'website' | 'article';
   jsonLd?: Record<string, unknown>;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const BASE_URL = 'https://www.clipealo-ai.com';
 const DEFAULT_OG_IMAGE = 'https://storage.googleapis.com/gpt-engineer-file-uploads/uUehV3bYuzgNzbsXMdDHUepZq4z2/social-images/social-1770175321286-file (2).jpg';
 
-const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website', jsonLd }: SEOHeadProps) => {
+const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website', jsonLd, publishedTime, modifiedTime }: SEOHeadProps) => {
   useEffect(() => {
     const fullTitle = title.includes('Clipealo') ? title : `${title} | Clipealo`;
     document.title = fullTitle;
@@ -50,6 +52,14 @@ const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website',
       link.setAttribute('href', url);
     }
 
+    // Article meta tags
+    if (publishedTime) {
+      setMeta('property', 'article:published_time', publishedTime);
+    }
+    if (modifiedTime) {
+      setMeta('property', 'article:modified_time', modifiedTime);
+    }
+
     // JSON-LD structured data
     const jsonLdId = 'seo-json-ld';
     let scriptEl = document.getElementById(jsonLdId) as HTMLScriptElement | null;
@@ -81,8 +91,11 @@ const SEOHead = ({ title, description, ogImage, canonicalPath, type = 'website',
       document.title = 'Clipealo - Clips Virales Automáticos con IA para Streamers y Cliperos LATAM';
       const el = document.getElementById(jsonLdId);
       if (el) el.remove();
+      // Clean up article meta tags
+      document.querySelector('meta[property="article:published_time"]')?.remove();
+      document.querySelector('meta[property="article:modified_time"]')?.remove();
     };
-  }, [title, description, ogImage, canonicalPath, type, jsonLd]);
+  }, [title, description, ogImage, canonicalPath, type, jsonLd, publishedTime, modifiedTime]);
 
   return null;
 };
