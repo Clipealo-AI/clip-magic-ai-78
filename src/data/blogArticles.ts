@@ -550,6 +550,13 @@ export const blogArticles: BlogArticle[] = [
       { label: 'Ver precios de Clipealo', href: '/precios' },
       { label: 'Clipealo para agencias', href: '/casos/agencias' },
     ],
+    faqs: [
+      { question: '¿Cuántos usuarios puede tener una misma cuenta?', answer: 'Actualmente Clipealo funciona con una cuenta por usuario. Para equipos, recomendamos el plan Pro o Premium que permite gestionar múltiples proyectos.' },
+      { question: '¿Puedo aplicar el branding de mi empresa a los clips?', answer: 'Sí. Puedes configurar plantillas de marca con colores, fuentes y estilo de subtítulos personalizados.' },
+      { question: '¿Funciona con videos de eventos y presentaciones internas?', answer: 'Sí. Puedes subir cualquier video en formato MP4, MOV o pegar un enlace de YouTube.' },
+      { question: '¿Cuánto cuesta para equipos?', answer: 'Desde S/.72/mes con el plan Pro (15 horas de video). El plan Premium incluye 30 horas por S/.126/mes.' },
+      { question: '¿Hay período de prueba?', answer: 'Sí. El plan gratuito incluye 60 minutos de procesamiento para que pruebes la herramienta antes de elegir un plan.' },
+    ],
     content: [
       '## Introducción',
       'Si tu equipo de marketing o producción audiovisual dedica más de 3 horas semanales a editar clips para redes sociales, hay una forma más eficiente de hacerlo. Equipos que usan **Clipealo** reducen ese tiempo a menos de 20 minutos por semana, automatizando el 80% del proceso: desde la detección de momentos hasta el formateo final con subtítulos y branding.',
@@ -611,6 +618,13 @@ export const blogArticles: BlogArticle[] = [
     internalLinks: [
       { label: 'Ver precios de Clipealo', href: '/precios' },
       { label: 'Clipealo para agencias', href: '/casos/agencias' },
+    ],
+    faqs: [
+      { question: '¿Funciona con grabaciones de Zoom, Teams o Meet?', answer: 'Sí. Cualquier grabación exportada como MP4 o MOV funciona. También puedes pegar enlaces de YouTube.' },
+      { question: '¿La IA detecta los momentos más valiosos del webinar?', answer: 'Sí. Analiza el audio completo, identifica cambios de tema, detecta momentos de alta energía y selecciona los fragmentos con mayor potencial de engagement.' },
+      { question: '¿Puedo aplicar el branding de mi empresa?', answer: 'Sí. Configura plantillas de marca con los colores, fuentes y estilo de tu empresa. Se aplican a todos los clips en un clic.' },
+      { question: '¿Qué duración deben tener los clips para LinkedIn?', answer: 'Entre 60 y 90 segundos es lo óptimo para LinkedIn. Para TikTok, entre 30 y 60 segundos.' },
+      { question: '¿Cuánto cuesta?', answer: 'Desde S/.72/mes con el plan Pro. Plan gratuito disponible con 60 minutos de procesamiento.' },
     ],
     content: [
       '## Introducción',
@@ -674,6 +688,13 @@ export const blogArticles: BlogArticle[] = [
     internalLinks: [
       { label: 'Ver precios de Clipealo', href: '/precios' },
       { label: 'Clipealo para agencias', href: '/casos/agencias' },
+    ],
+    faqs: [
+      { question: '¿Puedo gestionar clips de varios clientes desde una sola cuenta?', answer: 'Sí. Puedes crear proyectos y carpetas separadas para cada cliente con su propia plantilla de marca.' },
+      { question: '¿Puedo aplicar branding diferente por cada cliente?', answer: 'Sí. Cada cliente puede tener su propia plantilla de marca con colores, fuentes y estilo de subtítulos personalizados.' },
+      { question: '¿Cuántos clips genera por hora de video procesado?', answer: 'Entre 8 y 15 clips de 30 a 90 segundos, dependiendo de la densidad del contenido.' },
+      { question: '¿Qué plataformas soporta para exportar?', answer: 'Genera clips en formato 9:16 (TikTok, Reels, Shorts) y 16:9 (YouTube, Twitch). Descarga en MP4.' },
+      { question: '¿Tienen plan especial para agencias?', answer: 'El plan Pro y Premium están diseñados para el volumen de trabajo de agencias. Si necesitas más horas, contáctanos en clipealoai@gmail.com.' },
     ],
     content: [
       '## Introducción',
