@@ -9,7 +9,7 @@ const data: UseCasePageData = {
     title: 'Cada video de tu marca vale 10 veces más con Clipealo.',
     description: 'Convierte tus webinars, lanzamientos, eventos y videos corporativos en clips cortos que generan engagement, leads y ventas — automáticamente.',
     ctaText: 'Hablar con el equipo de Clipealo',
-    ctaHref: 'https://wa.me/51991351498?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20marcas',
+    ctaHref: 'https://wa.me/51906160948?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20marcas',
     image: heroImage,
   },
   context: {
@@ -68,7 +68,7 @@ const data: UseCasePageData = {
     title: 'Cada video que produces merece llegar a la audiencia máxima posible.',
     subtitle: 'Hablemos de cómo Clipealo encaja en la estrategia de contenido de tu marca.',
     ctaText: 'Contactar al equipo de Clipealo',
-    ctaHref: 'https://wa.me/51991351498?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20marcas',
+    ctaHref: 'https://wa.me/51906160948?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Clipealo%20para%20marcas',
   },
 };
 
