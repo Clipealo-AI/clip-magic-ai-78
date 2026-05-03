@@ -18,12 +18,13 @@ const footerColumns = [
   {
     title: 'FUNCIONALIDADES',
     links: [
-      { label: 'Clips automáticos', href: '/#faq' },
-      { label: 'Subtítulos con IA', href: '/#faq' },
-      { label: 'Reencuadre automático', href: '/#faq' },
-      { label: 'Score de viralidad', href: '/#faq' },
-      { label: 'Detección LATAM', href: '/#faq' },
-      { label: 'Título y descripción con IA', href: '/#faq' },
+      { label: 'Clips automáticos', href: '/funciones/clips-automaticos-con-ia' },
+      { label: 'Editor de subtítulos', href: '/funciones/editor-subtitulos-estilos' },
+      { label: 'Exporta en 2 formatos', href: '/funciones/exporta-dos-formatos' },
+      { label: 'Plantillas de marca', href: '/funciones/plantillas-de-marca' },
+      { label: 'IA entrenada LATAM', href: '/funciones/ia-entrenada-contenido-latam' },
+      { label: 'Exportación en masa', href: '/funciones/exportacion-en-masa' },
+      { label: 'Gestión de proyectos', href: '/funciones/gestion-proyectos-carpetas' },
     ],
   },
   {
