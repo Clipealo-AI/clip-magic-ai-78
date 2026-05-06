@@ -18,7 +18,7 @@ const TermsPage = () => {
             Términos y Condiciones de Servicio
           </h1>
           <p className="text-muted-foreground text-sm">
-            Fecha de entrada en vigor: 8 de febrero de 2026 · Versión 1.0
+            Fecha de entrada en vigor: 8 de febrero de 2026 · Versión 1.1
           </p>
         </header>
 
@@ -68,7 +68,21 @@ const TermsPage = () => {
               </ul>
             </SubSection>
             <SubSection title="3.3 Integración con Plataformas de Terceros">
-              <p>El servicio permite integración con plataformas de streaming de terceros (Twitch, YouTube, Facebook Gaming, entre otras). Clipealo no controla, opera ni es responsable de dichas plataformas.</p>
+              <p>El servicio permite integración con plataformas de streaming y redes sociales de terceros (Twitch, YouTube, Kick, TikTok, Instagram, Facebook, entre otras). Clipealo no controla, opera ni es responsable de dichas plataformas y se conecta a ellas mediante sus APIs oficiales bajo los términos de cada una.</p>
+            </SubSection>
+            <SubSection title="3.4 Integración con TikTok">
+              <p>Clipealo integra los productos oficiales <strong>Login Kit</strong> y <strong>Content Posting API</strong> de TikTok for Developers. Al conectar su cuenta de TikTok, el usuario reconoce y acepta lo siguiente:</p>
+              <ul>
+                <li><strong>Cumplimiento:</strong> el uso de la integración se rige también por los <em>TikTok Terms of Service</em>, las <em>TikTok Community Guidelines</em>, las <em>Developer Terms of Service</em> y las <em>Content Sharing Guidelines</em> publicados en <a className="text-primary hover:underline" href="https://developers.tiktok.com">developers.tiktok.com</a>.</li>
+                <li><strong>Originalidad y derechos:</strong> el usuario declara que el contenido publicado en TikTok es original o cuenta con todos los derechos, licencias, autorizaciones y consentimientos necesarios (incluyendo derechos de imagen, voz, música y marcas).</li>
+                <li><strong>Consentimiento por publicación:</strong> ningún clip se enviará a TikTok sin que el usuario revise una pantalla de previsualización y confirme expresamente la publicación. El usuario puede editar título, descripción, hashtags, nivel de privacidad y opciones de interacción antes de publicar.</li>
+                <li><strong>Divulgaciones comerciales:</strong> cuando el contenido sea comercial, el usuario debe activar las divulgaciones correspondientes (Promotional Content / Branded Content) y, al hacerlo, acepta el <em>Music Usage Confirmation</em> y la <em>Branded Content Policy</em> de TikTok.</li>
+                <li><strong>Sin marcas de agua de Clipealo:</strong> Clipealo no añade logos, marcas de agua, enlaces ni texto promocional propio al contenido publicado en TikTok.</li>
+                <li><strong>Revocación:</strong> el usuario puede desconectar TikTok en cualquier momento desde Clipealo (<em>Configuración → Integraciones</em>) o desde <a className="text-primary hover:underline" href="https://www.tiktok.com/setting/apps-and-website">tiktok.com/setting/apps-and-website</a>. Tras la revocación, los tokens de acceso se eliminan en un plazo máximo de 7 días.</li>
+                <li><strong>Tratamiento de datos:</strong> la <a className="text-primary hover:underline" href="/politica-de-privacidad">Política de Privacidad</a>, sección 13.2, detalla qué datos se reciben de TikTok, cómo se almacenan y cómo se eliminan.</li>
+                <li><strong>Conducta prohibida en TikTok:</strong> el usuario no utilizará Clipealo para publicar en TikTok contenido que infrinja sus <em>Community Guidelines</em>, derechos de terceros, propiedad intelectual, contenido engañoso, spam, o cualquier material prohibido por TikTok.</li>
+                <li><strong>Suspensión:</strong> el incumplimiento de estas obligaciones puede ocasionar la suspensión inmediata de la integración por parte de Clipealo o de TikTok, sin perjuicio de las demás sanciones contempladas en estos Términos.</li>
+              </ul>
             </SubSection>
           </Section>
 
@@ -383,7 +397,7 @@ const TermsPage = () => {
             </ul>
             <p className="text-muted-foreground text-sm mt-6">
               Contacto: clipealoai@gmail.com · Discord disponible en la plataforma<br />
-              Última actualización: 8 de febrero de 2026 · Versión 1.0<br />
+              Última actualización: 8 de febrero de 2026 · Versión 1.1<br />
               Clipealo - Herramienta de generación automatizada de clips
             </p>
           </Section>

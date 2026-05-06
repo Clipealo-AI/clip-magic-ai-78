@@ -18,7 +18,7 @@ const PrivacyPolicyPage = () => {
             Política de Privacidad
           </h1>
           <p className="text-muted-foreground text-sm">
-            Fecha de entrada en vigor: 8 de febrero de 2026 · Versión 1.0
+            Fecha de entrada en vigor: 8 de febrero de 2026 · Versión 1.1
           </p>
         </header>
 
@@ -375,19 +375,40 @@ const PrivacyPolicyPage = () => {
           </Section>
 
           <Section title="13. INTEGRACIONES CON PLATAFORMAS DE TERCEROS">
-            <SubSection title="13.1 Conexión con Plataformas de Streaming">
-              <p><strong>Autorización OAuth:</strong> sistemas seguros, accedemos solo a lo que permite, puede revocar acceso en cualquier momento.</p>
-              <p><strong>Datos accedidos:</strong> perfil público, lista de transmisiones, metadatos y estadísticas públicas.</p>
-              <p><strong>Credenciales:</strong> tokens almacenados de forma segura. No almacenamos sus contraseñas de esas plataformas.</p>
+            <SubSection title="13.1 Conexión con Plataformas de Streaming y Redes Sociales">
+              <p><strong>Autorización OAuth:</strong> nos conectamos a Twitch, YouTube, Kick, TikTok, Instagram y Facebook mediante los flujos OAuth oficiales de cada plataforma. Solo accedemos al alcance ("scopes") que usted aprueba expresamente y puede revocar el acceso en cualquier momento.</p>
+              <p><strong>Datos accedidos:</strong> identificadores públicos del perfil, nombre para mostrar, avatar y los permisos mínimos necesarios para leer transmisiones/videos y publicar el contenido que usted apruebe.</p>
+              <p><strong>Credenciales:</strong> los tokens de acceso y refresco se almacenan cifrados. <strong>Nunca</strong> solicitamos ni almacenamos contraseñas de plataformas de terceros.</p>
             </SubSection>
-            <SubSection title="13.2 Publicación Autorizada">
-              <p>Si autoriza que publiquemos clips en su nombre, lo haremos solo cuando lo indique, mediante APIs oficiales, y podrá revocar el permiso cuando lo desee.</p>
+            <SubSection title="13.2 Integración con TikTok (Login Kit y Content Posting API)">
+              <p>Cuando conecta su cuenta de TikTok a Clipealo, utilizamos los productos oficiales <strong>Login Kit</strong> y <strong>Content Posting API</strong> de TikTok for Developers. A continuación detallamos exactamente qué hacemos con sus datos de TikTok:</p>
+              <p><strong>a) Datos que recibimos de TikTok:</strong></p>
+              <ul>
+                <li><code>open_id</code> y <code>union_id</code> — identificadores opacos para reconocer su cuenta dentro de Clipealo.</li>
+                <li>Nombre para mostrar (<em>display name</em>) y URL del avatar — para mostrar la cuenta conectada en la interfaz.</li>
+                <li>Información del creador devuelta por <code>/v2/post/publish/creator_info/query/</code> — opciones de privacidad, duets/stitches/comentarios permitidos, máximo de duración de video — usada únicamente para construir el formulario de previsualización antes de publicar.</li>
+                <li>Estado de las publicaciones que usted inicia (publish_id, success/failure) — para mostrarle el resultado del subido.</li>
+              </ul>
+              <p><strong>b) Datos que NO recibimos ni solicitamos:</strong> contraseña de TikTok, mensajes directos, lista de seguidores o seguidos, contactos, correo electrónico de TikTok, ni datos de otros usuarios.</p>
+              <p><strong>c) Cómo usamos los datos de TikTok:</strong> exclusivamente para (i) identificarlo dentro de Clipealo, (ii) mostrarle la cuenta conectada, y (iii) subir, a su solicitud y previa previsualización aprobada por usted, los clips generados con IA. <strong>No</strong> usamos datos de TikTok para entrenar modelos de IA, publicidad, scoring, perfilado, ni los compartimos con terceros con fines comerciales.</p>
+              <p><strong>d) Almacenamiento:</strong> los tokens OAuth de TikTok se almacenan cifrados en reposo (AES-256) y en tránsito (TLS 1.2+). El acceso al almacén de tokens está restringido al servicio de publicación y registrado en logs de auditoría.</p>
+              <p><strong>e) Retención:</strong> los tokens se conservan mientras la integración esté activa. Si usted desconecta TikTok desde Clipealo, desde <a className="text-primary hover:underline" href="https://www.tiktok.com/setting/apps-and-website">tiktok.com/setting/apps-and-website</a>, o si elimina su cuenta de Clipealo, los tokens se eliminan en un máximo de 7 días. El historial de publicaciones (metadatos, no el video) se conserva mientras su cuenta esté activa para fines de soporte.</p>
+              <p><strong>f) Cómo desconectar y eliminar:</strong></p>
+              <ul>
+                <li>Desde Clipealo: <em>Configuración → Integraciones → TikTok → Desconectar</em>.</li>
+                <li>Desde TikTok: <a className="text-primary hover:underline" href="https://www.tiktok.com/setting/apps-and-website">https://www.tiktok.com/setting/apps-and-website</a> → revocar el acceso de "Clipealo AI".</li>
+                <li>Solicitud de eliminación total: escriba a <a className="text-primary hover:underline" href="mailto:clipealoai@gmail.com">clipealoai@gmail.com</a> con asunto "Eliminar datos TikTok".</li>
+              </ul>
+              <p><strong>g) Cumplimiento:</strong> esta integración cumple con los <em>TikTok Developer Terms of Service</em>, las <em>Content Sharing Guidelines</em> y las <em>Developer Guidelines</em> publicados en <a className="text-primary hover:underline" href="https://developers.tiktok.com">developers.tiktok.com</a>. Antes de cada publicación se muestra una previsualización editable y se solicita el consentimiento explícito del usuario; nunca añadimos marcas de agua, logos o texto promocional al contenido del creador.</p>
             </SubSection>
-            <SubSection title="13.3 Responsabilidad">
-              <p>Cada plataforma tiene sus propias políticas. Revise los términos de Twitch, YouTube, etc. No somos responsables de sus prácticas de privacidad.</p>
+            <SubSection title="13.3 Publicación Autorizada">
+              <p>Si autoriza que publiquemos clips en su nombre, lo haremos únicamente cuando usted confirme cada publicación en la interfaz de Clipealo, mediante las APIs oficiales de cada plataforma, y podrá revocar el permiso cuando lo desee.</p>
             </SubSection>
-            <SubSection title="13.4 Desconexión">
-              <p>Puede desconectar integraciones desde la configuración de su cuenta en Clipealo o desde la plataforma original. Al desconectar, dejamos de acceder a esos datos.</p>
+            <SubSection title="13.4 Responsabilidad">
+              <p>Cada plataforma tiene sus propias políticas. Revise los términos de Twitch, YouTube, TikTok, Instagram y Facebook. No somos responsables de las prácticas de privacidad de estas plataformas.</p>
+            </SubSection>
+            <SubSection title="13.5 Desconexión">
+              <p>Puede desconectar cualquier integración desde la configuración de su cuenta en Clipealo o desde la plataforma original. Al desconectar, dejamos de acceder a esos datos y eliminamos los tokens asociados en un plazo máximo de 7 días.</p>
             </SubSection>
           </Section>
 
@@ -457,7 +478,7 @@ const PrivacyPolicyPage = () => {
               <li>Comprende que puede retirar su consentimiento en cualquier momento</li>
             </ul>
             <p className="text-muted-foreground text-sm mt-6">
-              Última actualización: 8 de febrero de 2026 · Versión 1.0<br />
+              Última actualización: 8 de febrero de 2026 · Versión 1.1<br />
               Clipealo - Comprometidos con la protección de su privacidad<br />
               Para consultas: clipealoai@gmail.com
             </p>
